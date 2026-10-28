@@ -80,3 +80,10 @@ nav:
       - Store schema: reference/store.md
   - Platform:
       - platform/index.md
+  - roadmap-mcp.com: https://roadmap-mcp.com/
+
+extra:
+  social:
+    - icon: material/web
+      link: https://roadmap-mcp.com/
+      name: Roadmap MCP website
