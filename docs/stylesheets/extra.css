@@ -1,0 +1,15 @@
+:root {
+  --md-primary-fg-color: #1a3a5c;
+  --md-primary-fg-color--light: #2c5582;
+  --md-primary-fg-color--dark: #10263d;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #1a3a5c;
+  --md-default-bg-color: #12161c;
+}
+
+/* Tables of endpoints and actions read better without wrapping the first column. */
+.md-typeset table:not([class]) td:first-child code {
+  white-space: nowrap;
+}
