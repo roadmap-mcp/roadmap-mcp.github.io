@@ -1,8 +1,6 @@
 site_name: Roadmap
 site_description: Documentation for Roadmap and its AI-backed Knowledge Base
-# Set this to the GitHub Pages address once the repository has a remote, e.g.
-# https://<owner>.github.io/roadmap-doc/
-# site_url: https://<owner>.github.io/roadmap-doc/
+site_url: https://docs.roadmap.com/
 copyright: Roadmap documentation
 
 theme:

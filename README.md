@@ -18,9 +18,14 @@ Diagrams are Mermaid code blocks (```` ```mermaid ````).
 
 ## Publishing
 
+The site is served at **https://docs.roadmap.com/**.
+
 1. Push this repository to GitHub.
 2. Settings → Pages → *Build and deployment* → Source: **GitHub Actions**.
-3. Set `site_url` in `mkdocs.yml` to the Pages address.
+3. Settings → Pages → *Custom domain*: `docs.roadmap.com`, then *Enforce HTTPS*.
+   (`docs/CNAME` holds the same name, but a site deployed by Actions takes its
+   domain from this setting.)
+4. DNS: a `CNAME` record `docs.roadmap.com` → `<owner>.github.io`.
 
 ## Keeping it in step
 
