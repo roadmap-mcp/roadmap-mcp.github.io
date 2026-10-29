@@ -31,12 +31,16 @@ everyone* or *Work breakdown*:
 | Written for | The persona, or *Everyone* for a shared type. For a unit of work this is **Under**: *Top level*, or the work type it sits under. |
 | Form | *Structured* (fields) or *Unstructured* (free text). |
 | Description | What belongs in one. The AI writes to it, so be specific. |
-| Fields | Structured types: **Add field**, then a Label, a Key, a Type, Required and a Hint for each. Fill in the Key yourself. |
+| Fields | Structured types: **Add field**, then a Label, a Key, a Type, Required and a Hint for each. Leave the Key empty to have it made from the label when you save: *Primary actor* becomes `primary_actor`. |
 | Template | Unstructured types: the text a new topic starts from. |
 | Lifecycle | Units of work: **Add state** for each state, in order. Without any, it goes through *Planned*, *In progress*, *Done*. |
 
-Click **Save** to save the type. Personas and types can't be deleted or reordered
+Click **Save** to save the type. Its id is made from the name, the way a persona's
+is: *Use case* becomes `use-case`. Personas and types can't be deleted or reordered
 here; see [below](#deleting-and-reordering-personas).
+
+The settings screen keeps you to the rules of [Concepts](concepts.md#node-types) by
+itself: a unit of work, for instance, offers *Under* instead of *Written for*.
 
 ## Over MCP
 
@@ -117,8 +121,17 @@ kb_admin(action="save_type", name="Feature", category="work", form="unstructured
 
 A work type without `states_json` goes through `planned`, `in-progress` and `done`.
 
-Roadmap doesn't check these rules when you save a type, so keep to them yourself:
-only work types have a `parent_type` and states, and a work type has no `persona`.
+Only work types have a `parent_type`, and a work type has no `persona`. `save_type`
+refuses a type that breaks these rules, with a reply that starts with `Not done:`
+and says what to change, for example:
+
+```text
+Not done: A unit-of-work type belongs to no persona: the work breakdown is shared.
+Leave persona empty.
+```
+
+It also refuses a `persona` or a `parent_type` that doesn't exist, and lists the
+ones that do.
 
 ### 5. Check the result
 
@@ -145,7 +158,9 @@ topics keep their content but no longer match a type.
 ## Deleting and reordering personas
 
 There is no action for this, over MCP or in the settings screen. Stop Roadmap, edit
-the `personas` list under `knowledgebase` in `config.yaml`, and start it again:
+the `personas` list under `knowledgebase` in `config.yaml`, and start it again. Stop
+it first: a **Save** on the settings page writes the whole file, and would undo an
+edit made while Roadmap runs.
 
 ```yaml
 knowledgebase:
