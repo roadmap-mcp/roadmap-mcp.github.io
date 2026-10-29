@@ -1,7 +1,7 @@
 # Get started
 
-Roadmap comes in two editions. Both run on your own machine, keep their data in
-plain files, and work with the AI provider you bring.
+Roadmap comes in two editions. You install them yourself, on your own computer or
+on a server for your team, and they work with the AI provider you bring.
 
 | Edition | For | Status |
 |---|---|---|
