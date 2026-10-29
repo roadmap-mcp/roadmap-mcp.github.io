@@ -71,6 +71,7 @@ Nothing is shared between workspaces. Every MCP tool takes an optional
 - [Concepts](concepts.md): personas, node types, the work breakdown, relations.
 - [Setting up personas and node types](setup.md): the first thing to do in a new
   Knowledge Base.
+- [Packs](packs.md): ready-made personas and node types to install.
 - [The document format](documents.md): how a topic's text, diagrams and screen
   sketches are written.
 - [Flows](flows.md): how knowledge gets in, and how every write is traced.

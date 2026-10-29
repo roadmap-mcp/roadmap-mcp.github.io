@@ -56,7 +56,7 @@ kb_write(action="link", kind="web-service", id="payments-api",
 
 ## `kb_admin`
 
-Administer node types, personas and sources.
+Administer node types, personas, packs and sources.
 
 | Action | Does | Needs |
 |---|---|---|
@@ -66,6 +66,8 @@ Administer node types, personas and sources.
 | `delete_type` | remove a type; refused while nodes use it unless `force` | `id` |
 | `list_personas` | the personas, in order | — |
 | `save_persona` | add a persona at the end, or change one. The `id` comes from the name, so saving with an existing persona's name changes that persona and replaces its description | `name` (or `id`), `description` |
+| `list_packs` | the [packs](../knowledge-base/packs.md) in the pack registry | — |
+| `install_pack` | install a pack, or part of it with `items_json` = `{"personas": [...], "node_types": [...], "replace": [...]}`; what a type needs comes along, and what you have is kept unless named in `replace` | `id` |
 | `clear_source` | drop everything ingested from one source | `source` |
 
 ```python

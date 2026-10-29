@@ -153,6 +153,7 @@ Roadmap from there.
 |---|---|---|
 | `ROADMAP_CONFIG_PATH` | `backend/config.yaml` | The configuration file; data is kept next to it. |
 | `ROADMAP_HOST` | `127.0.0.1` | The address to listen on. `0.0.0.0` makes Roadmap reachable from other machines, or from outside a container. |
+| `ROADMAP_KB_PACK_REGISTRY_URL` | roadmap-dist's `kb-packs/index.json` | Where the app finds [Knowledge Base packs](../knowledge-base/packs.md). |
 | `ROADMAP_KEY` | none | Your password. Secrets in the configuration are encrypted with it; set it to unlock them at startup instead of in the browser. |
 
 Set them in the terminal before you start the launcher:

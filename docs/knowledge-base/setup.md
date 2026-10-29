@@ -5,7 +5,8 @@ for and what kinds of thing it is made of: the **personas** and the **node types
 [Concepts](concepts.md) explains what they are. This page sets them up.
 
 You can set them up in the settings screen, or over MCP with the `kb_admin` tool.
-Both write the same configuration.
+Both write the same configuration. To start from ready-made personas and types
+instead, install a [pack](packs.md).
 
 ## In the settings screen
 
@@ -19,7 +20,8 @@ Go to *Settings → Knowledge Base → Layer 2*. On the left is a tree in three 
 Select a persona or a type to see it on the right, and click **Edit** to change it.
 
 **Add a persona** with **+ Add persona**: give it a **Name** and a **Description**
-of what it needs. Click **Save**; that saves straight away.
+of what it needs. Click the form's **Save**: that stores it straight away and closes
+the form. A name that is already taken is refused.
 
 **Add a node type** with **+ Add node type**, or with the **+** next to *Shared by
 everyone* or *Work breakdown*:
@@ -31,13 +33,17 @@ everyone* or *Work breakdown*:
 | Written for | The persona, or *Everyone* for a shared type. For a unit of work this is **Under**: *Top level*, or the work type it sits under. |
 | Form | *Structured* (fields) or *Unstructured* (free text). |
 | Description | What belongs in one. The AI writes to it, so be specific. |
-| Fields | Structured types: **Add field**, then a Label, a Key, a Type, Required and a Hint for each. Leave the Key empty to have it made from the label when you save: *Primary actor* becomes `primary_actor`. |
+| Fields | Structured types: **Add field**, then a Label, a Key, a Type, Required and a Hint for each. Leave the Key empty to have it made from the label when you save: *Primary actor* becomes `primary_actor`. It doesn't fill in while you type. |
 | Template | Unstructured types: the text a new topic starts from. |
 | Lifecycle | Units of work: **Add state** for each state, in order. Without any, it goes through *Planned*, *In progress*, *Done*. |
 
-Click **Save** to save the type. Its id is made from the name, the way a persona's
-is: *Use case* becomes `use-case`. Personas and types can't be deleted or reordered
-here; see [below](#deleting-and-reordering-personas).
+Click the form's **Save** to store the type straight away. Its id, shown as *Node
+kind*, is made from the name, the way a persona's is: *Use case* becomes
+`use-case`.
+
+To delete a type, select it and click the trash button next to **Edit**. Personas
+can't be deleted, and nothing can be reordered here; see
+[below](#deleting-and-reordering-personas).
 
 The settings screen keeps you to the rules of [Concepts](concepts.md#node-types) by
 itself: a unit of work, for instance, offers *Under* instead of *Written for*.
@@ -71,7 +77,8 @@ A topic type is one kind of page: a database, a web service, a test scenario. Gi
 it the persona it is written for, and a description of what belongs in one: the
 type is the specification the AI writes to.
 
-A **structured** type has fields every topic of that type fills in:
+A **structured** type has fields every topic of that type fills in. `category`
+defaults to `topic`, so a topic type doesn't need it:
 
 ```python
 kb_admin(action="save_type", name="Database", form="structured", persona="architects",
@@ -131,7 +138,8 @@ Leave persona empty.
 ```
 
 It also refuses a `persona` or a `parent_type` that doesn't exist, and lists the
-ones that do.
+ones that do. A refusal is an ordinary reply, not a tool error, so an AI client
+won't flag it as a failure: read the reply.
 
 ### 5. Check the result
 
@@ -152,8 +160,10 @@ their content until they are written again.
 kb_admin(action="delete_type", id="test-scenario")
 ```
 
-Deleting a type is refused while topics use it, unless you add `force=True`; those
-topics keep their content but no longer match a type.
+Deleting a type is refused while topics use it, unless you add `force=True`. Those
+topics keep their content but are untyped: until a type with the same id exists
+again, they show as bare pointers, without their content. Re-create the type and
+the content is back.
 
 ## Deleting and reordering personas
 
