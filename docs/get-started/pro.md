@@ -106,6 +106,11 @@ speech to text.
         ```
 
 3. Open <http://localhost:8090>.
+4. Choose a password. On the first visit, an *Unlock Configuration* dialog asks for
+   one under *First-time setup*. Roadmap encrypts the secrets you store with it,
+   such as AI keys and access tokens. Keep it safe: you enter it again after every
+   restart, unless you set `ROADMAP_KEY` (see
+   [Environment variables](#environment-variables)).
 
 The first run creates a `.venv` folder next to the launcher and installs the bundled
 plugins into it, plus their dependencies from PyPI. That takes a few minutes and
