@@ -217,8 +217,16 @@ The [MCP tools](../reference/mcp-tools.md) page lists what the client can then d
 ## Plugins
 
 A fresh install has every Pro plugin installed and enabled. Optional plugins, such
-as Trello, install from the registry under *Settings → System → Admin*; restart
-Roadmap afterwards.
+as Trello, install from the registry:
+
+1. Go to *Settings → System → Admin* and select the plugin.
+2. Click **Install**. Its badge changes to *Restart*.
+3. Restart Roadmap: press Ctrl+C in its terminal, then start it again with
+   `start.bat` or `bash start.sh`.
+
+After the restart the plugin shows as *Installed* and is on in the workspace. Trello,
+for example, then has its own tab under *Settings → Information Sources*, and adds
+three MCP tools: `request_trello_card`, `list_trello_cards` and `add_trello_cards`.
 
 Which plugins a workspace uses is set under *Settings → System → Workspace*. Until
 you save that list, every installed plugin is on, including ones you install later.
