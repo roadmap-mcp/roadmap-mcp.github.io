@@ -9,8 +9,7 @@ Roadmap works with Git in two separate ways:
   schedule, and turns their history into searchable work items: branches and
   commits, linked to the Jira issues their messages mention.
 
-Both are configured per workspace, under *Settings → Information Sources*. Like all
-settings, a change is only stored when you click **Save** on the settings page.
+Both are configured per workspace, under *Settings → Information Sources*.
 
 ## Prerequisites
 
@@ -42,7 +41,9 @@ read.
     | Path | The working copy's folder on the server, for example `/home/me/src/my-service` or `C:/src/my-service`. |
     | Tags | Optional labels to filter the list by. Type one and press Enter. |
 
-3. Click **Save** on the settings page.
+3. Click **Save** under the fields. That writes the repository to `config.yaml`
+   straight away; there is nothing else to save. **Remove** and **Import** are
+   stored straight away too.
 
 Roadmap doesn't check the path when you save it. If you mistype it, you'll find out
 when something reads the repo.

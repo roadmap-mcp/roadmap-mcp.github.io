@@ -18,7 +18,8 @@ speech to text.
   stops with a message if there is none.
 - **Internet access on the first run**, to install the dependencies from PyPI.
 - **Git on your PATH**, for the [Git features](git.md).
-- **unzip**, or any other way to extract a zip file.
+- **unzip**, or any other way to extract a zip file, and **curl** if you download
+  from the command line.
 
 ### Getting Python 3.13
 
@@ -57,24 +58,28 @@ speech to text.
 
 === "Ubuntu 24.04"
 
-    Ubuntu 24.04 ships Python 3.12, which is too old. Install 3.13 from the
-    deadsnakes PPA, along with git and unzip. `python3.13-venv` is required:
+    Ubuntu 24.04 ships Python 3.12, which is too old; the bare `ubuntu:24.04`
+    container image has no Python at all. Install 3.13 from the deadsnakes PPA,
+    along with git, curl and unzip. `python3.13-venv` is required:
 
     ```bash
-    sudo apt-get update
-    sudo apt-get install -y software-properties-common
-    sudo add-apt-repository -y ppa:deadsnakes/ppa
-    sudo apt-get install -y python3.13 python3.13-venv git unzip
+    export DEBIAN_FRONTEND=noninteractive
+    sudo -E apt-get update
+    sudo -E apt-get install -y software-properties-common
+    sudo -E add-apt-repository -y ppa:deadsnakes/ppa
+    sudo -E apt-get install -y python3.13 python3.13-venv git curl unzip
     ```
 
-    In a container where you are root, leave out `sudo`. Check:
+    `DEBIAN_FRONTEND=noninteractive` stops the installation from halting to ask
+    for your time zone. In a container where you are root, leave out `sudo -E`.
+    Check:
 
     ```bash
     python3.13 --version
     ```
 
-    Leave the system `python3` at 3.12: Ubuntu itself depends on it, and the
-    launcher finds `python3.13` by itself.
+    If your system has a `python3` at 3.12, leave it: Ubuntu itself depends on it,
+    and the launcher finds `python3.13` by itself.
 
 ## Download
 
@@ -179,16 +184,32 @@ Set them in the terminal before you start the launcher:
 
 ## Connect an AI client
 
-Roadmap serves its tools over MCP, using SSE. Add it to your client's MCP
-configuration:
+Roadmap serves its tools over MCP, using SSE, at
+`http://127.0.0.1:8090/mcp/sse`.
 
-```json
-{
-  "mcpServers": {
-    "roadmap": { "type": "sse", "url": "http://127.0.0.1:8090/mcp/sse" }
-  }
-}
-```
+=== "Claude Code"
+
+    ```bash
+    claude mcp add-json -s user roadmap '{"type":"sse","url":"http://127.0.0.1:8090/mcp/sse"}'
+    ```
+
+    `-s user` makes Roadmap available in every project. Check it with
+    `claude mcp list`, which should show `roadmap` as *Connected*. If you put the
+    server in a project's `.mcp.json` instead, Claude Code shows it as *Pending
+    approval* until you start `claude` in that project and approve it.
+
+=== "Other clients"
+
+    Add it to the client's MCP configuration file; where that file lives depends
+    on the client:
+
+    ```json
+    {
+      "mcpServers": {
+        "roadmap": { "type": "sse", "url": "http://127.0.0.1:8090/mcp/sse" }
+      }
+    }
+    ```
 
 The [MCP tools](../reference/mcp-tools.md) page lists what the client can then do.
 
