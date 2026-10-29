@@ -33,7 +33,7 @@ workspace starts empty.
    and the work types above it. Unticking a persona or a work type unticks what
    depends on it.
 4. Click **Install N item(s)**. The result says what happened, such as *2 installed*
-   or *1 kept as you had them*.
+   or *1 kept as you had them*, and the ticks are cleared.
 
 A persona or type you already have is kept as you have it, unless you tick
 **replace mine** on it. A replaced persona keeps its place in the order of the lanes.
@@ -55,7 +55,8 @@ kb_admin(action="install_pack", id="e2e-testing")
 ```
 
 installs the whole pack and reports, for each persona and type, whether it was
-installed, unchanged, kept or replaced. To install part of a pack, or to replace
+installed, unchanged, kept or replaced, starting with the pack and its version:
+``Pack `e2e-testing` (v1.0.0): installed: ...``. To install part of a pack, or to replace
 items you already have, add `items_json`:
 
 ```python

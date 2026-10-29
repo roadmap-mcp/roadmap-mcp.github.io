@@ -76,8 +76,8 @@ kb_admin(action="save_type", name="Web service", form="structured",
                      ' "protocol": "Protocol"}')
 ```
 
-Personas can't be deleted or reordered with `kb_admin`, nor in the settings screen.
-Edit the `knowledgebase.personas` list in `config.yaml` instead (see
+Personas can't be deleted or reordered with `kb_admin`. Remove one in the settings
+screen; to reorder them, edit the `knowledgebase.personas` list in `config.yaml` (see
 [Setting up personas and node types](../knowledge-base/setup.md#deleting-and-reordering-personas)).
 
 A work type saved without `states_json` goes through the default lifecycle:

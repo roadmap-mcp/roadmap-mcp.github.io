@@ -41,8 +41,10 @@ Click the form's **Save** to store the type straight away. Its id, shown as *Nod
 kind*, is made from the name, the way a persona's is: *Use case* becomes
 `use-case`.
 
-To delete a type, select it and click the trash button next to **Edit**. Personas
-can't be deleted, and nothing can be reordered here; see
+To remove a persona or a type, select it, click the trash button next to **Edit**,
+and confirm. That is stored straight away. A type that topics still use can't be
+removed: delete those topics, or move them to another type, first. The types
+written for a removed persona become shared. Nothing can be reordered here; see
 [below](#deleting-and-reordering-personas).
 
 The settings screen keeps you to the rules of [Concepts](concepts.md#node-types) by
@@ -167,8 +169,10 @@ the content is back.
 
 ## Deleting and reordering personas
 
-There is no action for this, over MCP or in the settings screen. Stop Roadmap, edit
-the `personas` list under `knowledgebase` in `config.yaml`, and start it again. Stop
+Remove a persona in the settings screen, as [above](#in-the-settings-screen).
+Over MCP there is no action for it, and nothing reorders personas: for that, stop
+Roadmap, edit the `personas` list under `knowledgebase` in `config.yaml`, and start
+it again. Stop
 it first: a **Save** on the settings page writes the whole file, and would undo an
 edit made while Roadmap runs.
 
