@@ -68,15 +68,14 @@ orchestration says so.
 
 ## The worker loop
 
-An AI connected over MCP works through an orchestration like this:
+An AI connected to Roadmap works through an orchestration step by step:
 
-1. `kb_orchestrate("start", id=...)` creates the instances in the initial state.
-2. `kb_orchestrate("next")` opens the run for the oldest ready instance and returns
-   an ordinary [flow brief](flows.md), ending with a note on what each outcome
-   leads to.
-3. The AI does the work, writes with `kb_write(..., run=...)`, then calls
-   `kb_flow("finish", outcome="ok" | "failed")`. The outcome moves the instance on.
-4. `next` again, until nothing is ready.
+1. Starting the orchestration creates its instances in the initial state.
+2. The AI asks for the next piece of work, and gets the [flow brief](flows.md) of the
+   oldest ready instance, with a note on what each outcome leads to.
+3. It does the work, writes what it found, and finishes the run as *ok* or
+   *failed*. The outcome moves the instance on.
+4. It asks for the next piece of work, until nothing is ready.
 
 ## In a branch
 

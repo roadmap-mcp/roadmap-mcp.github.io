@@ -26,11 +26,12 @@ Roadmap comes in two editions:
 
 -   **[Pro edition](knowledge-base/index.md)**
 
-    The Knowledge Base: the two layers, personas and node types, flows,
-    orchestration and branches.
+    The Knowledge Base: the two layers, personas and topics, flows, orchestration
+    and branches.
 
--   **[Walkthrough](knowledge-base/walkthrough.md)**
+-   **[Scenario: implement a simple use case](knowledge-base/walkthrough.md)**
 
-    One feature from analysis to merge, the way an AI team works through it.
+    One use case from the first question to the merge, the way an AI team works
+    through it.
 
 </div>

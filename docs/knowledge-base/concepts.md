@@ -1,102 +1,98 @@
 # Concepts
 
-## Personas
+The Knowledge Base starts from one observation: an AI that works on your software
+needs to know what your teams already know, and that knowledge is scattered over
+tickets, wiki pages and code, written for other purposes and never in one place.
+Searching all of it again for every question is slow, and the answer is only as
+good as the search.
 
-A **persona** is who knowledge is written *for*: a role (*Architects*, *Testers*,
-*Business analysts*) or a specialism (*PrimeNG specialist*). Each persona gets a
-**lane** in the explorer: a tree of the topics written for it.
+## The idea: let the AI keep a wiki
 
-A persona has a name and a description of who it is and what its topics cover. The
-description is optional, but write one: it tells people and AI agents what belongs
-in that persona's lane.
-Its `id` is derived from the name the first time it's saved, and topics refer to
-it by that id, so renaming a persona later keeps its tree. The order personas are
-configured in is the order of the lanes.
+In April 2026 Andrej Karpathy described the
+[LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): instead
+of letting an AI search raw documents every time, let it **write and maintain a
+wiki** from them. The raw sources stay as they are; the AI reads them and builds
+interlinked pages, keeps them up to date as sources change, and answers questions
+from the wiki. A short set of conventions, the schema, tells the AI how the wiki is
+organised.
 
-## Node types
+Roadmap's Knowledge Base is that idea for a team building business software:
 
-Every node type has one of **three categories**, and the category decides what
-else it carries:
+```mermaid
+flowchart LR
+  subgraph K["Karpathy's LLM Wiki"]
+    direction TB
+    KR[Raw sources<br/>read, never changed] --> KW[The wiki<br/>written by the AI]
+    KS[The schema<br/>how the wiki is organised] -.-> KW
+  end
+  subgraph R["Roadmap's Knowledge Base"]
+    direction TB
+    R1[Layer 1: ground truth<br/>Jira, Confluence, Git, Bitbucket] --> R2[Layer 2: knowledge<br/>topics per persona, written by AI]
+    RS[Personas, topic types<br/>and flows] -.-> R2
+  end
+  K ~~~ R
+```
 
-| Category | Lives in | Also carries | What it is |
-| --- | --- | --- | --- |
-| `work` | the work breakdown | `parent_type`, `states` | a project, a phase, a feature, a step |
-| `folder` | a persona's lane | `persona` | how that persona's topics are browsed |
-| `topic` | a persona's lane | `persona` | the page somebody wanted to read |
+| LLM Wiki | Roadmap |
+|---|---|
+| Raw sources | **Layer 1**, the ground truth: what your systems already hold |
+| The wiki | **Layer 2**, the knowledge: [topics](topics.md) written by AI agents |
+| The schema | [personas](personas.md), topic types and [flows](flows.md), set up in Roadmap |
+| Ingest, query, lint | flows write the knowledge; AI clients and people read it; branches and runs keep it honest |
 
-- A **topic** is the leaf: a use case, a database, a REST endpoint, a screen, a
-  test scenario. Use one type per kind of information. *Database* and *Web service*
-  are two types, not one "technical asset" type with a discriminator.
-- A **folder** turns a persona's graph of topics into a tree a person can browse.
-  A folder can carry content of its own, so an *overview of services* can stand
-  above the services and say what the set of them is for.
-- A **unit of work** never has a persona. The work breakdown belongs to no one
-  lane. It cuts across all of them, which is exactly what makes it useful (see
-  [The work breakdown](#the-work-breakdown)).
+## Layer 1: the ground truth
 
-A type with no persona is **shared**: its topics appear in every lane.
+Layer 1 is what your teams already wrote: Jira issues, Confluence pages, Git
+repositories, Bitbucket. Roadmap doesn't copy it. A Layer 1 node is a **pointer**:
+it says which system holds the item and under what id, and the content is read
+from that system when someone looks at it. So Layer 1 can't go stale, and nothing
+in it can be made up along the way.
 
-### Structured and unstructured
+Layer 1 is deliberately not interpreted. It keeps the shape of what your teams
+wrote, so every claim Layer 2 makes can point back at where it came from.
 
-A type has one of two forms:
+## Layer 2: the knowledge
 
-- **Structured**: a short list of `fields` (`text`, `long-text`, `number`,
-  `boolean`, `url`, `date`, and the diagram kinds `plantuml`, `mermaid` and
-  `wireframe`), each optionally `required`, with a `hint`. Every instance answers
-  the same questions, so a set of them can be compared and queried.
-- **Unstructured**: free text, with an optional `template`, so the tenth test
-  scenario has the same headings as the first.
+Layer 2 is what an AI writes from Layer 1: **topics**, such as a use case, a web
+service, a database, a test scenario or a sequence diagram. Two ideas set it apart
+from a plain wiki.
 
-!!! tip "The type is the specification"
-    When an AI writes a topic, the type's description, fields and template are
-    what it's asked to fill in. A vague type description produces vague topics.
+- **Written for someone.** Every topic is written for a [persona](personas.md): a
+  role or a specialism, such as an architect, a tester or a business analyst. An
+  architect and a business analyst need different pages out of the same ticket, so
+  each persona gets its own lane of topics.
+- **Written to a specification.** Every topic has a type, and the type says what a
+  topic of it holds: the fields to fill in, or the headings to write under. The
+  tenth test scenario has the same shape as the first, so topics can be compared,
+  and an AI knows exactly what to write (see [Topics](topics.md)).
+
+Where no other system is the system of record, for a test scenario or a use case
+for example, the topic itself is the record: the Knowledge Base owns it.
+
+## Keeping it right
+
+A wiki that an AI writes needs to stay trustworthy:
+
+- **Every write is traced.** An AI writes through a [flow](flows.md), and every
+  topic it writes remembers which flow, which prompt and which run wrote it. A run
+  can be undone.
+- **Work in progress stays apart.** What's written about a feature that isn't built
+  yet goes into a [branch](branches.md), and only joins the main knowledge once the
+  code has the feature.
+- **People stay in charge.** People read the knowledge in the
+  [explorer](explorer.md), and decide what is wrong: deleting a topic is a human
+  call.
 
 ## The work breakdown
 
-Work types form a hierarchy through `parent_type`: a project holds features, a
-feature holds steps. The breakdown is the first lane in the explorer.
+Next to the personas' lanes, the Knowledge Base holds the **work breakdown**: the
+project, its features and their steps, each with its state and progress. It belongs
+to no one persona, because it cuts across all of them. Topics written while working
+on a feature are linked to it, so "what do we know about this feature?" has an
+answer, and [orchestrations](orchestration.md) move features through their states
+as the work goes on.
 
-Every work type has a **lifecycle**: an ordered list of `states`. If a type
-declares none, it gets *Planned → In progress → Done*. The order is the state
-machine. A person moves an item one state at a time, forward or back; the last
-state means finished. A flow or an [orchestration](orchestration.md) moves items
-as its work goes on.
+## One Knowledge Base per workspace
 
-Progress rolls up. A leaf's progress is how far along its lifecycle it is. An item
-with units of work under it averages theirs: it's in the first state while none
-has started, and in the last once all are finished. The state is stored with a log
-of every move: when, from what, and by which run or person.
-
-A unit of work can also have a **context**: `context` links to the topics someone
-doing the item should read first (its use cases, its screens). It's the work
-breakdown's version of a Roadmap context: a starting set of pointers, and the
-topics' own links lead on from there.
-
-## Relations
-
-Links are typed. Two relation types have a fixed meaning:
-
-| Relation | Means | Cardinality | Read by |
-|---|---|---|---|
-| `contains` | where a node **sits** | one parent | the explorer's lane trees |
-| `about` | which work it **concerns** | many | "what do we know about this item?" |
-
-`contains` alone decides what nests under what. Every other relation
-(`documented-in`, `implements`, `uses`, `contradicts`, ...) is knowledge *about*
-two things, shown on a node's *Links* tab.
-
-A topic written *about* a unit of work isn't *held by* it. Roadmap writes the
-`about` links itself: everything written under a [flow run](flows.md#runs-and-provenance)
-is linked to that run's work item, so an AI never has to repeat it per node.
-
-## Sources
-
-Every node belongs to a **source**: one of the configured information sources
-(an Atlassian site, for example), or **`manual`**, the source for anything an agent
-or a person adds directly. `manual` is always writable. Removing a configured
-source removes its nodes and links, so the graph never keeps orphans.
-
-A pointer node's content is **fetched on demand** from its source. The explorer's
-*Refresh from source* re-reads it, updates the node's label, and shows the live
-content without storing it. Atlassian (Jira issues, Confluence pages) has a fetcher
-today.
+Each [workspace](../get-started/workspaces.md) has its own Knowledge Base, with its
+own personas, topic types, flows and topics. Nothing is shared between workspaces.

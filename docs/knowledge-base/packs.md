@@ -1,13 +1,12 @@
 # Packs
 
-A **pack** is a ready-made set of personas, the node types written for them, and the
+A **pack** is a ready-made set of personas, the topic types written for them, and the
 work types that go with them. Install one instead of
-[setting everything up yourself](setup.md), then adapt what it gives you.
+setting up [personas](personas.md) and [topic types](topics.md#topic-types) yourself, then adapt what it gives you.
 
 Packs are published in a **pack registry**, the way plugins are in the plugin
 registry. Installing one only adds personas and types to the workspace's
-configuration; it doesn't install any code. Installing a pack, in the settings
-screen or over MCP, needs the [admin role](../get-started/users.md#roles). Packs are installed per workspace: a new
+configuration; it doesn't install any code. Installing a pack needs the [admin role](../get-started/users.md#roles). Packs are installed per workspace: a new
 workspace starts empty.
 
 ## The packs
@@ -50,32 +49,6 @@ A persona or type you already have is kept as you have it, unless you tick
 **Install from file** installs a pack file from your disk the same way: it shows the
 same list and states. A file that isn't a valid pack is refused with the reason, for
 example a type written for a persona the pack doesn't carry.
-
-## Install a pack over MCP
-
-```python
-kb_admin(action="list_packs")
-```
-
-lists the registry's packs: id, name, version, description and counts.
-
-```python
-kb_admin(action="install_pack", id="e2e-testing")
-```
-
-installs the whole pack and reports, for each persona and type, whether it was
-installed, unchanged, kept or replaced, starting with the pack and its version:
-``Pack `e2e-testing` (v1.0.0): installed: ...``. To install part of a pack, or to replace
-items you already have, add `items_json`:
-
-```python
-kb_admin(action="install_pack", id="functional-analysis",
-         items_json='{"node_types": ["use-case"], "replace": ["use-case"]}')
-```
-
-What a type needs comes along, as in the settings screen; here that is the
-*Analysis* persona. An unknown pack id is refused:
-`Not done: No pack 'x' in the registry. Packs: ...`.
 
 ## Export your own pack
 

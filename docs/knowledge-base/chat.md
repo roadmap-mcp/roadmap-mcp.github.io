@@ -18,13 +18,12 @@ sequenceDiagram
   participant P as Person (chat window)
   participant R as Roadmap
   participant A as AI console (MCP)
-  A->>R: kb_chat join
+  A->>R: join the chat
   R-->>A: subject, history, hosting rules
   P->>R: "How does sign-in work?"
-  A->>R: kb_chat wait
   R-->>A: the new message
-  A->>R: kb_read find / get
-  A->>R: kb_chat say (text + pieces to show)
+  A->>R: read the knowledge base
+  A->>R: reply, with pieces to show
   R-->>P: reply, with topic sections shown live
 ```
 
@@ -32,7 +31,7 @@ sequenceDiagram
 
 ## How the AI hosts it
 
-`join` gives the AI the hosting rules:
+When it joins, the AI gets the hosting rules:
 
 - the person drives; replies are short and end with where to go next;
 - for someone new, a very short overview first, then let them explore;
@@ -47,8 +46,8 @@ opens it in the explorer.
 
 ## Robust by design
 
-Nothing is long-lived. The window polls for new messages every 1.5 seconds and the
-AI's `wait` returns after a few seconds, so reloading either side breaks nothing.
+Nothing is long-lived. The window checks for new messages every 1.5 seconds and the
+AI checks every few seconds, so reloading either side breaks nothing.
 The window shows whether an AI is connected and a typing indicator while it works.
 A closed chat can be **reopened**, and the AI joins again.
 

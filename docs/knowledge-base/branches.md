@@ -86,16 +86,8 @@ backend developer: analysis, design, backend) and copy the instruction for the A
 
 ![The Context panel](../images/kb-branches/branch-context.png){ width="1382" }
 
-or download the markdown. Over MCP:
-
-```
-kb_branch("context", id="password-reset", personas="analysis,architecture,backend")
-```
+or download the markdown.
 
 A flow brief opened in a branch points to it as well.
 
-## Over MCP
-
-`kb_read`, `kb_write` and `kb_flow` take an optional `branch` argument, and the
-`kb_branch` tool manages branches. A
-[chat](chat.md) can be put on a branch too.
+A [chat](chat.md) can be put on a branch too.

@@ -9,7 +9,7 @@ shared between workspaces. Every install starts with one, `default`.
 - **Its settings**: everything under *Settings*, except the *System* tabs that hold
   for the whole server. Each workspace has its own AI providers, information sources
   (Jira and Confluence, Bitbucket, Trello), [Git Repos](git.md) and checkout folders,
-  and Knowledge Base settings: personas, node types, flows and orchestrations.
+  and Knowledge Base settings: personas, topic types, flows and orchestrations.
 - **Its plugins**: which of the installed plugins are on (see
   [Plugins per workspace](plugins.md#plugins-per-workspace)).
 - **Its data**: its own Knowledge Base.

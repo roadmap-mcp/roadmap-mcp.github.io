@@ -306,5 +306,6 @@ Add one of the two endpoints, not both.
 
 - [Configure Git](git.md): set the checkout folders and add your repositories, so the
   Knowledge Base can read them.
-- [Set up personas and node types](../knowledge-base/setup.md), or install a
+- Set up [personas](../knowledge-base/personas.md) and
+  [topic types](../knowledge-base/topics.md#topic-types), or install a
   [pack](../knowledge-base/packs.md).

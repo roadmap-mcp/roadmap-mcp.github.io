@@ -39,7 +39,7 @@ The list groups the flows by kind, and a spinner marks one with a run in progres
 ## The prompt is mostly generated
 
 Only `instructions` is written by a person. Everything else in the prompt is
-generated: the personas, a full description of every node type in scope (its
+generated: the personas, a full description of every topic type in scope (its
 fields or its template), where the result goes, and how to write it back. An
 output contract that someone can edit by hand is one that breaks without anyone
 noticing. **Preview** on the Flows tab shows the whole prompt.
@@ -65,16 +65,8 @@ can only be briefed out:
 
 ![A flow with Brief and Copy MCP ref, and no AI provider bound](../images/kb-flows/flows-design-selected.png)
 
-Over MCP, an AI takes a flow on like this:
-
-```
-kb_flow("describe", id="step-development")          # what it reads and writes
-kb_flow("brief", id="step-development",
-        work_item="manual/feature/password-reset")  # the prompt and a run id
-kb_flow("progress", id="<run>", stage="read")       # as each stage starts
-kb_write(action="add_node", ..., run="<run>")       # write, stamped with the run
-kb_flow("finish", id="<run>", outcome="ok")         # how it went
-```
+An AI that takes a flow on gets its brief, reports each stage as it starts it,
+writes what it found, and finishes the run with how it went.
 
 ## Runs and provenance
 

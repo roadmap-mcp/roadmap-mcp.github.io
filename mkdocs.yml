@@ -82,15 +82,15 @@ nav:
   - Pro edition:
       - knowledge-base/index.md
       - Concepts: knowledge-base/concepts.md
-      - Setting up personas and node types: knowledge-base/setup.md
+      - Personas: knowledge-base/personas.md
+      - Topics: knowledge-base/topics.md
       - Packs: knowledge-base/packs.md
-      - The document format: knowledge-base/documents.md
       - The explorer: knowledge-base/explorer.md
       - Flows: knowledge-base/flows.md
       - Orchestration: knowledge-base/orchestration.md
       - Branches: knowledge-base/branches.md
       - Chat: knowledge-base/chat.md
-      - "Walkthrough: a feature end to end": knowledge-base/walkthrough.md
+      - "Scenario: implement a simple use case": knowledge-base/walkthrough.md
 
 extra:
   social:

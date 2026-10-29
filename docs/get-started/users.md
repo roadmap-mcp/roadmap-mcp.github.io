@@ -44,12 +44,12 @@ one above it may:
 |---|---|
 | **Viewer** | Read: the Knowledge Base, the workspaces, the jobs, and their own account. |
 | **Editor** | Also write data: Knowledge Base nodes and links, flow runs, branches. Also use [MCP](#mcp-needs-an-editor). |
-| **Admin** | Also configure: the settings, plugins, workspaces (only admins see *+ New workspace…* in the header), users, and unlocking the configuration. In the Knowledge Base: personas and node types, [packs](../knowledge-base/packs.md), orchestrations, and clearing a source. |
+| **Admin** | Also configure: the settings, plugins, workspaces (only admins see *+ New workspace…* in the header), users, and unlocking the configuration. In the Knowledge Base: personas and topic types, [packs](../knowledge-base/packs.md), orchestrations, and clearing a source. |
 
 A viewer or an editor sees only the **Account** tab under *Settings*.
 
 The same rules hold over MCP. An editor's AI client can read and write the
-Knowledge Base, but the `kb_admin` actions that change personas, node types and
+Knowledge Base, but the `kb_admin` actions that change personas, topic types and
 packs, or clear a source, and saving or deleting an orchestration, answer
 `Not done: This needs the admin role; <user> is editor.`
 

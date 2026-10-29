@@ -44,7 +44,7 @@ registry and *Settings → System → Admin* show.
 
 | Plugin | What it adds |
 |---|---|
-| `roadmap.knowledgebase` | The Knowledge Base: the ground-truth graph (Layer 1), topics per persona (Layer 2) defined by node types and [packs](../knowledge-base/packs.md), flows, orchestrations and branches; its page, its settings, and the `kb_*` MCP tools |
+| `roadmap.knowledgebase` | The Knowledge Base: the ground-truth graph (Layer 1), topics per persona (Layer 2) defined by topic types and [packs](../knowledge-base/packs.md), flows, orchestrations and branches; its page, its settings, and the `kb_*` MCP tools |
 | `roadmap.knowledgebase.flows` | Runs Knowledge Base [flows](../knowledge-base/flows.md) on the server with your AI provider. Without it, flows are handed out as briefs for an external AI to carry out |
 | `roadmap.mcp` | The MCP server, which every plugin registers its tools on: SSE at `/mcp/sse` and stateless HTTP at `/mcp` (see [The stateless endpoint](pro.md#the-stateless-endpoint)). Core |
 | `roadmap.gitrepos` | [Git Repos](git.md): the repositories, each a name and a folder, and the checkout folders that say where they are on the server and on users' machines |

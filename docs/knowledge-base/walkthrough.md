@@ -1,103 +1,78 @@
-# Walkthrough: a feature end to end
+# Scenario: implement a simple use case
 
-This page follows one feature, **password reset** in a web app, from the first
-question to the merge. It's based on a real run in which three AI sessions worked
-together: one hosting a chat with a person, one developing the app, and one
-looking after Roadmap. Every step uses the tools described elsewhere on this site.
+This scenario follows one use case, **reset a forgotten password** in a web app, from
+the first question to the moment the knowledge base describes it as built. Three AI
+sessions take part: one chatting with a person, one developing the app, and the
+Knowledge Base keeping track of both.
 
 ```mermaid
 flowchart LR
-  A[Main: the app as is] --> B[Open a branch<br/>for the feature]
-  B --> C[Analysis<br/>in the chat]
+  A[The app as it is] --> B[Open a branch<br/>for the feature]
+  B --> C[Analysis<br/>in a chat]
   C --> D[Technical design]
-  D --> E[Context: as is → to be]
-  E --> F[Orchestration:<br/>backend, frontend, e2e]
-  F -->|e2e failed| F
-  F --> G[Merge the code<br/>into main]
-  G --> H[Merge the<br/>knowledge-base branch]
+  D --> E[Hand the context<br/>to the developer]
+  E --> F[Build and test]
+  F -->|tests fail| F
+  F --> G[Merge the code]
+  G --> H[Merge the knowledge]
 ```
 
-## 1. Main describes the app as it is
+## 1. The knowledge base describes the app as it is
 
-The knowledge base already holds what earlier [flows](flows.md) wrote about the
-app: use cases and screens for the business analyst, components and endpoints for
-the architect, and so on, each persona in its own lane. The work breakdown holds
-the project and its features.
+Earlier [flows](flows.md) have written what is known about the app: use cases and
+screens for the business analyst, services and endpoints for the architect, test
+scenarios for the tester, each [persona](personas.md) in its own lane. The work
+breakdown holds the project and its features.
 
-## 2. Open a branch from the chat
+## 2. Ask for the feature in a chat
 
-A person opens a [chat](chat.md) in the explorer and pastes its MCP instruction
-into an AI console. They say they want users to be able to reset a forgotten
-password. The AI adds a *Password reset* feature to the work breakdown and opens a
-branch for it, tied to the chat:
+A person opens a [chat](chat.md) from the explorer and connects an AI to it. They
+explain that users should be able to reset a forgotten password. The AI adds a
+*Password reset* feature to the work breakdown and opens a [branch](branches.md)
+for it. From now on, everything the AI writes about the feature goes into that
+branch, and the main knowledge doesn't change.
 
-```
-kb_branch("open", name="password-reset", work_item="manual/feature/password-reset",
-          chat="kbc-m9udq8", git_branch="feature/password-reset")
-```
+## 3. Analysis and design
 
-From now on, everything the chat shows is read in the branch, and everything the AI
-writes goes into it. Main doesn't change.
+In conversation with the person, the AI writes the analysis as [topics](topics.md):
+the use case with its main and alternative flows, a sketch of the *Forgot password*
+and *Reset password* screens, and the rules, such as how long a reset link stays
+valid. Asked for a technical design, it adds the new endpoints, the table that keeps
+the reset tokens, and a sequence diagram of the calls.
 
-## 3. Analysis and design in the branch
+In the explorer, the branch bar shows what the branch changes. **Changes only**
+narrows the lanes to the new and changed topics, and each topic's **Changes** tab
+shows it as is and to be, side by side.
 
-In conversation with the person, the AI writes the analysis: a use case with its
-flows, a screen sketch of the *Forgot password* and *Reset password* pages
-([wireframes](documents.md#wireframes)), and the rules (how long a link is valid,
-what happens on a second request). Asked for a technical design, it adds the
-backend and frontend design topics: the new endpoints, the token table, the
-sequence of calls.
-
-In the explorer, the branch bar shows what changed. **Changes only** narrows the
-lanes to the new and changed topics, and each topic's **Changes** tab shows its
-diff and its diagrams side by side, as is and to be. Main still shows the app
-without the feature.
+![The explorer in a branch, with a changed topic open](../images/kb-branches/branch-view.png)
 
 ## 4. Hand the context to the developer
 
-The developer is a separate AI session working in the app's repository. It gets
-the branch's [context](branches.md#context-for-the-developer), filtered to the
-personas it works for:
+The developer is another AI session, working in the app's repository. From the
+branch's **Context** panel, the person picks the personas the developer works for
+and copies the instruction for it. The developer then reads the feature as **as is →
+to be**: the new topics in full, and the changed topics as differences. That's
+exactly what it needs to build the feature, and nothing the feature doesn't touch.
 
-```
-kb_branch("context", id="password-reset", personas="analysis,architecture,backend")
-```
+![The Context panel](../images/kb-branches/branch-context.png){ width="1382" }
 
-That's the feature as **as is → to be**: new topics in full, changed topics as
-diffs against main. It's exactly the instruction a developer needs, and nothing
-the feature doesn't touch.
+## 5. Build and test it
 
-## 5. Build it with an orchestration
+An [orchestration](orchestration.md) takes the feature through development and
+testing: backend, frontend, end-to-end tests. The developer works through each step
+in the feature's git branch, and the work breakdown shows where the feature is. When
+the end-to-end tests fail, the orchestration sends the feature back to development,
+with what broke as the starting point for the next attempt.
 
-An [orchestration](orchestration.md) runs the delivery in the branch: backend,
-frontend, end-to-end tests, release. The developer loops on
-`kb_orchestrate("next")`, does each step in the feature's git branch, and finishes
-each run with the commit it made:
+![The feature's progress in the work breakdown](../images/kb-explorer/work-item-progress.png){ width="1056" }
 
-```
-kb_flow("finish", id="<run>", outcome="ok", commit="4f2a9c1")
-```
-
-Each commit is recorded on the knowledge-base branch, so the branch bar shows how
-far the code has come. When the end-to-end tests fail, the run finishes `failed`
-with what broke, and the machine sends the feature back to development, with the
-failure message as the starting point for the next run.
-
-The end-to-end tests themselves became knowledge: a *Testing* persona with test
-suites and test scenarios, written in a branch of their own and merged first.
+The end-to-end tests become knowledge too: test scenarios for the *Testing* persona.
 
 ## 6. Merge the code, then the knowledge
 
-When every step is done and the tests pass, the release step merges the git branch
-into the app's main line. Only then does the final state merge the knowledge-base
-branch:
+When the tests pass, the code is merged into the app's main line. Only then is the
+knowledge base's branch merged, so the knowledge base never describes code that
+isn't there yet. The merge is refused while the feature isn't finished.
 
-```
-kb_branch("merge", id="password-reset")
-```
-
-The merge is refused while the feature's work item isn't finished, or while main
-changed a topic the branch changed too. In the real run, the branch merged
-cleanly: 23 topics added, 5 changed, 4 commits recorded, and the feature at
-*Done*. Main now describes the app **with** password reset, from the moment the
-code has it.
+From that moment, the knowledge base describes the app **with** password reset, and
+the next feature starts from there.
