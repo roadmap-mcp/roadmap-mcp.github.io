@@ -237,7 +237,8 @@ editor role or higher:
 
 !!! warning "Set up before snapshot 12?"
     A client added without a token is refused with `401 login_required`, and
-    reports an authentication error. Remove it, make a token, and add it again
+    fails to connect. Claude Code, for example, may show *Failed to connect* with a
+    message about client registration or authentication. Remove it, make a token, and add it again
     with the `headers` part, for example `claude mcp remove roadmap -s user` and then
     the command above. A `403 forbidden` means the token's user is a viewer: an
     admin has to make them an editor.
