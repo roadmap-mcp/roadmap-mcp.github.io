@@ -7,7 +7,8 @@
 
 Lite is the edition for small teams and individuals. You compose repo files,
 tickets, docs and notes into reusable contexts you can read, diff and preview, and
-serve them to Claude, Cursor or your IDE over MCP with one tool call. It runs on your
-machine, and you bring your own AI provider.
+serve them to Claude, Cursor or your IDE over MCP with one tool call, and you bring
+your own AI provider.
 
-Everything Lite does is also in [Pro](pro.md), which you can download today.
+What Lite does is described in the [Lite edition](../lite/index.md) section, once it
+is released.

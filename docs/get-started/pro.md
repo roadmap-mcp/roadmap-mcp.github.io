@@ -1,4 +1,4 @@
-# Pro: download and install
+# Pro
 
 !!! note "Version 0.2.0-SNAPSHOT"
     Pro is available as a preview build, `0.2.0-SNAPSHOT`. Snapshots are published
@@ -9,7 +9,7 @@ Pro is the [Knowledge Base](../knowledge-base/index.md) and the sources that fee
 it: your [Git repositories](git.md), Confluence and Jira, and Bitbucket. It also
 has the AI providers, the jobs and scheduler that run Knowledge Base flows, and an
 MCP server through which your AI client reads and writes the Knowledge Base. Trello is an optional extra: install it from the registry (see
-[Plugins](#plugins)).
+[Plugins](plugins.md#managing-plugins)).
 
 ## Requirements
 
@@ -242,14 +242,16 @@ editor role or higher:
     the command above. A `403 forbidden` means the token's user is a viewer: an
     admin has to make them an editor.
 
-The [MCP tools](../reference/mcp-tools.md) page lists what the client can then do.
+Ask the client to run `kb_read` with `action="status"` to check that it works; the
+[Pro edition](../knowledge-base/index.md) pages describe what it can do from there.
 
 ### The stateless endpoint
 
 Roadmap also serves MCP at `http://127.0.0.1:8090/mcp`, over plain HTTP: every call
 is one request, so it survives a restart of Roadmap without reconnecting. It offers a
-single tool, `roadmap`, that runs any of the tools by name (see
-[Two endpoints](../reference/mcp-tools.md#two-endpoints)). Use it when your client
+single tool, `roadmap`, that runs any of the tools by name: call it with a
+`command` and its `args`, such as `{"command": "kb_read", "args": {"action": "status"}}`,
+and `{"command": "help"}` lists them all. Use it when your client
 keeps losing the SSE connection, or when you'd rather not have every tool in the
 client's tool list.
 
@@ -275,46 +277,11 @@ client's tool list.
 
 Add one of the two endpoints, not both.
 
-## Plugins
-
-Managing plugins needs the admin role. A fresh install has every Pro plugin installed and enabled. Optional plugins, such
-as Trello, install from the registry:
-
-1. Go to *Settings → System → Admin* and select the plugin.
-2. Click **Install**. Its badge changes to *Restart*.
-3. Restart Roadmap: press Ctrl+C in its terminal, then start it again with
-   `start.bat` or `bash start.sh`.
-
-After the restart the plugin shows as *Installed* and is on in the workspace. Trello,
-for example, then has its own tab under *Settings → Information Sources*, and the
-Knowledge Base can use it as a source.
-
-Three plugins are **core**: *Settings*, *MCP server* and *Users*. They are always on, in every
-workspace, and can't be uninstalled; *Settings → System → Workspace* shows them as
-*core · always on*.
-
-Which plugins a workspace uses is set under *Settings → System → Workspace*. Until
-you save that list, every installed plugin is on, including ones you install later.
-Once you have saved it, a newly installed plugin starts off in that workspace: turn
-it on there.
-
-Both screens work the same way:
-
-- **Search** filters the plugins by name or id, and shows how many match.
-- **List** and **Graph** switch between a list and a dependency graph. The graph
-  asks before drawing more than 40 plugins, so narrow the search first.
-- A plugin is marked **feature** when nothing depends on it, and **foundation** when
-  it depends on nothing. Select one to see what it *depends on* and what it is
-  *required by*.
-
-Turning a plugin on in a workspace also turns on everything it depends on. Turning
-one off also turns off everything that depends on it. A note names each plugin that
-changed along with it.
-
 ## Next
 
 - [Add users](users.md#managing-users), and give each one a role.
 
 - [Configure Git](git.md): set the checkout folders and add your repositories, so the
   Knowledge Base can read them.
-- [Configure the Knowledge Base](../reference/configuration.md).
+- [Set up personas and node types](../knowledge-base/setup.md), or install a
+  [pack](../knowledge-base/packs.md).

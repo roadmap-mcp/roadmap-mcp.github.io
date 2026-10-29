@@ -151,8 +151,7 @@ won't flag it as a failure: read the reply.
   it; `kb_admin(action="get_type", id="database")` shows one in full.
 - The **Knowledge Base** explorer shows the work breakdown first, then a lane per
   persona, in order (see [The explorer](explorer.md)).
-- Everything is stored in the `knowledgebase` section of `config.yaml` (see
-  [Configuration](../reference/configuration.md#personas)).
+- Everything is stored in the `knowledgebase` section of `config.yaml`.
 
 ## Changing and deleting types
 

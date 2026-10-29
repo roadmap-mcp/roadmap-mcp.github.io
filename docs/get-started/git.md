@@ -124,8 +124,7 @@ repository elsewhere keeps its own path.
 
 - **MCP tools.** `list_git_repos` lists the configured repositories, and
   `get_git_repo_info` gives one's branches and recent commits. Both say where it is
-  in both places: *on your machine: ...; on the Roadmap server: ...*. See
-  [MCP tools](../reference/mcp-tools.md#git-repos-and-workspaces).
+  in both places: *on your machine: ...; on the Roadmap server: ...*.
 - **Knowledge Base flows.** A flow with a `repo` source names a Git Repo in its
   `ref`, and reads the files matching `scope.paths` from the checkout on the server:
 

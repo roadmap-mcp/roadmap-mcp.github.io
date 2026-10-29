@@ -33,7 +33,7 @@ theme:
         icon: material/weather-sunny
         name: Light mode
   icon:
-    logo: material/map-marker-path
+    logo: material/home
 
 extra_css:
   - stylesheets/extra.css
@@ -61,15 +61,18 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
-  - Home: index.md
-  - Get started:
+  - About: index.md
+  - Setup:
       - get-started/index.md
       - Lite: get-started/lite.md
-      - "Pro: download and install": get-started/pro.md
-      - Configuring Git: get-started/git.md
+      - Pro: get-started/pro.md
       - Users and roles: get-started/users.md
       - Your account and API tokens: get-started/account.md
-  - Knowledge Base:
+      - Configuring Git: get-started/git.md
+      - Plugins: get-started/plugins.md
+  - Lite edition:
+      - lite/index.md
+  - Pro edition:
       - knowledge-base/index.md
       - Concepts: knowledge-base/concepts.md
       - Setting up personas and node types: knowledge-base/setup.md
@@ -81,15 +84,6 @@ nav:
       - Branches: knowledge-base/branches.md
       - Chat: knowledge-base/chat.md
       - "Walkthrough: a feature end to end": knowledge-base/walkthrough.md
-  - Reference:
-      - reference/index.md
-      - MCP tools: reference/mcp-tools.md
-      - HTTP API: reference/http-api.md
-      - Configuration: reference/configuration.md
-      - Store schema: reference/store.md
-  - Platform:
-      - platform/index.md
-  - roadmap-mcp.com: https://roadmap-mcp.com/
 
 extra:
   social:

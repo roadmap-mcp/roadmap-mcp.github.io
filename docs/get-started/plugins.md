@@ -1,4 +1,4 @@
-# The platform
+# Plugins
 
 Roadmap is built on a **plugin framework**. Everything you use, from the Knowledge
 Base to the MCP server and every information source, is a plugin; the framework underneath
@@ -32,7 +32,7 @@ flowchart TB
 - The **frontend** mirrors this: each plugin adds its own pages, settings tabs and
   item types to the app.
 - Plugins are **enabled per workspace**: one server serves several teams, each with
-  its own configuration and data. See [Plugins](../get-started/pro.md#plugins) for
+  its own configuration and data. See [Managing plugins](#managing-plugins) for
   the screens that manage them.
 
 ## Plugins per edition
@@ -46,15 +46,15 @@ registry and *Settings → System → Admin* show.
 |---|---|
 | `roadmap.knowledgebase` | The Knowledge Base: the ground-truth graph (Layer 1), topics per persona (Layer 2) defined by node types and [packs](../knowledge-base/packs.md), flows, orchestrations and branches; its page, its settings, and the `kb_*` MCP tools |
 | `roadmap.knowledgebase.flows` | Runs Knowledge Base [flows](../knowledge-base/flows.md) on the server with your AI provider. Without it, flows are handed out as briefs for an external AI to carry out |
-| `roadmap.mcp` | The MCP server, which every plugin registers its tools on: SSE at `/mcp/sse` and stateless HTTP at `/mcp` (see [Two endpoints](../reference/mcp-tools.md#two-endpoints)). Core |
-| `roadmap.gitrepos` | [Git Repos](../get-started/git.md): the repositories, each a name and a folder, and the checkout folders that say where they are on the server and on users' machines |
+| `roadmap.mcp` | The MCP server, which every plugin registers its tools on: SSE at `/mcp/sse` and stateless HTTP at `/mcp` (see [The stateless endpoint](pro.md#the-stateless-endpoint)). Core |
+| `roadmap.gitrepos` | [Git Repos](git.md): the repositories, each a name and a folder, and the checkout folders that say where they are on the server and on users' machines |
 | `roadmap.atlassian` | The Jira and Confluence connection, under *Information Sources*, offered as a Layer 1 source. Jira issue and Confluence page nodes can be opened and refreshed through it, which pulls their title and an excerpt |
 | `roadmap.bitbucket` | The Bitbucket connection, under *Information Sources*, offered as a Layer 1 source. Its nodes are pointers, as an agent or a flow wrote them |
 | `roadmap.ai` | The AI providers |
 | `roadmap.jobs` | Background jobs with a status and a log, such as flow runs, shown under *Settings → System → Jobs* |
 | `roadmap.scheduler` | Scheduled tasks |
 | `roadmap.settings` | The settings screens. Core |
-| `roadmap.users` | [Users and roles](../get-started/users.md): the root user, signing in, the *Users* and *Account* tabs, and API tokens. Core |
+| `roadmap.users` | [Users and roles](users.md): the root user, signing in, the *Users* and *Account* tabs, and API tokens. Core |
 
 Roadmap doesn't sync or crawl any source: Layer 1 nodes are written by agents and
 flows. Only Atlassian nodes can be opened and refreshed from Roadmap.
@@ -68,3 +68,39 @@ Extra: in the registry, installed from *Settings → System → Admin*.
 ### Lite
 
 To be released soon.
+
+## Managing plugins
+
+Managing plugins needs the admin role. A fresh install has every Pro plugin
+installed and enabled. Optional plugins, such as Trello, install from the registry:
+
+1. Go to *Settings → System → Admin* and select the plugin.
+2. Click **Install**. Its badge changes to *Restart*.
+3. Restart Roadmap: press Ctrl+C in its terminal, then start it again with
+   `start.bat` or `bash start.sh`.
+
+After the restart the plugin shows as *Installed* and is on in the workspace. Trello,
+for example, then has its own tab under *Settings → Information Sources*, and the
+Knowledge Base can use it as a source.
+
+Three plugins are **core**: *Settings*, *MCP server* and *Users*. They are always
+on, in every workspace, and can't be uninstalled; *Settings → System → Workspace* shows them as
+*core · always on*.
+
+Which plugins a workspace uses is set under *Settings → System → Workspace*. Until
+you save that list, every installed plugin is on, including ones you install later.
+Once you have saved it, a newly installed plugin starts off in that workspace: turn
+it on there.
+
+Both screens work the same way:
+
+- **Search** filters the plugins by name or id, and shows how many match.
+- **List** and **Graph** switch between a list and a dependency graph. The graph
+  asks before drawing more than 40 plugins, so narrow the search first.
+- A plugin is marked **feature** when nothing depends on it, and **foundation** when
+  it depends on nothing. Select one to see what it *depends on* and what it is
+  *required by*.
+
+Turning a plugin on in a workspace also turns on everything it depends on. Turning
+one off also turns off everything that depends on it. A note names each plugin that
+changed along with it.

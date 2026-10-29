@@ -49,8 +49,7 @@ A viewer or an editor sees only the **Account** tab under *Settings*.
 The same rules hold over MCP. An editor's AI client can read and write the
 Knowledge Base, but the `kb_admin` actions that change personas, node types and
 packs, or clear a source, and saving or deleting an orchestration, answer
-`Not done: This needs the admin role; <user> is editor.` (see
-[MCP tools](../reference/mcp-tools.md#kb_admin)).
+`Not done: This needs the admin role; <user> is editor.`
 
 ### MCP needs an editor
 

@@ -2,7 +2,7 @@
 
 The Knowledge Base is Roadmap's AI-backed, organisation-wide store of what a team
 knows about its systems. It's a graph that AI agents read and write over
-[MCP](../reference/mcp-tools.md), and that people browse in the
+[MCP](../get-started/pro.md#connect-an-ai-client), and that people browse in the
 [explorer](explorer.md).
 
 !!! note "Status"

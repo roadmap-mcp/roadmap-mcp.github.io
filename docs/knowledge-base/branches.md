@@ -80,5 +80,5 @@ A flow brief opened in a branch points to it as well.
 ## Over MCP
 
 `kb_read`, `kb_write` and `kb_flow` take an optional `branch` argument, and the
-[`kb_branch`](../reference/mcp-tools.md#kb_branch) tool manages branches. A
+`kb_branch` tool manages branches. A
 [chat](chat.md) can be put on a branch too.

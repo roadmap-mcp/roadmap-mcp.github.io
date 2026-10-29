@@ -11,7 +11,7 @@ writes in here, and when?"
 | `act` | an AI that *does* something outside the knowledge base: builds, runs tests, merges | instructions only; its outcome is what counts |
 
 Flows are configured under *Settings → Knowledge Base → Flows*, or written over
-MCP. See [Configuration](../reference/configuration.md#flows) for the full shape.
+MCP.
 
 ```yaml
 - id: step-development

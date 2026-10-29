@@ -1,49 +1,36 @@
-# Roadmap
+# Roadmap MCP Documentation
 
-Roadmap is a workbench for **context engineering**: collecting what an AI (or a
-person) needs to know to do a piece of work, from the systems a team already uses
-(Jira, Confluence, git, Trello, ...), and handing it over in one place.
+Roadmap MCP gives your AI the context it needs to work on business software: what
+your teams already wrote in Git, Jira, Confluence and Bitbucket, and what they know
+about their systems, served to your AI client over MCP. The product, the editions and
+the mailing list are on [roadmap-mcp.com](https://roadmap-mcp.com/).
 
-Everything in Roadmap is a **plugin** on a shared framework. The part this site
-documents most is the **Knowledge Base**: the organisation-wide half of context
-engineering. A context is put together by hand for one task. The Knowledge Base is
-built once for the whole organisation, written by AI agents, and kept up to date.
+Roadmap comes in two editions:
+
+- **Lite**, for small teams: compose contexts and serve them over MCP. To be released
+  soon.
+- **Pro**, for teams and organisations: a shared **Knowledge Base**, written by AI
+  agents and kept up to date, fed by your repositories and information sources.
+  Available as a preview build.
 
 <div class="grid cards" markdown>
 
--   **[Knowledge Base](knowledge-base/index.md)**
+-   **[Setup](get-started/index.md)**
 
-    What it is, the two layers, and the ideas everything else builds on.
+    Install the server, add users, configure Git and plugins, and connect an AI
+    client.
 
--   **[Flows](knowledge-base/flows.md) and [Orchestration](knowledge-base/orchestration.md)**
+-   **[Lite edition](lite/index.md)**
 
-    Configured paths into the knowledge base, and the state machines that run them.
+    Contexts for small teams. To be released soon.
 
--   **[Branches](knowledge-base/branches.md)**
+-   **[Pro edition](knowledge-base/index.md)**
 
-    Knowledge about a feature that isn't built yet, kept apart until it's merged.
+    The Knowledge Base: the two layers, personas and node types, flows,
+    orchestration and branches.
 
 -   **[Walkthrough](knowledge-base/walkthrough.md)**
 
     One feature from analysis to merge, the way an AI team works through it.
 
--   **[MCP tools](reference/mcp-tools.md)**
-
-    Seven tools, one per role, for any AI client connected to Roadmap.
-
--   **[HTTP API](reference/http-api.md)**
-
-    Everything an agent can do over MCP, a person can do with curl.
-
 </div>
-
-## Who this is for
-
-- **People installing it**: [download and install Pro](get-started/pro.md), then
-  [configure Git](get-started/git.md).
-- **People using the Knowledge Base**: read [Concepts](knowledge-base/concepts.md)
-  and [The explorer](knowledge-base/explorer.md).
-- **People setting it up for a team**: [Configuration](reference/configuration.md),
-  [Flows](knowledge-base/flows.md), [Orchestration](knowledge-base/orchestration.md).
-- **People connecting an AI to it**: the [MCP tools](reference/mcp-tools.md) and the
-  [walkthrough](knowledge-base/walkthrough.md).
