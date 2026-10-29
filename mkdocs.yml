@@ -67,6 +67,8 @@ nav:
       - Lite: get-started/lite.md
       - "Pro: download and install": get-started/pro.md
       - Configuring Git: get-started/git.md
+      - Users and roles: get-started/users.md
+      - Your account and API tokens: get-started/account.md
   - Knowledge Base:
       - knowledge-base/index.md
       - Concepts: knowledge-base/concepts.md

@@ -10,12 +10,18 @@
 ## Connecting an AI
 
 Roadmap's MCP server is served by the Roadmap backend. A client such as Claude
-Code connects with an entry like this in its `.mcp.json`:
+Code connects with an entry like this in its `.mcp.json`, with an
+[API token](../get-started/account.md#api-tokens) of a user with the editor role or
+higher:
 
 ```json
 {
   "mcpServers": {
-    "roadmap": { "type": "sse", "url": "http://127.0.0.1:8090/mcp/sse" }
+    "roadmap": {
+      "type": "sse",
+      "url": "http://127.0.0.1:8090/mcp/sse",
+      "headers": { "Authorization": "Bearer <token>" }
+    }
   }
 }
 ```

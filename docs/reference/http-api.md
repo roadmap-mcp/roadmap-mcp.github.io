@@ -3,6 +3,12 @@
 Anything an agent can do over MCP, a person can do with curl. All paths are under
 **`/api/knowledgebase`**.
 
+Every request needs an [API token](../get-started/account.md#api-tokens), sent as
+`Authorization: Bearer <token>` (or `?token=`). Reading needs the viewer role,
+writing the editor role; installing a pack and clearing a source need an admin. A
+refusal is a `401` or a `403` (see
+[When a request is refused](../get-started/users.md#when-a-request-is-refused)).
+
 Two headers choose where a request reads and writes:
 
 | Header | Query alternative | Chooses |
@@ -26,11 +32,13 @@ Two headers choose where a request reads and writes:
 | `DELETE` | `/nodes/{source}/{kind}/{id}` | remove a node and its links |
 | `POST` | `/sources/{source}/clear` | drop everything from one source |
 
-Content is checked against its type, and a refusal is a `400` whose message says
+With your token in `ROADMAP_TOKEN`, a write looks like this. Content is checked
+against its type, and a refusal is a `400` whose message says
 what to do instead.
 
 ```bash
 curl -s -X POST http://127.0.0.1:8090/api/knowledgebase/nodes \
+  -H "Authorization: Bearer $ROADMAP_TOKEN" \
   -H "Content-Type: application/json" -d '{
     "nodes": [
       {"source":"manual","kind":"services","id":"all","title":"All services"},

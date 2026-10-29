@@ -20,7 +20,10 @@ an agent can correct itself from the message.
 | `/mcp/sse` | SSE: a long-lived session | one MCP tool per tool on this page |
 | `/mcp` | stateless HTTP: one POST per call | one tool, `roadmap`, that runs the others by name |
 
-Both serve the same tools. On `/mcp`, call `roadmap` with a `command` and its
+Both serve the same tools, and both need an
+[API token](../get-started/account.md#api-tokens) of a user with the editor role or
+higher, in an `Authorization: Bearer <token>` header. Every tool runs as that user.
+On `/mcp`, call `roadmap` with a `command` and its
 `args`:
 
 ```json

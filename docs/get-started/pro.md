@@ -112,11 +112,19 @@ MCP server through which your AI client reads and writes the Knowledge Base. Tre
         ```
 
 3. Open <http://localhost:8090>.
-4. Choose a password. On the first visit, an *Unlock Configuration* dialog asks for
-   one under *First-time setup*; enter it twice to confirm it. Roadmap encrypts the secrets you store with it,
-   such as AI keys and access tokens. Keep it safe: you enter it again after every
-   restart, unless you set `ROADMAP_KEY` (see
+4. Create the root user. The first visit shows **Create the root user**: keep the
+   user name `root` or type another, choose a password of at least 8 characters,
+   enter it again under **Confirm password**, and click **Create and sign in**. The
+   root user is the admin who adds everyone else (see
+   [Users and roles](users.md)).
+5. Choose the encryption password. Next, an *Unlock Configuration* dialog asks for
+   one under *First-time setup*; enter it twice to confirm it. Roadmap encrypts the
+   secrets you store with it, such as AI keys and access tokens. It is not the root
+   user's password, and it can't be recovered: keep it safe. An admin enters it
+   again after every restart, unless you set `ROADMAP_KEY` (see
    [Environment variables](#environment-variables)).
+
+From then on, every visit starts at the sign-in screen.
 
 The first run creates a `.venv` folder next to the launcher and installs the bundled
 plugins into it, plus their dependencies from PyPI. That takes a few minutes and
@@ -128,8 +136,7 @@ Ctrl+C in its terminal.
     outside a container or from another machine. Start it with
     `ROADMAP_HOST=0.0.0.0` (see [Environment variables](#environment-variables)), and
     publish the port when you run the container, for example
-    `docker run -p 127.0.0.1:8090:8090 ...`. Read the warning there first: Roadmap
-    has no login. To let Roadmap read your Git repositories, mount the folder that
+    `docker run -p 127.0.0.1:8090:8090 ...`. Read the warning there first. To let Roadmap read your Git repositories, mount the folder that
     holds them into the container, and set that path as the checkout folder on the
     server (see [Configuring Git](git.md#set-the-checkout-folders)).
 
@@ -176,25 +183,33 @@ Set them in the terminal before you start the launcher:
     bash start.sh
     ```
 
-!!! danger "There is no login"
-    Anyone who can reach port 8090 can use Roadmap and change its settings. Once
-    the configuration is unlocked, the settings page also shows every stored secret
-    in readable form: AI provider keys, Atlassian tokens, Git credentials.
+!!! danger "Before you open Roadmap to other machines"
+    Everyone signs in (see [Users and roles](users.md)), but Roadmap serves plain
+    HTTP: passwords, sessions and API tokens cross the network unencrypted. Once the
+    configuration is unlocked, an admin's settings page also shows every stored
+    secret in readable form: AI provider keys, Atlassian tokens, Git credentials.
 
     Keep the default, `127.0.0.1`, unless you need otherwise. Only use
     `ROADMAP_HOST=0.0.0.0` inside a container whose port you publish to your own
-    machine only (`-p 127.0.0.1:8090:8090`), or on a network where you trust
-    everyone who can reach it.
+    machine only (`-p 127.0.0.1:8090:8090`), on a network you trust, or behind a
+    reverse proxy that adds HTTPS.
 
 ## Connect an AI client
 
 Roadmap serves its tools over MCP, using SSE, at
-`http://127.0.0.1:8090/mcp/sse`.
+`http://127.0.0.1:8090/mcp/sse`. A client needs an **API token** of a user with the
+editor role or higher:
+
+1. Under *Settings → System → Account*, give a new token a name and click **New
+   token** (see [API tokens](account.md#api-tokens)).
+2. Copy the token: it is shown once. Next to it is the Claude Code command below,
+   with the token filled in.
+3. Add Roadmap to your client with the token in place of `<token>`.
 
 === "Claude Code"
 
     ```bash
-    claude mcp add-json -s user roadmap '{"type":"sse","url":"http://127.0.0.1:8090/mcp/sse"}'
+    claude mcp add-json -s user roadmap '{"type":"sse","url":"http://127.0.0.1:8090/mcp/sse","headers":{"Authorization":"Bearer <token>"}}'
     ```
 
     `-s user` makes Roadmap available in every project. Check it with
@@ -210,10 +225,21 @@ Roadmap serves its tools over MCP, using SSE, at
     ```json
     {
       "mcpServers": {
-        "roadmap": { "type": "sse", "url": "http://127.0.0.1:8090/mcp/sse" }
+        "roadmap": {
+          "type": "sse",
+          "url": "http://127.0.0.1:8090/mcp/sse",
+          "headers": { "Authorization": "Bearer <token>" }
+        }
       }
     }
     ```
+
+!!! warning "Set up before snapshot 12?"
+    A client added without a token is refused with `401 login_required`, and shows
+    Roadmap as failed or not connected. Remove it, make a token, and add it again
+    with the `headers` part, for example `claude mcp remove roadmap -s user` and then
+    the command above. A `403 forbidden` means the token's user is a viewer: an
+    admin has to make them an editor.
 
 The [MCP tools](../reference/mcp-tools.md) page lists what the client can then do.
 
@@ -229,7 +255,7 @@ client's tool list.
 === "Claude Code"
 
     ```bash
-    claude mcp add-json -s user roadmap '{"type":"http","url":"http://127.0.0.1:8090/mcp"}'
+    claude mcp add-json -s user roadmap '{"type":"http","url":"http://127.0.0.1:8090/mcp","headers":{"Authorization":"Bearer <token>"}}'
     ```
 
 === "Other clients"
@@ -237,7 +263,11 @@ client's tool list.
     ```json
     {
       "mcpServers": {
-        "roadmap": { "type": "http", "url": "http://127.0.0.1:8090/mcp" }
+        "roadmap": {
+          "type": "http",
+          "url": "http://127.0.0.1:8090/mcp",
+          "headers": { "Authorization": "Bearer <token>" }
+        }
       }
     }
     ```
@@ -246,7 +276,7 @@ Add one of the two endpoints, not both.
 
 ## Plugins
 
-A fresh install has every Pro plugin installed and enabled. Optional plugins, such
+Managing plugins needs the admin role. A fresh install has every Pro plugin installed and enabled. Optional plugins, such
 as Trello, install from the registry:
 
 1. Go to *Settings → System → Admin* and select the plugin.
@@ -258,7 +288,7 @@ After the restart the plugin shows as *Installed* and is on in the workspace. Tr
 for example, then has its own tab under *Settings → Information Sources*, and the
 Knowledge Base can use it as a source.
 
-Two plugins are **core**: *Settings* and *MCP server*. They are always on, in every
+Three plugins are **core**: *Settings*, *MCP server* and *Users*. They are always on, in every
 workspace, and can't be uninstalled; *Settings → System → Workspace* shows them as
 *core · always on*.
 
@@ -281,6 +311,8 @@ one off also turns off everything that depends on it. A note names each plugin t
 changed along with it.
 
 ## Next
+
+- [Add users](users.md#managing-users), and give each one a role.
 
 - [Configure Git](git.md): set the checkout folders and add your repositories, so the
   Knowledge Base can read them.

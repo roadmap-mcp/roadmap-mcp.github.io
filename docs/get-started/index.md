@@ -10,7 +10,10 @@ plain files, and work with the AI provider you bring.
 
 To get going with Pro:
 
-1. [Download and install](pro.md) it, and open it in your browser.
-2. [Configure Git](git.md) so Roadmap can read your repositories.
-3. Connect an AI client over [MCP](../reference/index.md), and read the
+1. [Download and install](pro.md) it, open it in your browser, and create the root
+   user.
+2. [Add users](users.md), each with a role.
+3. [Configure Git](git.md) so Roadmap can read your repositories.
+4. Make an [API token](account.md#api-tokens), connect an AI client over
+   [MCP](pro.md#connect-an-ai-client) with it, and read the
    [Knowledge Base](../knowledge-base/index.md) section for what to do next.

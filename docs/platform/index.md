@@ -28,7 +28,7 @@ flowchart TB
   declared elsewhere. The flow runner, for example, declares the readers a flow can
   read its source with, and every plugin registers its tools on the MCP server.
 - A few plugins are **core**: always on, and they can't be uninstalled. In Pro those
-  are Settings and the MCP server.
+  are Settings, the MCP server and Users.
 - The **frontend** mirrors this: each plugin adds its own pages, settings tabs and
   item types to the app.
 - Plugins are **enabled per workspace**: one server serves several teams, each with
@@ -54,6 +54,7 @@ registry and *Settings → System → Admin* show.
 | `roadmap.jobs` | Background jobs with a status and a log, such as flow runs, shown under *Settings → System → Jobs* |
 | `roadmap.scheduler` | Scheduled tasks |
 | `roadmap.settings` | The settings screens. Core |
+| `roadmap.users` | [Users and roles](../get-started/users.md): the root user, signing in, the *Users* and *Account* tabs, and API tokens. Core |
 
 Roadmap doesn't sync or crawl any source: Layer 1 nodes are written by agents and
 flows. Only Atlassian nodes can be opened and refreshed from Roadmap.
