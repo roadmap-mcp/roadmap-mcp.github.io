@@ -223,6 +223,19 @@ you save that list, every installed plugin is on, including ones you install lat
 Once you have saved it, a newly installed plugin starts off in that workspace: turn
 it on there.
 
+Both screens work the same way:
+
+- **Search** filters the plugins by name or id, and shows how many match.
+- **List** and **Graph** switch between a list and a dependency graph. The graph
+  asks before drawing more than 40 plugins, so narrow the search first.
+- A plugin is marked **feature** when nothing depends on it, and **foundation** when
+  it depends on nothing. Select one to see what it *depends on* and what it is
+  *required by*.
+
+Turning a plugin on in a workspace also turns on everything it depends on. Turning
+one off also turns off everything that depends on it. A note names each plugin that
+changed along with it.
+
 ## Next
 
 - [Configure Git](git.md), so contexts and the Knowledge Base can read your
