@@ -48,19 +48,22 @@ registry and *Settings → System → Admin* show.
 | `roadmap.knowledgebase.flows` | Runs Knowledge Base [flows](../knowledge-base/flows.md) on the server with your AI provider. Without it, flows are handed out as briefs for an external AI to carry out |
 | `roadmap.mcp` | The MCP server at `/mcp`, which every plugin registers its tools on. Core |
 | `roadmap.gitrepos` | [Git Repos](../get-started/git.md): the local working copies flows read |
-| `roadmap.atlassian` | The Jira and Confluence connection, under *Information Sources*, through which the Knowledge Base reads them |
-| `roadmap.bitbucket` | The Bitbucket connection, under *Information Sources* |
+| `roadmap.atlassian` | The Jira and Confluence connection, under *Information Sources*, offered as a Layer 1 source. Jira issue and Confluence page nodes can be opened and refreshed through it, which pulls their title and an excerpt |
+| `roadmap.bitbucket` | The Bitbucket connection, under *Information Sources*, offered as a Layer 1 source. Its nodes are pointers, as an agent or a flow wrote them |
 | `roadmap.ai` | The AI providers |
 | `roadmap.jobs` | Background jobs with a status and a log, such as flow runs |
 | `roadmap.scheduler` | Scheduled tasks |
 | `roadmap.settings` | The settings screens. Core |
 | `roadmap.folderpicker` | The folder dialogs behind *Browse* and *Import* on a desktop |
 
+Roadmap doesn't sync or crawl any source: Layer 1 nodes are written by agents and
+flows. Only Atlassian nodes can be opened and refreshed from Roadmap.
+
 Extra: in the registry, installed from *Settings → System → Admin*.
 
 | Plugin | What it adds |
 |---|---|
-| `roadmap.trello` | The Trello connection and its boards, under *Information Sources* |
+| `roadmap.trello` | The Trello connection and its boards, under *Information Sources*, offered as a Layer 1 source. Its nodes are pointers, as an agent or a flow wrote them |
 
 ### Lite
 
