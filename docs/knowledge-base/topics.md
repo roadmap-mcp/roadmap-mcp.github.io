@@ -46,7 +46,8 @@ And it has one of two forms:
 
 - **Structured**: a short list of fields, such as *Engine* and *Host* for a
   database. Every topic of the type answers the same questions, so they can be
-  compared. A field can hold text, a number, a date, a link, or a diagram.
+  compared. A field holds short or long text, a number, yes or no, a date, a link,
+  or a diagram or screen sketch.
 - **Unstructured**: free text, with an optional template, so the tenth test scenario
   has the same headings as the first.
 
@@ -128,7 +129,8 @@ rewrite the topics already written: a field you remove stays in their content un
 they are written again.
 
 To remove a type, select it, click the trash button next to **Edit**, and confirm. A
-type that topics still use can't be removed: delete those topics first.
+type that topics still use can't be removed: delete those topics, or move them to
+another type, first.
 
 ## Units of work
 
