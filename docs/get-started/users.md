@@ -94,7 +94,9 @@ server, not to a workspace.
 ## A forgotten root password
 
 If another admin can still sign in, they can set a new password for the root user
-under *Settings → System → Users*, like for anyone else.
+under *Settings → System → Users*, like for anyone else. That also means any admin
+can take over the root user: give the admin role only to people you would trust as
+root.
 
 If not, the last resort is to start over with the users:
 
