@@ -113,7 +113,7 @@ flows. Trello is an optional extra: install it from the registry (see
 
 3. Open <http://localhost:8090>.
 4. Choose a password. On the first visit, an *Unlock Configuration* dialog asks for
-   one under *First-time setup*. Roadmap encrypts the secrets you store with it,
+   one under *First-time setup*; enter it twice to confirm it. Roadmap encrypts the secrets you store with it,
    such as AI keys and access tokens. Keep it safe: you enter it again after every
    restart, unless you set `ROADMAP_KEY` (see
    [Environment variables](#environment-variables)).
