@@ -235,12 +235,19 @@ editor role or higher:
     }
     ```
 
-!!! warning "Set up before snapshot 12?"
-    A client added without a token is refused with `401 login_required`, and
-    fails to connect, with an authentication or connection error. Remove it, make a token, and add it again
-    with the `headers` part, for example `claude mcp remove roadmap -s user` and then
-    the command above. A `403 forbidden` means the token's user is a viewer: an
-    admin has to make them an editor.
+!!! warning "Failed to connect?"
+    Claude Code shows this, for SSE and for HTTP alike, when the configuration has
+    no token or a wrong one, for example one that was revoked:
+
+    ```text
+    ✘ Failed to connect — Dynamic Client Registration rejected (HTTP 404): {"detail":"Not Found: Roadmap takes API tokens (Authorization: Bearer), not OAuth"}
+    ```
+
+    This is always the case for a client set up before snapshot 12, which had no
+    tokens. Remove the client, make a token, and add it again with the `headers`
+    part: `claude mcp remove roadmap -s user`, then the command above. A
+    `403 forbidden` means the token's user is a viewer: an admin has to make them an
+    editor.
 
 Ask the client to run `kb_read` with `action="status"` to check that it works; the
 [Pro edition](../knowledge-base/index.md) pages describe what it can do from there.
