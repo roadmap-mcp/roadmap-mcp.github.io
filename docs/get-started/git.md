@@ -67,7 +67,7 @@ The folder each one is cloned into is its **Folder** in Git Repos.
 
     | Field | What it is |
     |---|---|
-    | Name | How flows and the MCP tools refer to the repo. Leave it empty to use the folder. Keep names unique: lookups use the first match. |
+    | Name | How flows and the MCP tools refer to the repo. Leave it empty to use the folder. Names are unique, ignoring case: a name already in use is refused with *There is already a repository named X.* |
     | Folder | The repository's folder under the checkout folders. Leave it empty to use the name, which is usually what you want. |
     | Tags | Optional labels to filter the list by. Type one and press Enter. |
 
