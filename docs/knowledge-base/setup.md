@@ -4,16 +4,47 @@ Before the Knowledge Base can hold knowledge, it needs to know who the knowledge
 for and what kinds of thing it is made of: the **personas** and the **node types**.
 [Concepts](concepts.md) explains what they are. This page sets them up.
 
-!!! warning "Use MCP for now"
-    *Settings → Knowledge Base → Layer 2* edits personas and node types too, but in
-    the current snapshot a node type created there isn't saved reliably. Set them up
-    over MCP, with the `kb_admin` tool, until a later snapshot fixes that.
+You can set them up in the settings screen, or over MCP with the `kb_admin` tool.
+Both write the same configuration.
+
+## In the settings screen
+
+Go to *Settings → Knowledge Base → Layer 2*. On the left is a tree in three groups:
+
+- **Personas**, each with the number of types written for it. Expand one to see its
+  folder and topic types.
+- **Shared by everyone**: types with no persona.
+- **Work breakdown**: the work types, nested under their parent type.
+
+Select a persona or a type to see it on the right, and click **Edit** to change it.
+
+**Add a persona** with **+ Add persona**: give it a **Name** and a **Description**
+of what it needs. Click **Save**; that saves straight away.
+
+**Add a node type** with **+ Add node type**, or with the **+** next to *Shared by
+everyone* or *Work breakdown*:
+
+| Field | What it is |
+|---|---|
+| Name | The type's name, such as *Database*. |
+| Is a | *Topic*, *Folder* or *Unit of work*. |
+| Written for | The persona, or *Everyone* for a shared type. For a unit of work this is **Under**: *Top level*, or the work type it sits under. |
+| Form | *Structured* (fields) or *Unstructured* (free text). |
+| Description | What belongs in one. The AI writes to it, so be specific. |
+| Fields | Structured types: **Add field**, then a Label, a Key, a Type, Required and a Hint for each. Fill in the Key yourself. |
+| Template | Unstructured types: the text a new topic starts from. |
+| Lifecycle | Units of work: **Add state** for each state, in order. Without any, it goes through *Planned*, *In progress*, *Done*. |
+
+Click **Save** to save the type. Personas and types can't be deleted or reordered
+here; see [below](#deleting-and-reordering-personas).
+
+## Over MCP
 
 Connect an AI client first (see [Connect an AI client](../get-started/pro.md#connect-an-ai-client)).
 The examples below are the tool calls; you can also just ask the AI client to make
 them.
 
-## 1. Add the personas
+### 1. Add the personas
 
 One persona per role or specialism you write knowledge for:
 
@@ -30,7 +61,7 @@ the lanes in the explorer. `kb_admin(action="list_personas")` shows them.
 
 Saving again with the same name changes that persona, and replaces its description.
 
-## 2. Add topic types
+### 2. Add topic types
 
 A topic type is one kind of page: a database, a web service, a test scenario. Give
 it the persona it is written for, and a description of what belongs in one: the
@@ -59,7 +90,7 @@ kb_admin(action="save_type", name="Test scenario", form="unstructured", persona=
 
 Leave out `persona` for a type everyone shares: its topics appear in every lane.
 
-## 3. Add folder types
+### 3. Add folder types
 
 A folder type turns a persona's topics into a tree you can browse, such as *Service
 area* above the services that belong to it:
@@ -69,7 +100,7 @@ kb_admin(action="save_type", name="Service area", category="folder", form="unstr
          persona="architects", description="A group of related services, and what they are for.")
 ```
 
-## 4. Add the work breakdown
+### 4. Add the work breakdown
 
 Work types describe the units of work, such as a project and the features in it.
 They never have a persona. `parent_type` puts a type under another one, and
@@ -89,7 +120,7 @@ A work type without `states_json` goes through `planned`, `in-progress` and `don
 Roadmap doesn't check these rules when you save a type, so keep to them yourself:
 only work types have a `parent_type` and states, and a work type has no `persona`.
 
-## 5. Check the result
+### 5. Check the result
 
 - `kb_admin(action="list_types")` lists every type, its form and how many nodes use
   it; `kb_admin(action="get_type", id="database")` shows one in full.
