@@ -1,22 +1,18 @@
 # Configuring Git
 
-Roadmap works with Git in two separate ways:
+Roadmap reads Git through **Git Repos**: working copies that are already on the
+machine Roadmap runs on. Contexts, the MCP tools and Knowledge Base flows read them.
+Roadmap never clones, pulls or changes them: keep them up to date yourself, the way
+you normally would.
 
-- **Git Repos** are working copies that are already on the machine Roadmap runs on.
-  Contexts, the MCP tools and Knowledge Base flows read them. Roadmap never clones,
-  pulls or changes them.
-- **Git Mining** clones remote repositories itself, keeps them up to date on a
-  schedule, and turns their history into searchable work items: branches and
-  commits, linked to the Jira issues their messages mention.
-
-Both are configured per workspace, under *Settings → Information Sources*.
+Git Repos are configured per workspace, under *Settings → Information Sources → Git
+Repos*.
 
 ## Prerequisites
 
 - **Git on the PATH of the Roadmap server.** Without it, file reads still work, but
-  branches, commits, diffs and Git Mining don't. Check with `git --version` in the
-  terminal you start Roadmap from.
-- For Git Mining: network access from the server to your Git host.
+  branches and commits don't, and Knowledge Base flows can't record which commit
+  they read. Check with `git --version` in the terminal you start Roadmap from.
 
 ## Git Repos
 
@@ -90,76 +86,3 @@ repositories:
 
     The `ref` must match a Git Repo's **Name** exactly. If it doesn't, the run fails
     with *No Git Repo called '...'*. See [Flows](../knowledge-base/flows.md).
-
-## Git Mining
-
-*Settings → Information Sources → Git Mining* configures the repositories Roadmap
-mines. Click **Edit** on the tab to change it, **Done** when you're finished, then
-**Save** on the settings page.
-
-### Add a repository to mine
-
-Under *Mining repositories*, click **Add repository** and fill in:
-
-| Field | What it is |
-|---|---|
-| Name | A short name, for example `my-service`. Use letters, digits and dashes. Roadmap keeps its copy at `gitmining/repos/<name>.git` next to `config.yaml`. |
-| Remote URL | The URL to clone, for example `https://git.example.com/team/my-service.git`. |
-| Credential | *(public / none)*, or one of the credentials below. |
-| Tracked branches | Comma-separated, for example `main, develop`. Empty means every branch. |
-| Enabled | Only enabled repositories are scanned. |
-
-### Credentials for private repositories
-
-Under *Credentials*, click **Add credential**, give it a **Name**, and enter a
-**Username** and a **Secret**: an access token or password. Then pick it as the
-repository's *Credential*.
-
-- Credentials only work with **HTTPS** remote URLs. SSH URLs are passed to Git as
-  they are, without a credential.
-- Secrets are only stored encrypted if you have set a password for Roadmap's
-  encryption. Without one, they are stored in `config.yaml` as plain text.
-- Use a token with read-only access.
-
-### Scan
-
-Click **Scan now** next to a repository to fetch it and mine new commits straight
-away. The first scan clones the whole repository, which can take a while for a large
-one.
-
-To scan on a schedule, go to *Settings → System → Scheduler* and enable the task
-*Scan git-mining repositories*. It is off by default. Its schedule is a standard
-5-field cron expression in the server's local time; the default, `0 * * * *`,
-scans every hour. Scheduled tasks only run while Roadmap is unlocked.
-
-### The workbench
-
-**Git Mining** in the main navigation lists the mined repositories. Open one to see:
-
-- what has been mined: branches and commits, with author, subject line, changed
-  files, and the Jira keys (such as `PROJ-123`) found in the subject;
-- each item's details, processor results and relations to other items;
-- **Scan now** to mine what's new, and **Full re-mine** to start over from scratch;
-- the ingest jobs, with their status.
-
-### In the configuration file
-
-```yaml
-gitmining:
-  persistence: sql              # sql (built-in SQLite) | filesystem (JSON files)
-  repos:
-    - name: my-service
-      remote_url: https://git.example.com/team/my-service.git
-      branches: [main, develop] # [] = every branch
-      credential: ci            # "" = public
-      enabled: true
-  credentials:
-    - name: ci
-      username: build-bot
-      secret: ...               # encrypted when encryption is set up
-scheduler:
-  tasks:
-    - id: gitmining.scan
-      cron: "0 * * * *"
-      enabled: true
-```

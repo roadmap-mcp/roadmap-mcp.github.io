@@ -5,10 +5,11 @@
     often until the 0.2.0 release, and the download link below always gives you the
     latest one.
 
-Pro is the whole of Roadmap: contexts, the [Knowledge Base](../knowledge-base/index.md)
-and its flows, git mining with jobs and a scheduler, Jira and Confluence, Bitbucket,
-Trello, the AI providers, workflows, web testing, mockups, the file viewers and
-speech to text.
+Pro is the [Knowledge Base](../knowledge-base/index.md) and the sources that feed
+it: your [Git repositories](git.md), Confluence and Jira, and Bitbucket. It also
+has contexts, the AI providers, and the jobs and scheduler that run Knowledge Base
+flows. Trello is an optional extra: install it from the registry (see
+[Plugins](#plugins)).
 
 ## Requirements
 
@@ -215,8 +216,9 @@ The [MCP tools](../reference/mcp-tools.md) page lists what the client can then d
 
 ## Plugins
 
-A fresh install has every Pro plugin installed and enabled. More plugins install
-from the registry under *Settings → System → Admin*; restart Roadmap afterwards.
+A fresh install has every Pro plugin installed and enabled. Optional plugins, such
+as Trello, install from the registry under *Settings → System → Admin*; restart
+Roadmap afterwards.
 
 Which plugins a workspace uses is set under *Settings → System → Workspace*. Until
 you save that list, every installed plugin is on, including ones you install later.

@@ -6,7 +6,7 @@ plain files, and work with the AI provider you bring.
 | Edition | For | Status |
 |---|---|---|
 | [Lite](lite.md) | Small teams: compose contexts and serve them over MCP | To be released soon |
-| [Pro](pro.md) | Teams and organisations: a shared Knowledge Base, git mining, every source | Available as a preview build |
+| [Pro](pro.md) | Teams and organisations: a shared Knowledge Base fed by Git, Confluence, Jira and Bitbucket | Available as a preview build |
 
 To get going with Pro:
 
