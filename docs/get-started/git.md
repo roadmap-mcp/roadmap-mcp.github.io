@@ -71,7 +71,8 @@ The folder each one is cloned into is its **Folder** in Git Repos.
     | Folder | The repository's folder under the checkout folders. Leave it empty to use the name, which is usually what you want. |
     | Tags | Optional labels to filter the list by. Type one and press Enter. |
 
-    Fill in at least one of the two. Usually you type only the name.
+    Fill in at least one of the two: with both empty, saving is refused with *Give
+    the repository a name or a folder.* Usually you type only the name.
 
 3. Click **Save** under the fields. That writes the repository to `config.yaml`
    straight away; there is nothing else to save. **Remove** is stored straight away
@@ -86,8 +87,14 @@ Select a repository to see where it is in both places, for example:
 - **On the server** `/srv/roadmap/repos/demo-app`
 - **On users' machines** *the parent directory of the current project/demo-app*
 
-Without a checkout folder on the server, the repository has no place on the server,
-and flows can't read it.
+When a checkout folder isn't set, the detail says so, and asks you to set it:
+
+- Without a checkout folder on the server, the repository has no place on the
+  server, and flows can't read it.
+- Without a checkout folder on users' machines, an AI on a user's machine isn't told
+  where the repository is. The MCP tools say *on your machine: not set (its folder is
+  `demo-app`; ask the user where they keep it)*, and a flow's brief leaves out the
+  *On your machine* line.
 
 ## In the configuration file
 
@@ -130,4 +137,4 @@ repository elsewhere keeps its own path.
     with *No Git Repo called '...'*. If the repository has no place on the server, or
     isn't cloned there, the run fails and says so. A flow's brief for an external AI
     ends with where the repository is on that AI's machine: *On your machine it is
-    at ...*. See [Flows](../knowledge-base/flows.md).
+    at ...*, when the checkout folder on users' machines is set. See [Flows](../knowledge-base/flows.md).
