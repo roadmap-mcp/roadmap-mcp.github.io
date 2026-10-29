@@ -8,10 +8,40 @@ persona gets its own **lane** of [topics](topics.md).
 The Knowledge Base page opens on the lanes: the work breakdown first, then one block
 per persona, with its description and the top of its tree.
 
-![The Knowledge Base portal, with a lane per persona](../images/kb-explorer/explorer-portal.png)
+![The Knowledge Base portal, with a lane per persona](../images/kb-personas/portal.png)
 
 Opening a persona's block browses its lane: its tree of topics on the left, the
-selected topic on the right (see [The explorer](explorer.md)).
+selected topic on the right (see [The explorer](explorer.md)). The same feature
+reads differently in each lane:
+
+=== "Architecture"
+
+    The architect's view: services, their interfaces, and the decisions behind them.
+
+    ![The Architecture lane, with the Billing API web service](../images/kb-personas/persona-lane-architecture.png)
+
+=== "Development"
+
+    The developer building the application: modules, guidelines, implementation
+    records.
+
+    ![The Development lane, with the Error responses guideline](../images/kb-personas/persona-lane-development.png)
+
+=== "Testing"
+
+    The tester: test suites and the test scenarios in them.
+
+    ![The Testing lane, with a test scenario](../images/kb-personas/persona-lane-testing.png)
+
+=== "Analysis"
+
+    The business analyst: what the application does, in terms that stay true
+    whatever it's built with. Use cases, screens and screen flows.
+
+    ![The Analysis lane, with the Place an order use case](../images/kb-personas/persona-lane-analysis.png)
+
+The *Cart* and *Invoice* glossary terms appear in every lane: their type is shared
+by everyone (see [Topics](topics.md#topic-types)).
 
 ## Set up personas
 

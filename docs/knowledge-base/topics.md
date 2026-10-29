@@ -5,20 +5,21 @@ screen, a test scenario, a sequence diagram. Topics are written by AI agents,
 through [flows](flows.md), for a [persona](personas.md), and people read them in the
 [explorer](explorer.md).
 
-![A test scenario open in the Testing lane](../images/kb-explorer/explorer-lane-topic.png)
+![A use case open in the Analysis lane](../images/kb-topics/use-case.png)
 
 ## A topic up close
 
 Selecting a topic opens it, titled with its name and its type in brackets, such as
-*Pay with a saved card [Test scenario]*. The *Details* tab shows its short fields,
-then its document: a table of contents and every section, with diagrams drawn.
+*Billing API [Web service]*. The *Details* tab shows its short fields, then its
+document: a table of contents and every section, with tables, diagrams and screen
+sketches drawn.
 
-![The Details tab of a test scenario](../images/kb-explorer/topic-details.png){ width="1056" }
+![The Details tab of the Billing API web service](../images/kb-topics/structured-details.png){ width="1056" }
 
 The *Links* tab shows how the topic relates to others, grouped by lane, with one
 toggle per kind of relation. A link opens the topic at the other end.
 
-![The Links tab of a web service](../images/kb-explorer/topic-links.png){ width="1056" }
+![The Links tab of the Billing API](../images/kb-topics/links-details.png){ width="1056" }
 
 ## Topic types
 
@@ -48,6 +49,52 @@ And it has one of two forms:
   compared. A field can hold text, a number, a date, a link, or a diagram.
 - **Unstructured**: free text, with an optional template, so the tenth test scenario
   has the same headings as the first.
+
+## Examples
+
+Each of these is a topic of a different type, as the explorer shows it:
+
+=== "Use case"
+
+    *Place an order*, for the Analysis persona: the actor, goal and trigger as
+    fields, then the preconditions, the main flow, the alternate flows and the
+    outcome.
+
+    ![The Place an order use case](../images/kb-topics/use-case-details.png){ width="1040" }
+
+=== "Screen sketch"
+
+    *Checkout screen*, a screen description with a sketch of the screen, drawn in
+    the browser.
+
+    ![The Checkout screen description, with its sketch](../images/kb-topics/wireframe-details.png){ width="1040" }
+
+=== "Sequence diagram"
+
+    *Checkout payment*, for the Architecture persona: which services the checkout
+    calls, and in what order.
+
+    ![The Checkout payment service interaction, with its sequence diagram](../images/kb-topics/diagram-details.png){ width="1040" }
+
+=== "Test scenario"
+
+    *Pay with a saved card*, for the Testing persona: the use case and the test it
+    belongs to as fields, then *Given*, *When* and *Then*.
+
+    ![The Pay with a saved card test scenario](../images/kb-topics/unstructured-details.png){ width="1056" }
+
+=== "Guideline"
+
+    *Error responses*, an unstructured type for the Development persona: free text
+    under the headings of the type's template.
+
+    ![The Error responses guideline](../images/kb-topics/unstructured-guideline-details.png){ width="1056" }
+
+=== "Glossary term"
+
+    *Invoice*, a type shared by everyone, so it appears in every persona's lane.
+
+    ![The Invoice glossary term](../images/kb-topics/shared-details.png){ width="1056" }
 
 ## Add a topic type
 
@@ -90,6 +137,11 @@ holds steps. Each has a state from its type's lifecycle and a progress bar, and 
 spinner marks one that a flow is working on.
 
 ![The work breakdown, with states, progress bars and a running flow](../images/kb-explorer/work-lane-tree.png){ width="352" }
+
+A feature's *Links* tab shows the topics written about it (*about*), and the topics
+someone doing it should read first (*context*), across all lanes:
+
+![The Links tab of the Checkout redesign feature](../images/kb-topics/work-item-links.png){ width="1056" }
 
 Progress rolls up: a feature with steps under it is as far along as its steps
 together. A person moves an item one state at a time, forward or back; a flow or an

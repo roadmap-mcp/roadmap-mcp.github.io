@@ -5,7 +5,7 @@ about their systems, written by AI agents from what your teams already have in J
 Confluence, Git and Bitbucket. People read it in the [explorer](explorer.md), and AI
 clients read and write it over [MCP](../get-started/pro.md#connect-an-ai-client).
 
-![The Knowledge Base portal](../images/kb-explorer/explorer-portal.png)
+![The Knowledge Base portal](../images/kb-personas/portal.png)
 
 !!! note "Status"
     The Knowledge Base is a working prototype. Topics, flows, orchestrations,
