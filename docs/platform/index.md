@@ -38,27 +38,28 @@ flowchart TB
 
 ### Pro
 
-Bundled: installed and enabled in every Pro install.
+Bundled: installed and enabled in every Pro install. The ids are the ones the
+registry and *Settings → System → Admin* show.
 
 | Plugin | What it adds |
 |---|---|
-| `knowledgebase` | The Knowledge Base: its store, the explorer, and the `kb_*` MCP tools |
-| `knowledgebase-flows` | Runs Knowledge Base [flows](../knowledge-base/flows.md) on the server with your AI provider. Without it, flows are handed out as briefs for an external AI to carry out |
-| `context` | Contexts, [Git Repos](../get-started/git.md), and the MCP server |
-| `atlassian` | The Jira and Confluence connection (settings, client, cache) the other plugins use |
-| `jira` | Jira issues and Confluence pages as context items, with previews and MCP tools |
-| `bitbucket` | Bitbucket pull requests as context items |
-| `ai` | The AI providers |
-| `jobs` | Background jobs with a status and a log, such as flow runs |
-| `scheduler` | Scheduled tasks |
-| `settings` | The settings screens |
-| `folderpicker` | The folder dialogs behind *Browse* and *Import* on a desktop |
+| `roadmap.knowledgebase` | The Knowledge Base: its store, the explorer, and the `kb_*` MCP tools |
+| `roadmap.knowledgebase.flows` | Runs Knowledge Base [flows](../knowledge-base/flows.md) on the server with your AI provider. Without it, flows are handed out as briefs for an external AI to carry out |
+| `roadmap.context` | Contexts, [Git Repos](../get-started/git.md), and the MCP server |
+| `roadmap.atlassian` | The Jira and Confluence connection (settings, client, cache) the other plugins use |
+| `roadmap.jira` | Jira issues and Confluence pages as context items, with previews and MCP tools |
+| `roadmap.bitbucket` | Bitbucket pull requests as context items |
+| `roadmap.ai` | The AI providers |
+| `roadmap.jobs` | Background jobs with a status and a log, such as flow runs |
+| `roadmap.scheduler` | Scheduled tasks |
+| `roadmap.settings` | The settings screens |
+| `roadmap.folderpicker` | The folder dialogs behind *Browse* and *Import* on a desktop |
 
 Extra: in the registry, installed from *Settings → System → Admin*.
 
 | Plugin | What it adds |
 |---|---|
-| `trello` | Trello cards as context items, with configured boards and three MCP tools |
+| `roadmap.trello` | Trello cards as context items, with configured boards and three MCP tools |
 
 ### Lite
 
