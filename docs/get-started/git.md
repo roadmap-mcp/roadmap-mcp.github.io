@@ -67,11 +67,11 @@ The folder each one is cloned into is its **Folder** in Git Repos.
 
     | Field | What it is |
     |---|---|
-    | Name | How flows and the MCP tools refer to the repo. Keep names unique: lookups use the first match. |
+    | Name | How flows and the MCP tools refer to the repo. Leave it empty to use the folder. Keep names unique: lookups use the first match. |
     | Folder | The repository's folder under the checkout folders. Leave it empty to use the name, which is usually what you want. |
     | Tags | Optional labels to filter the list by. Type one and press Enter. |
 
-    Usually you type only the name.
+    Fill in at least one of the two. Usually you type only the name.
 
 3. Click **Save** under the fields. That writes the repository to `config.yaml`
    straight away; there is nothing else to save. **Remove** is stored straight away
@@ -107,7 +107,8 @@ repositories:
 ### Repositories with a full path
 
 A repository saved before snapshot 10 has a full `path` instead of a `folder`. It
-keeps working: the server uses that path. The next save in Git Repos moves it over.
+keeps working: the server uses that path. The next settings save moves it over, in
+Git Repos or in any other settings screen.
 If no checkout folder on the server is set, the folder holding the first such
 repository becomes it, and a repository in that folder keeps only its folder name. A
 repository elsewhere keeps its own path.
