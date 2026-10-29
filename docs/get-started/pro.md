@@ -7,8 +7,8 @@
 
 Pro is the [Knowledge Base](../knowledge-base/index.md) and the sources that feed
 it: your [Git repositories](git.md), Confluence and Jira, and Bitbucket. It also
-has contexts, the AI providers, and the jobs and scheduler that run Knowledge Base
-flows. Trello is an optional extra: install it from the registry (see
+has the AI providers, the jobs and scheduler that run Knowledge Base flows, and an
+MCP server through which your AI client reads and writes the Knowledge Base. Trello is an optional extra: install it from the registry (see
 [Plugins](#plugins)).
 
 ## Requirements
@@ -136,7 +136,7 @@ old one, delete `.venv/.installed` and start again.
 
 ## Where your data lives
 
-Roadmap keeps its configuration in `config.yaml`, with contexts and the rest of its
+Roadmap keeps its configuration in `config.yaml`, with the Knowledge Base and the rest of its
 data next to it. Without further settings that is `backend/config.yaml` inside the
 unzipped folder. Other workspaces get their own `workspaces/<name>/config.yaml`
 beside it.
@@ -226,8 +226,8 @@ as Trello, install from the registry:
    `start.bat` or `bash start.sh`.
 
 After the restart the plugin shows as *Installed* and is on in the workspace. Trello,
-for example, then has its own tab under *Settings → Information Sources*, and adds
-three MCP tools: `request_trello_card`, `list_trello_cards` and `add_trello_cards`.
+for example, then has its own tab under *Settings → Information Sources*, and the
+Knowledge Base can use it as a source.
 
 Which plugins a workspace uses is set under *Settings → System → Workspace*. Until
 you save that list, every installed plugin is on, including ones you install later.
@@ -249,6 +249,5 @@ changed along with it.
 
 ## Next
 
-- [Configure Git](git.md), so contexts and the Knowledge Base can read your
-  repositories.
+- [Configure Git](git.md), so the Knowledge Base can read your repositories.
 - [Configure the Knowledge Base](../reference/configuration.md).

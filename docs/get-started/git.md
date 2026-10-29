@@ -1,7 +1,7 @@
 # Configuring Git
 
 Roadmap reads Git through **Git Repos**: working copies that are already on the
-machine Roadmap runs on. Contexts, the MCP tools and Knowledge Base flows read them.
+machine Roadmap runs on. Knowledge Base flows and the MCP tools read them.
 Roadmap never clones, pulls or changes them: keep them up to date yourself, the way
 you normally would.
 
@@ -33,7 +33,7 @@ read.
 
     | Field | What it is |
     |---|---|
-    | Name | How contexts, the MCP tools and flows refer to the repo. Leave it empty to use the folder name. Keep names unique: lookups use the first match. |
+    | Name | How flows and the MCP tools refer to the repo. Leave it empty to use the folder name. Keep names unique: lookups use the first match. |
     | Path | The working copy's folder on the server, for example `/home/me/src/my-service` or `C:/src/my-service`. |
     | Tags | Optional labels to filter the list by. Type one and press Enter. |
 
@@ -72,11 +72,9 @@ repositories:
 
 ### What uses them
 
-- **Contexts.** A *Git Repo* item adds a repository to a context; repo files and
-  commits can be added from it too. Files are read from the working copy.
-- **MCP tools.** `list_git_repos` lists the configured repositories.
-  `request_git_repo_info` adds one to a context and returns its recent branches and
-  commits. See [MCP tools](../reference/mcp-tools.md).
+- **MCP tools.** `list_git_repos` lists the configured repositories, and
+  `get_git_repo_info` returns one's checkout path, branches and recent commits. See
+  [MCP tools](../reference/mcp-tools.md#git-repos-and-workspaces).
 - **Knowledge Base flows.** A flow with a `repo` source names a Git Repo in its
   `ref`, and reads the files matching `scope.paths` from the working copy:
 

@@ -2,7 +2,7 @@
 
 | Page | Covers |
 |---|---|
-| [MCP tools](mcp-tools.md) | the seven `kb_*` tools and every action they take |
+| [MCP tools](mcp-tools.md) | the `kb_*` tools and every action they take, and the Git Repos and workspace tools |
 | [HTTP API](http-api.md) | the `/api/knowledgebase` endpoints and the workspace and branch headers |
 | [Configuration](configuration.md) | the `knowledgebase` section: sources, personas, node types, flows, orchestrations |
 | [Store schema](store.md) | the SQLite tables behind each workspace's knowledge base |

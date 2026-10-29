@@ -1,7 +1,7 @@
 # The platform
 
-Roadmap is built on a **plugin framework**. Everything you use, from contexts to the
-Knowledge Base and every information source, is a plugin; the framework underneath
+Roadmap is built on a **plugin framework**. Everything you use, from the Knowledge
+Base to the MCP server and every information source, is a plugin; the framework underneath
 discovers the installed plugins, starts them in the order their dependencies need,
 and gives them a shared configuration, settings screens, encryption and workspaces.
 An **edition** is the framework plus the plugins it bundles.
@@ -13,8 +13,8 @@ flowchart TB
     X --- C[Configuration,<br/>workspaces, encryption]
   end
   subgraph Plugins
-    S[settings] --- CT[context] --- KB[knowledgebase]
-    A[atlassian] --- J[jira] --- B[bitbucket]
+    S[settings] --- M[mcp] --- KB[knowledgebase]
+    G[gitrepos] --- A[atlassian] --- B[bitbucket]
   end
   Framework --> Plugins
   Plugins --> APP[Roadmap edition]
@@ -25,9 +25,10 @@ flowchart TB
 - A **plugin** is a Python package the framework discovers at startup. It says which
   other plugins it requires, and the framework activates them in that order.
 - A plugin can **declare extension points** and **contribute extensions** to points
-  declared elsewhere. The context plugin, for example, declares the kinds of item a
-  context can hold, and the Jira plugin contributes a Jira issue item and a settings
-  tab.
+  declared elsewhere. The flow runner, for example, declares the readers a flow can
+  read its source with, and every plugin registers its tools on the MCP server.
+- A few plugins are **core**: always on, and they can't be uninstalled. In Pro those
+  are Settings and the MCP server.
 - The **frontend** mirrors this: each plugin adds its own pages, settings tabs and
   item types to the app.
 - Plugins are **enabled per workspace**: one server serves several teams, each with
@@ -45,21 +46,21 @@ registry and *Settings → System → Admin* show.
 |---|---|
 | `roadmap.knowledgebase` | The Knowledge Base: its store, the explorer, and the `kb_*` MCP tools |
 | `roadmap.knowledgebase.flows` | Runs Knowledge Base [flows](../knowledge-base/flows.md) on the server with your AI provider. Without it, flows are handed out as briefs for an external AI to carry out |
-| `roadmap.context` | Contexts, [Git Repos](../get-started/git.md), and the MCP server |
-| `roadmap.atlassian` | The Jira and Confluence connection (settings, client, cache) the other plugins use |
-| `roadmap.jira` | Jira issues and Confluence pages as context items, with previews and MCP tools |
-| `roadmap.bitbucket` | Bitbucket pull requests as context items |
+| `roadmap.mcp` | The MCP server at `/mcp`, which every plugin registers its tools on. Core |
+| `roadmap.gitrepos` | [Git Repos](../get-started/git.md): the local working copies flows read |
+| `roadmap.atlassian` | The Jira and Confluence connection, under *Information Sources*, through which the Knowledge Base reads them |
+| `roadmap.bitbucket` | The Bitbucket connection, under *Information Sources* |
 | `roadmap.ai` | The AI providers |
 | `roadmap.jobs` | Background jobs with a status and a log, such as flow runs |
 | `roadmap.scheduler` | Scheduled tasks |
-| `roadmap.settings` | The settings screens |
+| `roadmap.settings` | The settings screens. Core |
 | `roadmap.folderpicker` | The folder dialogs behind *Browse* and *Import* on a desktop |
 
 Extra: in the registry, installed from *Settings → System → Admin*.
 
 | Plugin | What it adds |
 |---|---|
-| `roadmap.trello` | Trello cards as context items, with configured boards and three MCP tools |
+| `roadmap.trello` | The Trello connection and its boards, under *Information Sources* |
 
 ### Lite
 

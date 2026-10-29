@@ -142,3 +142,11 @@ Host a [chat](../knowledge-base/chat.md) about the knowledge base.
 | `commit` | record a commit made on the git branch | `id`, `commit`, `message` |
 | `merge` | apply it to main and close it; `force` merges despite conflicts | `id` |
 | `abandon` / `reopen` | close without merging; open again | `id` |
+
+## Git Repos and workspaces
+
+| Tool | Does | Needs |
+|---|---|---|
+| `list_git_repos` | the configured [Git Repos](../get-started/git.md): name and path | — |
+| `get_git_repo_info` | one repo's checkout path, its branches and its recent commits | `repo_name` |
+| `list_workspaces` | the workspaces on this server | — |

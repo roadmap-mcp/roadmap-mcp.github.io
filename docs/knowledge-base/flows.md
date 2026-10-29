@@ -17,7 +17,7 @@ MCP. See [Configuration](../reference/configuration.md#flows) for the full shape
 - id: step-development
   name: Step development
   kind: analyse
-  source: {kind: repo, ref: my-app}      # repo | kb_source | context | web
+  source: {kind: repo, ref: my-app}      # repo | kb_source | web, and context where Contexts is installed
   targets:
     personas: [backend, frontend]
     node_types: []                       # empty = every type of those personas

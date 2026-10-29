@@ -85,7 +85,8 @@ knowledgebase:
       kind: analyse               # analyse | ingest | act
       enabled: true
       source: {kind: repo, ref: legacy-delphi, scope: {paths: ["src/**"]}}
-                                  # kind: repo | kb_source | context | web
+                                  # kind: repo | kb_source | web, and context
+                                  # where the Contexts plugin is installed (Lite)
       targets:
         personas: [architects, programmers]
         node_types: []            # empty = every type of those personas, plus shared
