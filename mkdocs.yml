@@ -35,6 +35,12 @@ theme:
   icon:
     logo: material/home
 
+plugins:
+  - search
+  - glightbox:
+      skip_classes:
+        - no-zoom
+
 extra_css:
   - stylesheets/extra.css
 
