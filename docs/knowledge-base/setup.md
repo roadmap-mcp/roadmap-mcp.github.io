@@ -43,8 +43,9 @@ kind*, is made from the name, the way a persona's is: *Use case* becomes
 
 To remove a persona or a type, select it, click the trash button next to **Edit**,
 and confirm. That is stored straight away. A type that topics still use can't be
-removed: delete those topics, or move them to another type, first. The types
-written for a removed persona become shared. Nothing can be reordered here; see
+removed: delete those topics, or move them to another type, first. When you remove
+a persona, the types written for it become shared by everyone, and flows that wrote
+for it stop writing for it. Nothing can be reordered here; see
 [below](#deleting-and-reordering-personas).
 
 The settings screen keeps you to the rules of [Concepts](concepts.md#node-types) by
@@ -194,4 +195,4 @@ knowledgebase:
 ```
 
 Types written for a persona you delete become shared: their topics appear in every
-lane.
+lane. Flows that wrote for it drop it from their targets.
