@@ -171,6 +171,6 @@ Host a [chat](../knowledge-base/chat.md) about the knowledge base.
 
 | Tool | Does | Needs |
 |---|---|---|
-| `list_git_repos` | the configured [Git Repos](../get-started/git.md): name and path | — |
-| `get_git_repo_info` | one repo's checkout path, its branches and its recent commits | `repo_name` |
+| `list_git_repos` | the configured [Git Repos](../get-started/git.md): each one's name, where it is on your machine, and where it is on the Roadmap server | — |
+| `get_git_repo_info` | one repo: where it is on your machine and on the Roadmap server, and its branches and recent commits, read on the server | `repo_name` |
 | `list_workspaces` | the workspaces on this server | — |

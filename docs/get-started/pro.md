@@ -129,7 +129,9 @@ Ctrl+C in its terminal.
     `ROADMAP_HOST=0.0.0.0` (see [Environment variables](#environment-variables)), and
     publish the port when you run the container, for example
     `docker run -p 127.0.0.1:8090:8090 ...`. Read the warning there first: Roadmap
-    has no login.
+    has no login. To let Roadmap read your Git repositories, mount the folder that
+    holds them into the container, and set that path as the checkout folder on the
+    server (see [Configuring Git](git.md#set-the-checkout-folders)).
 
 To force a clean reinstall, for example after unzipping a newer snapshot over the
 old one, delete `.venv/.installed` and start again.
@@ -280,5 +282,6 @@ changed along with it.
 
 ## Next
 
-- [Configure Git](git.md), so the Knowledge Base can read your repositories.
+- [Configure Git](git.md): set the checkout folders and add your repositories, so the
+  Knowledge Base can read them.
 - [Configure the Knowledge Base](../reference/configuration.md).
