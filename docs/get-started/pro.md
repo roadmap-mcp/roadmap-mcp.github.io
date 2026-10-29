@@ -215,6 +215,33 @@ Roadmap serves its tools over MCP, using SSE, at
 
 The [MCP tools](../reference/mcp-tools.md) page lists what the client can then do.
 
+### The stateless endpoint
+
+Roadmap also serves MCP at `http://127.0.0.1:8090/mcp`, over plain HTTP: every call
+is one request, so it survives a restart of Roadmap without reconnecting. It offers a
+single tool, `roadmap`, that runs any of the tools by name (see
+[Two endpoints](../reference/mcp-tools.md#two-endpoints)). Use it when your client
+keeps losing the SSE connection, or when you'd rather not have every tool in the
+client's tool list.
+
+=== "Claude Code"
+
+    ```bash
+    claude mcp add-json -s user roadmap '{"type":"http","url":"http://127.0.0.1:8090/mcp"}'
+    ```
+
+=== "Other clients"
+
+    ```json
+    {
+      "mcpServers": {
+        "roadmap": { "type": "http", "url": "http://127.0.0.1:8090/mcp" }
+      }
+    }
+    ```
+
+Add one of the two endpoints, not both.
+
 ## Plugins
 
 A fresh install has every Pro plugin installed and enabled. Optional plugins, such
@@ -228,6 +255,10 @@ as Trello, install from the registry:
 After the restart the plugin shows as *Installed* and is on in the workspace. Trello,
 for example, then has its own tab under *Settings → Information Sources*, and the
 Knowledge Base can use it as a source.
+
+Two plugins are **core**: *Settings* and *MCP server*. They are always on, in every
+workspace, and can't be uninstalled; *Settings → System → Workspace* shows them as
+*core · always on*.
 
 Which plugins a workspace uses is set under *Settings → System → Workspace*. Until
 you save that list, every installed plugin is on, including ones you install later.

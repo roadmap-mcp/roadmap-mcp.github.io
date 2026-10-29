@@ -46,7 +46,7 @@ registry and *Settings → System → Admin* show.
 |---|---|
 | `roadmap.knowledgebase` | The Knowledge Base: its store, the explorer, and the `kb_*` MCP tools |
 | `roadmap.knowledgebase.flows` | Runs Knowledge Base [flows](../knowledge-base/flows.md) on the server with your AI provider. Without it, flows are handed out as briefs for an external AI to carry out |
-| `roadmap.mcp` | The MCP server at `/mcp`, which every plugin registers its tools on. Core |
+| `roadmap.mcp` | The MCP server, which every plugin registers its tools on: SSE at `/mcp/sse` and stateless HTTP at `/mcp` (see [Two endpoints](../reference/mcp-tools.md#two-endpoints)). Core |
 | `roadmap.gitrepos` | [Git Repos](../get-started/git.md): the local working copies flows read |
 | `roadmap.atlassian` | The Jira and Confluence connection, under *Information Sources*, offered as a Layer 1 source. Jira issue and Confluence page nodes can be opened and refreshed through it, which pulls their title and an excerpt |
 | `roadmap.bitbucket` | The Bitbucket connection, under *Information Sources*, offered as a Layer 1 source. Its nodes are pointers, as an agent or a flow wrote them |

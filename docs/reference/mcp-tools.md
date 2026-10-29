@@ -12,6 +12,30 @@ Errors come back as readable text that names what's missing or wrong
 (`Not written: Node type 'web-service' requires base_url.`), not as exceptions, so
 an agent can correct itself from the message.
 
+
+## Two endpoints
+
+| Endpoint | Transport | Tools |
+|---|---|---|
+| `/mcp/sse` | SSE: a long-lived session | one MCP tool per tool on this page |
+| `/mcp` | stateless HTTP: one POST per call | one tool, `roadmap`, that runs the others by name |
+
+Both serve the same tools. On `/mcp`, call `roadmap` with a `command` and its
+`args`:
+
+```json
+{"command": "kb_read", "args": {"action": "status"}}
+```
+
+`{"command": "help"}` lists every command with its arguments, and
+`{"command": "help", "args": {"command": "kb_admin"}}` shows one in full. A command
+the endpoint doesn't know is answered with the closest names.
+
+The workspace works the same on both: `/mcp/<workspace>/sse` or `/mcp/<workspace>`
+picks it for the connection, and every command also takes `workspace`, which wins
+over the connection's. Connecting a client: see
+[Connect an AI client](../get-started/pro.md#connect-an-ai-client).
+
 ## `kb_read`
 
 Navigate and query.
