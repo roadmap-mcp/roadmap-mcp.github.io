@@ -1,13 +1,17 @@
-# Packs
+# Installing packs
 
-A **pack** is a ready-made set of personas, the topic types written for them, and the
-work types that go with them. Install one instead of
-setting up [personas](personas.md) and [topic types](topics.md#topic-types) yourself, then adapt what it gives you.
+A **pack** is a ready-made set of [personas](personas.md), the
+[topic types](topics.md#topic-types) written for them, and the types of work that go
+with them. Install one instead of setting everything up yourself, then adapt what it
+gives you: a persona or topic type from a pack is changed and removed like any other
+(see [Set up personas](personas.md#set-up-personas) and
+[Add a topic type](topics.md#add-a-topic-type)).
 
 Packs are published in a **pack registry**, the way plugins are in the plugin
 registry. Installing one only adds personas and types to the workspace's
-configuration; it doesn't install any code. Installing a pack needs the [admin role](../get-started/users.md#roles). Packs are installed per workspace: a new
-workspace starts empty.
+configuration; it doesn't install any code. Installing a pack needs the
+[admin role](../get-started/users.md#roles). Packs are installed per
+[workspace](../get-started/workspaces.md): a new workspace starts empty.
 
 ## The packs
 

@@ -16,8 +16,8 @@ clients read and write it over [MCP](../get-started/pro.md#connect-an-ai-client)
 
 - [Concepts](concepts.md): the idea behind it, Layer 1 and Layer 2.
 - [Personas](personas.md): who the knowledge is written for, and setting them up.
-- [Topics](topics.md): the pages of knowledge, and the types that shape them.
-- [Packs](packs.md): ready-made personas and topic types to install.
+- [Topics](topics.md): the pages of knowledge, and the types that shape them. To
+  start from ready-made personas and topic types, [install a pack](packs.md).
 - [The explorer](explorer.md): finding your way through the knowledge.
 - [Flows](flows.md): how knowledge gets in, and how every write is traced.
 - [Orchestration](orchestration.md): taking a feature through design, development

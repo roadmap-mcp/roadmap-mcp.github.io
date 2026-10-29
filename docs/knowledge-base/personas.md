@@ -17,7 +17,7 @@ selected topic on the right (see [The explorer](explorer.md)).
 
 Personas are set up per workspace, under *Settings → Knowledge Base → Layer 2*, and
 that needs the [admin role](../get-started/users.md#roles). To start from
-ready-made personas and topic types instead, install a [pack](packs.md).
+ready-made personas and topic types instead, [install a pack](packs.md).
 
 ![Settings, Knowledge Base, Layer 2](../images/kb-setup/layer2.png)
 

@@ -53,7 +53,8 @@ And it has one of two forms:
 
 Topic types are set up per workspace, next to the personas, under *Settings →
 Knowledge Base → Layer 2*, and that needs the
-[admin role](../get-started/users.md#roles). Click **+ Add node type**, or the **+**
+[admin role](../get-started/users.md#roles). To start from ready-made topic types
+instead, [install a pack](packs.md). Click **+ Add node type**, or the **+**
 next to *Shared by everyone* or *Work breakdown*:
 
 ![The New node type form, for a structured type with two fields](../images/kb-setup/layer2-type-form.png){ width="730" }

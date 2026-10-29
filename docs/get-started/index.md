@@ -18,7 +18,9 @@ To get going with Pro:
    user.
 2. [Add users](users.md), each with a role, and create a
    [workspace](workspaces.md) per team or project if you need more than one.
-3. [Configure Git](git.md) so Roadmap can read your repositories.
+3. [Configure Git](git.md) so Roadmap can read your repositories, and
+   [install a pack](../knowledge-base/packs.md) of personas and topic types, or set
+   them up yourself.
 4. [Install the plugins](plugins.md) you need on top of the bundled ones, if any.
 5. Make an [API token](account.md#api-tokens), connect an AI client over
    [MCP](pro.md#connect-an-ai-client) with it, and read the
