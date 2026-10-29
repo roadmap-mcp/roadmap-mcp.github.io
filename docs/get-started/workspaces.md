@@ -33,8 +33,9 @@ switch to it: the page reloads with that workspace's settings and data. The addr
 carries the workspace as `?ws=<name>`, so a link opens the same workspace.
 
 To create one, an admin picks **+ New workspace…** at the bottom of the list, types a
-name, and clicks **Create**. A name is lower-case letters, digits, `.`, `_` or `-`,
-starting with a letter or a digit. `default` is taken. The new workspace starts
+name, and clicks **Create**. A name is letters, digits, `.`, `_` or `-`, starting
+with a letter or a digit; upper case is turned into lower case, so `Team-A` becomes
+`team-a`. `default` is taken. The new workspace starts
 empty: configure its settings, Git Repos and Knowledge Base as for the first one, or
 install a [pack](../knowledge-base/packs.md) in it.
 
@@ -44,8 +45,12 @@ A workspace can't be renamed or removed in the app.
 
 The `default` workspace uses `config.yaml` itself, by default `backend/config.yaml`
 in the install folder. Any other workspace has its own folder,
-`workspaces/<name>/`, next to it, with its own `config.yaml` and data (see
+`workspaces/<name>/`, next to it, with its own data, and its own `config.yaml` from
+the first time its settings are saved (see
 [Where your data lives](pro.md#where-your-data-lives)).
+
+Which plugins are on in each workspace isn't in the workspace's own files: it is
+kept for the whole server in `server.yaml`, next to the base `config.yaml`.
 
 ## Workspaces over MCP
 
