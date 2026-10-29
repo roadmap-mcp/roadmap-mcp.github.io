@@ -172,6 +172,12 @@ the `personas` list under `knowledgebase` in `config.yaml`, and start it again. 
 it first: a **Save** on the settings page writes the whole file, and would undo an
 edit made while Roadmap runs.
 
+Each workspace has its own file. The `default` workspace uses `config.yaml` itself,
+by default `backend/config.yaml` in the install folder; any other workspace uses
+`workspaces/<name>/config.yaml` next to it, so `backend/workspaces/<name>/config.yaml`.
+With `ROADMAP_CONFIG_PATH` set, both are relative to that file instead (see
+[Where your data lives](../get-started/pro.md#where-your-data-lives)).
+
 ```yaml
 knowledgebase:
   personas:                # the order here is the order of the lanes

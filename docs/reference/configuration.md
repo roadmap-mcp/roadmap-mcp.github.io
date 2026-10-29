@@ -1,7 +1,9 @@
 # Configuration
 
 The Knowledge Base is configured per workspace, in the `knowledgebase` section of
-the workspace's `config.yaml`. The settings page edits it under *Settings →
+the workspace's `config.yaml`: `backend/config.yaml` in the install folder for the
+`default` workspace, and `backend/workspaces/<name>/config.yaml` for any other (see
+[Where your data lives](../get-started/pro.md#where-your-data-lives)). The settings page edits it under *Settings →
 Knowledge Base*, and `kb_admin` / `kb_orchestrate save` write parts of it over MCP.
 
 | Tab | Section | Holds |
