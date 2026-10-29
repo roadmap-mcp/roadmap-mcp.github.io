@@ -16,7 +16,8 @@ If you have forgotten it, ask an admin to set a new one (see
 ## API tokens
 
 An AI client or a script can't sign in. It sends an API token instead, and acts as
-you, with your role. MCP needs the editor role or higher.
+you, with your role. MCP needs the editor role or higher: a viewer's token reads the
+HTTP API only, and the Account tab says so when a viewer makes one.
 
 ### Make a token
 

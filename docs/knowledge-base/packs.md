@@ -6,7 +6,8 @@ work types that go with them. Install one instead of
 
 Packs are published in a **pack registry**, the way plugins are in the plugin
 registry. Installing one only adds personas and types to the workspace's
-configuration; it doesn't install any code. Packs are installed per workspace: a new
+configuration; it doesn't install any code. Installing a pack, in the settings
+screen or over MCP, needs the [admin role](../get-started/users.md#roles). Packs are installed per workspace: a new
 workspace starts empty.
 
 ## The packs

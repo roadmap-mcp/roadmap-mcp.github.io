@@ -85,17 +85,21 @@ kb_write(action="link", kind="web-service", id="payments-api",
 
 Administer node types, personas, packs and sources.
 
+The actions marked **Admin** change the configuration or drop data, so they need the
+admin role, as they do over HTTP. Any other user is answered
+`Not done: This needs the admin role; <user> is editor.`
+
 | Action | Does | Needs |
 |---|---|---|
 | `list_types` | every node type, its form, and how many nodes use it | — |
 | `get_type` | one type in full, including its template and states | `id` |
-| `save_type` | create or replace a type: `description`, `category` (`topic` / `folder` / `work`), `persona`, `parent_type`, `states_json`, `fields_json` or `template`, and `icon` (a Bootstrap icon name such as `bi-database`, shown on the explorer's chips); what isn't given is kept from the existing type | `name` (or `id`), `form` |
-| `delete_type` | remove a type; refused while nodes use it unless `force` | `id` |
+| `save_type` | **Admin.** create or replace a type: `description`, `category` (`topic` / `folder` / `work`), `persona`, `parent_type`, `states_json`, `fields_json` or `template`, and `icon` (a Bootstrap icon name such as `bi-database`, shown on the explorer's chips); what isn't given is kept from the existing type | `name` (or `id`), `form` |
+| `delete_type` | **Admin.** remove a type; refused while nodes use it unless `force` | `id` |
 | `list_personas` | the personas, in order | — |
-| `save_persona` | add a persona at the end, or change one. The `id` comes from the name, so saving with an existing persona's name changes that persona and replaces its description | `name` (or `id`), `description` |
+| `save_persona` | **Admin.** add a persona at the end, or change one. The `id` comes from the name, so saving with an existing persona's name changes that persona and replaces its description | `name` (or `id`), `description` |
 | `list_packs` | the [packs](../knowledge-base/packs.md) in the pack registry | — |
-| `install_pack` | install a pack, or part of it with `items_json` = `{"personas": [...], "node_types": [...], "replace": [...]}`; what a type needs comes along, and what you have is kept unless named in `replace` | `id` |
-| `clear_source` | drop everything ingested from one source | `source` |
+| `install_pack` | **Admin.** install a pack, or part of it with `items_json` = `{"personas": [...], "node_types": [...], "replace": [...]}`; what a type needs comes along, and what you have is kept unless named in `replace` | `id` |
+| `clear_source` | **Admin.** drop everything ingested from one source | `source` |
 
 ```python
 kb_admin(action="save_type", name="Web service", form="structured",
@@ -126,14 +130,15 @@ Take a [flow](../knowledge-base/flows.md) on.
 
 ## `kb_orchestrate`
 
-Run the [state machines](../knowledge-base/orchestration.md).
+Run the [state machines](../knowledge-base/orchestration.md). `save` and `delete`
+change the configuration, so they need the admin role.
 
 | Action | Does | Needs |
 |---|---|---|
 | `list` | the orchestrations, with how many instances are where | — |
 | `describe` | states, transitions, a Mermaid diagram, problems | `id` |
-| `save` | create or replace one from `orchestration_json` | `orchestration_json` |
-| `delete` | remove one and its instances | `id` |
+| `save` | **Admin.** create or replace one from `orchestration_json` | `orchestration_json` |
+| `delete` | **Admin.** remove one and its instances | `id` |
 | `start` | instances in the initial state; `branch` picks the branch (`main` forces main) | `id`, optional `subject` |
 | `next` | **take the next piece of work**: the oldest ready instance's flow brief | optional `id` |
 | `status` | the instances: state, status, run, branch | optional `id` |

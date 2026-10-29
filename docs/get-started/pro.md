@@ -118,7 +118,8 @@ MCP server through which your AI client reads and writes the Knowledge Base. Tre
    root user is the admin who adds everyone else (see
    [Users and roles](users.md)).
 5. Choose the encryption password. Next, an *Unlock Configuration* dialog asks for
-   one under *First-time setup*; enter it twice to confirm it. Roadmap encrypts the
+   one under *First-time setup*, as **Encryption password**; enter it twice to
+   confirm it. Roadmap encrypts the
    secrets you store with it, such as AI keys and access tokens. It is not the root
    user's password, and it can't be recovered: keep it safe. An admin enters it
    again after every restart, unless you set `ROADMAP_KEY` (see
@@ -235,8 +236,8 @@ editor role or higher:
     ```
 
 !!! warning "Set up before snapshot 12?"
-    A client added without a token is refused with `401 login_required`, and shows
-    Roadmap as failed or not connected. Remove it, make a token, and add it again
+    A client added without a token is refused with `401 login_required`, and
+    reports an authentication error. Remove it, make a token, and add it again
     with the `headers` part, for example `claude mcp remove roadmap -s user` and then
     the command above. A `403 forbidden` means the token's user is a viewer: an
     admin has to make them an editor.

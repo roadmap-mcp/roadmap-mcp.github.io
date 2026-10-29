@@ -30,6 +30,9 @@ button next to them.
 A session ends after 12 hours without use, when Roadmap restarts, and when an admin
 resets your password or removes you. Then you sign in again.
 
+After 5 wrong passwords in a row for one user name, signing in with that name pauses
+for 60 seconds: *Too many wrong passwords for alice: try again in 42 seconds.*
+
 ## Roles
 
 A role holds on the whole server, in every workspace. Each role may do everything the
@@ -39,9 +42,15 @@ one above it may:
 |---|---|
 | **Viewer** | Read: the Knowledge Base, the workspaces, the jobs, and their own account. |
 | **Editor** | Also write data: Knowledge Base nodes and links, flow runs, branches. Also use [MCP](#mcp-needs-an-editor). |
-| **Admin** | Also configure: the settings, plugins, workspaces, users, unlocking the configuration, installing [packs](../knowledge-base/packs.md) and clearing a source in the Knowledge Base. |
+| **Admin** | Also configure: the settings, plugins, workspaces (only admins see *+ New workspace…* in the header), users, and unlocking the configuration. In the Knowledge Base: personas and node types, [packs](../knowledge-base/packs.md), orchestrations, and clearing a source. |
 
 A viewer or an editor sees only the **Account** tab under *Settings*.
+
+The same rules hold over MCP. An editor's AI client can read and write the
+Knowledge Base, but the `kb_admin` actions that change personas, node types and
+packs, or clear a source, and saving or deleting an orchestration, answer
+`Not done: This needs the admin role; <user> is editor.` (see
+[MCP tools](../reference/mcp-tools.md#kb_admin)).
 
 ### MCP needs an editor
 
@@ -75,14 +84,19 @@ The *API tokens* column shows how many tokens each user has.
 Signing in says who you are. The **encryption password** is something else: it
 encrypts the secrets Roadmap stores, such as AI keys and access tokens. On the first
 start you choose it right after creating the root user, in the *Unlock
-Configuration* dialog.
+Configuration* dialog, under **Encryption password**. It is not your sign-in
+password.
 
 After every restart the configuration is locked again, and an admin unlocks it with
 that password, unless `ROADMAP_KEY` is set (see
 [Environment variables](pro.md#environment-variables)). A viewer or an editor who
 signs in while it is locked is told that an admin has to unlock it, and can click
-**Continue**. Until it is unlocked, what needs no stored secret, such as the
-Knowledge Base, still works.
+**Continue**.
+
+While it is locked, the Knowledge Base works fully: reading, and for editors
+writing, in the browser and over MCP. Only what reaches another system with a stored
+secret waits for the unlock: refreshing a node from its source, and running a flow on
+the server with your AI provider.
 
 ## Where users are kept
 
@@ -117,11 +131,13 @@ limited as access to `config.yaml`.
 
 ## When a request is refused
 
-A request Roadmap refuses gets one of these answers. An AI client that can't connect
-shows the status, and sometimes the message:
+A request Roadmap refuses gets one of these answers. A `401` also carries a
+`WWW-Authenticate: Bearer` header, so an AI client without a valid token reports an
+authentication error:
 
 | Status | Code | Means | What to do |
 |---|---|---|---|
 | 401 | `setup_required` | Roadmap has no users yet: create the root user first. | Open Roadmap in the browser and create the root user. |
 | 401 | `login_required` | Sign in first (or send an API token). | In the browser, sign in. For an AI client, add a token, or replace one that was revoked or whose user was removed. |
+| 429 | | Too many wrong passwords for alice: try again in 42 seconds. | Wait, then sign in with the right password. |
 | 403 | `forbidden` | This needs the editor role; `alice` is viewer. | Ask an admin for a higher role, or use a token of a user who has it. |

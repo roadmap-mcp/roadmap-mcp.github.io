@@ -5,7 +5,8 @@ for and what kinds of thing it is made of: the **personas** and the **node types
 [Concepts](concepts.md) explains what they are. This page sets them up.
 
 You can set them up in the settings screen, or over MCP with the `kb_admin` tool.
-Both write the same configuration. To start from ready-made personas and types
+Both write the same configuration, and both need the
+[admin role](../get-started/users.md#roles). To start from ready-made personas and types
 instead, install a [pack](packs.md).
 
 ## In the settings screen
