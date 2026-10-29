@@ -51,6 +51,16 @@ branch (it's in the URL as `?branch=`). A bar then shows the branch, its work it
 and state, its git branch and last commit, and what it changes, with **Changes**,
 **Merge**, **Abandon** and **Back to main**. The trees mark nodes *new* or *changed*.
 
+![The explorer in a branch](../images/kb-branches/branch-view.png)
+
+![The branch bar](../images/kb-branches/branch-bar.png){ width="1408" }
+
+**Changes** lists what the branch added and changed:
+
+![The branch bar with its changes listed](../images/kb-branches/branch-changes-list.png){ width="1408" }
+
+![A lane's tree with nodes marked changed and new](../images/kb-branches/branch-tree-marks.png){ width="352" }
+
 - **Changes only** narrows the lanes and the graph to what the branch adds or
   changes, plus the folders above them so the trees still read.
 - A new or changed topic gets a **Changes** tab:
@@ -59,6 +69,10 @@ and state, its git branch and last commit, and what it changes, with **Changes**
     - *Diagrams*: every diagram or screen sketch that changed, drawn as is and to be
       side by side;
     - *As is*: the topic as main has it.
+
+![A topic's Changes tab: the diff](../images/kb-branches/node-changes-diff.png){ width="1022" }
+
+![A topic's Changes tab: a diagram as is and to be](../images/kb-branches/node-changes-diagrams.png){ width="1038" }
 
 ## Context for the developer
 
@@ -69,6 +83,9 @@ a diff against main, every topic it removes is listed, all grouped by persona.
 
 In the explorer, **Context** lets you pick the personas a developer works for (a
 backend developer: analysis, design, backend) and copy the instruction for the AI,
+
+![The Context panel](../images/kb-branches/branch-context.png){ width="1382" }
+
 or download the markdown. Over MCP:
 
 ```

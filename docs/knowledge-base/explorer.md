@@ -3,6 +3,8 @@
 The **Knowledge Base** page (`/knowledgebase`) shows the knowledge layer: the work
 breakdown first, then one lane per persona, each drawn as a tree.
 
+![The Knowledge Base portal](../images/kb-explorer/explorer-portal.png)
+
 !!! info "The page reads; it doesn't write"
     There is no form for adding a topic. Topics are written by agents over MCP or by
     an ingest: the knowledge comes from somewhere else, so a form would only be a
@@ -17,20 +19,30 @@ breakdown first, then one lane per persona, each drawn as a tree.
   its tree on the left, the selected node on the right.
 - **The breadcrumb.** Home (the portal), the lane, the folders holding the
   selected node, and the node itself. Each step but the last is a link.
+
+    ![The breadcrumb](../images/kb-explorer/breadcrumb.png){ width="382" }
+
 - **The URL says where you are**: `?lane=work|<persona id>|graph`, then
   `node=source/kind/id` and `tab=`. Any lane or topic can be linked to, and the
   browser's back button walks back along the links you followed.
 - **Type filters.** A persona's tree has one toggle per topic type it holds. Click
   to switch a type off or on, Ctrl-click to keep only that one, *All* to bring them
   all back.
+
+    ![A lane's tree with its type toggles](../images/kb-explorer/lane-tree-testing.png){ width="352" }
+
 - **The ground layer** is behind the graph icon in the header: the raw graph of
   every node, pointers included, filterable by kind. It's what the knowledge is
   built *from*, so it isn't the default view.
+
+    ![The ground layer graph](../images/kb-explorer/explorer-graph.png)
 
 ## A node
 
 Selecting a node opens its pane, titled with its name and its type in brackets
 ("Sign-in [Use case]").
+
+![A test scenario open in the Testing lane](../images/kb-explorer/explorer-lane-topic.png)
 
 | Tab | Shows |
 |---|---|
@@ -38,6 +50,10 @@ Selecting a node opens its pane, titled with its name and its type in brackets
 | *Progress* | units of work only: the state, progress, every flow run about it with the stages it reported and how it ended, and the log of state changes |
 | *Links* | the node's relations, grouped as the lanes are, with one toggle per relation type to filter the list; a link opens the node at the other end |
 | *Changes* | in a [branch](branches.md), for a new or changed topic: what the branch did to it |
+
+![The Details tab of a test scenario](../images/kb-explorer/topic-details.png){ width="1056" }
+
+![The Links tab, with one toggle per relation type](../images/kb-explorer/topic-links.png){ width="1056" }
 
 A pointer node has **Refresh from source**: it re-reads the item from the system
 that owns it and shows the live content under *From the source*, marked as not
@@ -47,9 +63,15 @@ A diagram has a **maximize** button that opens it full screen.
 
 ## The work breakdown
 
+![The work breakdown, with a feature on its Progress tab](../images/kb-explorer/explorer-work-breakdown.png)
+
 Each row shows its state and a progress bar (behind the header's progress toggle),
 and a spinner marks an item with a flow run in progress. The page re-reads the
 status every ten seconds, so a running flow's stages come in as they're reported.
+
+![The work breakdown tree, with states, progress bars and a running flow](../images/kb-explorer/work-lane-tree.png){ width="352" }
+
+![A work item's Progress tab: flow runs and state changes](../images/kb-explorer/work-item-progress.png){ width="1056" }
 
 A row's **⋯** menu:
 
@@ -59,6 +81,8 @@ A row's **⋯** menu:
   writes is linked to that item;
 - *Copy context reference* (when the item has `context` links): instructions for an
   implementing AI to read the item and the topics it should start from.
+
+![A work item's menu](../images/kb-explorer/work-item-menu.png){ width="308" }
 
 ## Branches and chat
 

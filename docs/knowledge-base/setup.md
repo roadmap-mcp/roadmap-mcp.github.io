@@ -11,6 +11,9 @@ instead, install a [pack](packs.md).
 
 ## In the settings screen
 
+
+![Settings, Knowledge Base, Layer 2](../images/kb-setup/layer2.png)
+
 Go to *Settings → Knowledge Base → Layer 2*. On the left is a tree in three groups:
 
 - **Personas**, each with the number of types written for it. Expand one to see its
@@ -18,14 +21,20 @@ Go to *Settings → Knowledge Base → Layer 2*. On the left is a tree in three 
 - **Shared by everyone**: types with no persona.
 - **Work breakdown**: the work types, nested under their parent type.
 
+![The Layer 2 tree: personas, shared types and the work breakdown](../images/kb-setup/layer2-tree.png){ width="296" }
+
 Select a persona or a type to see it on the right, and click **Edit** to change it.
 
 **Add a persona** with **+ Add persona**: give it a **Name** and a **Description**
 of what it needs. Click the form's **Save**: that stores it straight away and closes
 the form. A name that is already taken is refused.
 
+![The New persona form](../images/kb-setup/layer2-persona-form.png){ width="730" }
+
 **Add a node type** with **+ Add node type**, or with the **+** next to *Shared by
 everyone* or *Work breakdown*:
+
+![The New node type form, for a structured type with two fields](../images/kb-setup/layer2-type-form.png){ width="730" }
 
 | Field | What it is |
 |---|---|

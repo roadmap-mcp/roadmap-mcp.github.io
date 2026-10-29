@@ -13,6 +13,12 @@ writes in here, and when?"
 Flows are configured under *Settings → Knowledge Base → Flows*, or written over
 MCP.
 
+![Settings, Knowledge Base, Flows](../images/kb-flows/flows.png)
+
+The list groups the flows by kind, and a spinner marks one with a run in progress:
+
+![The list of flows, grouped by kind](../images/kb-flows/flows-list.png){ width="256" }
+
 ```yaml
 - id: step-development
   name: Step development
@@ -38,6 +44,8 @@ fields or its template), where the result goes, and how to write it back. An
 output contract that someone can edit by hand is one that breaks without anyone
 noticing. **Preview** on the Flows tab shows the whole prompt.
 
+![The start of a generated prompt](../images/kb-flows/flow-preview.png){ width="720" }
+
 An empty `targets.node_types` means every type of the target personas plus the
 shared ones, so a type added for a persona is usable by its flows right away.
 
@@ -51,6 +59,11 @@ shared ones, so a type added for a persona is usable by its flows right away.
 
 The brief is the cheap path and the reason it exists. The costly half of an
 analysis is the thinking, and an AI already connected over MCP is already paid for.
+
+With no AI provider bound to the flow runner, the Flows tab says so, and a flow
+can only be briefed out:
+
+![A flow with Brief and Copy MCP ref, and no AI provider bound](../images/kb-flows/flows-design-selected.png)
 
 Over MCP, an AI takes a flow on like this:
 
@@ -68,6 +81,10 @@ kb_flow("finish", id="<run>", outcome="ok")         # how it went
 A **run** exists from the moment a flow is handed out. That puts work done by an
 outside AI in the same history as everything else, and it gives the nodes a run id
 to carry.
+
+**Show runs** on a flow lists them:
+
+![A flow's run history](../images/kb-flows/flow-runs.png){ width="736" }
 
 Every node written under a run carries a `provenance` stamp in its details:
 

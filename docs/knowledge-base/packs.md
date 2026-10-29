@@ -25,16 +25,24 @@ workspace starts empty.
 1. Go to *Settings → Knowledge Base → Layer 2* and click **Packs**. The registry's
    packs are listed, each with its version, description and how many personas and
    types it holds.
+
+    ![The Packs list](../images/kb-packs/packs-list-cut.png){ width="730" }
+
 2. Open a pack. Every persona and type in it has a checkbox, and a state:
     - **new**: you don't have it yet;
     - **installed**: you have it, the same as in the pack;
     - **differs from yours**: you have one with the same id, but it isn't the same.
+
+    ![A pack opened, with an installed persona, a type that differs from yours and a new type](../images/kb-packs/pack-detail.png){ width="730" }
+
 3. Tick what you want. The whole pack is ticked to start with; **All** and **None**
    tick or untick everything. Ticking a type also ticks what it needs: its persona
    and the work types above it. Unticking a persona or a work type unticks what
    depends on it.
 4. Click **Install N item(s)**. The result says what happened, such as *2 installed*
    or *1 kept as you had them*, and the ticks are cleared.
+
+    ![The result of an install](../images/kb-packs/pack-result.png){ width="730" }
 
 A persona or type you already have is kept as you have it, unless you tick
 **replace mine** on it. A replaced persona keeps its place in the order of the lanes.
@@ -78,6 +86,8 @@ What a type needs comes along, as in the settings screen; here that is the
 2. Tick the personas and types to include. What a ticked type needs, its persona
    and the work types above it, goes in too.
 3. Click **Download pack**. You get `<id>.json`.
+
+    ![The Export as a pack form](../images/kb-packs/pack-export.png){ width="730" }
 
 Install it in another workspace with **Install from file**, or share it.
 

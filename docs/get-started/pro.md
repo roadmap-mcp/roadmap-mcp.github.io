@@ -117,6 +117,9 @@ MCP server through which your AI client reads and writes the Knowledge Base. Tre
    enter it again under **Confirm password**, and click **Create and sign in**. The
    root user is the admin who adds everyone else (see
    [Users and roles](users.md)).
+
+    ![The Create the root user screen](../images/setup/setup-root-user.png){ width="424" }
+
 5. Choose the encryption password. Next, an *Unlock Configuration* dialog asks for
    one under *First-time setup*, as **Encryption password**; enter it twice to
    confirm it. Roadmap encrypts the
@@ -125,7 +128,11 @@ MCP server through which your AI client reads and writes the Knowledge Base. Tre
    again after every restart, unless you set `ROADMAP_KEY` (see
    [Environment variables](#environment-variables)).
 
+    ![The Unlock Configuration dialog on the first start](../images/setup/unlock-first-time.png){ width="436" }
+
 From then on, every visit starts at the sign-in screen.
+
+![The Sign in to Roadmap screen](../images/setup/sign-in.png){ width="424" }
 
 The first run creates a `.venv` folder next to the launcher and installs the bundled
 plugins into it, plus their dependencies from PyPI. That takes a few minutes and

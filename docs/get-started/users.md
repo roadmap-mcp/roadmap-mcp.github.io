@@ -24,7 +24,9 @@ Until the root user exists, Roadmap answers every other request with
 ## Signing in
 
 From then on, every visit starts at **Sign in to Roadmap**: your user name and
-password. The header shows who is signed in and their role, with a **Sign out**
+password.
+
+![The Sign in to Roadmap screen](../images/setup/sign-in.png){ width="424" } The header shows who is signed in and their role, with a **Sign out**
 button next to them.
 
 A session ends after 12 hours without use, when Roadmap restarts, and when an admin
@@ -91,6 +93,8 @@ that password, unless `ROADMAP_KEY` is set (see
 [Environment variables](pro.md#environment-variables)). A viewer or an editor who
 signs in while it is locked is told that an admin has to unlock it, and can click
 **Continue**.
+
+![The locked notice a viewer or an editor sees](../images/setup/unlock-non-admin.png){ width="420" }
 
 While it is locked, the Knowledge Base works fully: reading, and for editors
 writing, in the browser and over MCP. Only what reaches another system with a stored

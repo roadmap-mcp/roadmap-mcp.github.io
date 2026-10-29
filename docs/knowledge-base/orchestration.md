@@ -92,3 +92,12 @@ topics only once the code has the feature.
 
 The Orchestration settings tab draws each machine as a diagram and lists its
 instances.
+
+![Settings, Knowledge Base, Orchestration](../images/kb-orchestration/orchestration.png)
+
+![The Feature delivery state machine](../images/kb-orchestration/orchestration-diagram.png){ width="736" }
+
+Below the diagram are the instances, each with its unit of work, its state, its
+status and its branch:
+
+![An instance of the Feature delivery orchestration](../images/kb-orchestration/orchestration-instances.png){ width="736" }

@@ -28,6 +28,8 @@ sequenceDiagram
   R-->>P: reply, with topic sections shown live
 ```
 
+![A chat window with an AI connected](../images/kb-chat/chat.png)
+
 ## How the AI hosts it
 
 `join` gives the AI the hosting rules:
@@ -40,6 +42,8 @@ sequenceDiagram
 
 A piece shown in the window is read live from the knowledge base, with a link that
 opens it in the explorer.
+
+![A piece shown in the chat window](../images/kb-chat/chat-piece.png){ width="848" }
 
 ## Robust by design
 
