@@ -58,7 +58,7 @@ Change the graph.
 | `update` | change part of a content node: `fields` are merged (`null` removes one), `body` or `document` replaced | `kind`, `id`, `content_json` |
 | `set_state` | move a unit of work one state along its lifecycle | `kind`, `id`, `state` |
 | `delete_node` | remove a node and every link that touches it | `source`, `kind`, `id` |
-| `link` | relate two nodes; `relation` says how (`contains` places a node in a tree) | `kind`, `id`, `dst_kind`, `dst_id` |
+| `link` | relate two nodes; `relation` says how (`contains` places a node in a tree). Both nodes must exist: write them first with `add_node`, or the link is refused (`Not written: no node ...`) | `kind`, `id`, `dst_kind`, `dst_id` |
 | `unlink` | remove that relation; the nodes stay | same as `link` |
 
 `run` on `add_node`, `update`, `link` and `set_state` stamps the write with a
