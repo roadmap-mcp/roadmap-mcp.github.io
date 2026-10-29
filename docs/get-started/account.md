@@ -10,7 +10,8 @@ Enter your **Current password** and a **New password** of at least 8 characters,
 click **Change password**.
 
 If you have forgotten it, ask an admin to set a new one (see
-[Managing users](users.md#managing-users)).
+[Managing users](users.md#managing-users)). For the root user, see
+[A forgotten root password](users.md#a-forgotten-root-password).
 
 ## API tokens
 

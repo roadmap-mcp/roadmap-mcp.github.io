@@ -91,6 +91,28 @@ Users are kept in `users.yaml`, next to `config.yaml` (see
 role, a hash of the password, and a hash of each API token. They belong to the
 server, not to a workspace.
 
+## A forgotten root password
+
+If another admin can still sign in, they can set a new password for the root user
+under *Settings → System → Users*, like for anyone else.
+
+If not, the last resort is to start over with the users:
+
+1. Stop Roadmap.
+2. Remove `users.yaml` from the folder that holds `config.yaml`.
+3. Start Roadmap. The browser shows **Create the root user** again.
+4. Create a new root user, then add the other users again. Everyone makes new API
+   tokens, and every AI client is set up again with one.
+
+!!! warning "This deletes every user and every token"
+    Removing `users.yaml` removes all users and all their API tokens, not only the
+    root user. It doesn't touch the configuration, the stored settings or the
+    Knowledge Base, nor the encryption password: after the restart you unlock with
+    that password as usual.
+
+Anyone who can change files in that folder can do this. Keep access to it as
+limited as access to `config.yaml`.
+
 ## When a request is refused
 
 A request Roadmap refuses gets one of these answers. An AI client that can't connect
