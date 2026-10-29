@@ -32,7 +32,7 @@ flowchart TB
 - The **frontend** mirrors this: each plugin adds its own pages, settings tabs and
   item types to the app.
 - Plugins are **enabled per workspace**: one server serves several teams, each with
-  its own configuration and data. See [Managing plugins](#managing-plugins) for
+  its own configuration and data. See [Plugins per workspace](#plugins-per-workspace) for
   the screens that manage them.
 
 ## Plugins per edition
@@ -87,10 +87,23 @@ Three plugins are **core**: *Settings*, *MCP server* and *Users*. They are alway
 on, in every workspace, and can't be uninstalled; *Settings → System → Workspace* shows them as
 *core · always on*.
 
-Which plugins a workspace uses is set under *Settings → System → Workspace*. Until
-you save that list, every installed plugin is on, including ones you install later.
-Once you have saved it, a newly installed plugin starts off in that workspace: turn
-it on there.
+### Plugins per workspace
+
+Installing a plugin is for the whole server, but each [workspace](workspaces.md)
+turns plugins on and off for itself. One workspace can use Trello while another
+doesn't, for example. A plugin that is off in a workspace has no pages, settings tabs
+or MCP tools there.
+
+1. Switch to the workspace in the header.
+2. Go to *Settings → System → Workspace*, titled *Plugins in workspace* and the
+   workspace's name.
+3. Turn plugins on or off, and click **Save & reload**.
+
+Until you save that list for a workspace, every installed plugin is on in it,
+including ones you install later. Once you have saved it, a newly installed plugin
+starts off in that workspace: turn it on there. The core plugins are always on.
+
+### The Admin and Workspace screens
 
 Both screens work the same way:
 
