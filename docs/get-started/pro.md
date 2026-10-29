@@ -236,18 +236,27 @@ editor role or higher:
     ```
 
 !!! warning "Failed to connect?"
-    Claude Code shows this, for SSE and for HTTP alike, when the configuration has
-    no token or a wrong one, for example one that was revoked:
+    Claude Code shows one of two messages, for SSE and for HTTP alike.
+
+    With **no token** in the configuration:
 
     ```text
     ✘ Failed to connect — Dynamic Client Registration rejected (HTTP 404): {"detail":"Not Found: Roadmap takes API tokens (Authorization: Bearer), not OAuth"}
     ```
 
     This is always the case for a client set up before snapshot 12, which had no
-    tokens. Remove the client, make a token, and add it again with the `headers`
-    part: `claude mcp remove roadmap -s user`, then the command above. A
-    `403 forbidden` means the token's user is a viewer: an admin has to make them an
-    editor.
+    tokens.
+
+    With a **wrong token**, for example one that was revoked:
+
+    ```text
+    Server rejected the configured Authorization header (HTTP 401)
+    ```
+
+    The fix is the same for both: remove the client, make a token, and add it again
+    with the `headers` part: `claude mcp remove roadmap -s user`, then the command
+    above. A `403 forbidden` means the token's user is a viewer: an admin has to make
+    them an editor.
 
 Ask the client to run `kb_read` with `action="status"` to check that it works; the
 [Pro edition](../knowledge-base/index.md) pages describe what it can do from there.
