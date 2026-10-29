@@ -39,6 +39,8 @@ built once for the whole organisation, written by AI agents, and kept up to date
 
 ## Who this is for
 
+- **People installing it**: [download and install Pro](get-started/pro.md), then
+  [configure Git](get-started/git.md).
 - **People using the Knowledge Base**: read [Concepts](knowledge-base/concepts.md)
   and [The explorer](knowledge-base/explorer.md).
 - **People setting it up for a team**: [Configuration](reference/configuration.md),
