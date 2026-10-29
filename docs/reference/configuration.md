@@ -43,12 +43,16 @@ knowledgebase:
   node_types:
     - id: database
       name: Database
+      description: One database the applications use, and what is in it.
+      icon: bi-database        # a Bootstrap icon name, for the explorer's chips
       category: topic          # topic | folder | work
       form: structured         # structured | unstructured
       persona: architects      # "" means everyone
       fields:
-        - { name: engine, label: Engine, type: text, required: true }
+        - { name: engine, label: Engine, type: text, required: true,
+            hint: "PostgreSQL, Oracle, ..." }
         - { name: diagram, label: Database diagram, type: mermaid }
+      states: []               # work types only; empty = planned, in-progress, done
     - id: test-scenario
       name: Test scenario
       category: topic

@@ -6,7 +6,9 @@ A **persona** is who knowledge is written *for*: a role (*Architects*, *Testers*
 *Business analysts*) or a specialism (*PrimeNG specialist*). Each persona gets a
 **lane** in the explorer: a tree of the topics written for it.
 
-A persona needs a name and a description of who it is and what its topics cover.
+A persona has a name and a description of who it is and what its topics cover. The
+description is optional, but write one: it tells people and AI agents what belongs
+in that persona's lane.
 Its `id` is derived from the name the first time it's saved, and topics refer to
 it by that id, so renaming a persona later keeps its tree. The order personas are
 configured in is the order of the lanes.

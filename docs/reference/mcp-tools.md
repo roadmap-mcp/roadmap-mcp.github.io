@@ -62,10 +62,10 @@ Administer node types, personas and sources.
 |---|---|---|
 | `list_types` | every node type, its form, and how many nodes use it | — |
 | `get_type` | one type in full, including its template and states | `id` |
-| `save_type` | create or replace a type: `category` (`topic` / `folder` / `work`), `persona`, `parent_type`, `states_json`, `fields_json` or `template`; what isn't given is kept from the existing type | `name` (or `id`), `form` |
+| `save_type` | create or replace a type: `description`, `category` (`topic` / `folder` / `work`), `persona`, `parent_type`, `states_json`, `fields_json` or `template`, and `icon` (a Bootstrap icon name such as `bi-database`, shown on the explorer's chips); what isn't given is kept from the existing type | `name` (or `id`), `form` |
 | `delete_type` | remove a type; refused while nodes use it unless `force` | `id` |
 | `list_personas` | the personas, in order | — |
-| `save_persona` | add a persona (at the end) or change one | `name` (or `id`), `description` |
+| `save_persona` | add a persona at the end, or change one. The `id` comes from the name, so saving with an existing persona's name changes that persona and replaces its description | `name` (or `id`), `description` |
 | `clear_source` | drop everything ingested from one source | `source` |
 
 ```python
@@ -73,6 +73,14 @@ kb_admin(action="save_type", name="Web service", form="structured",
          fields_json='{"base_url": {"label": "Base URL", "type": "url", "required": true},'
                      ' "protocol": "Protocol"}')
 ```
+
+Personas can't be deleted or reordered with `kb_admin`, nor in the settings screen.
+Edit the `knowledgebase.personas` list in `config.yaml` instead (see
+[Setting up personas and node types](../knowledge-base/setup.md#deleting-and-reordering-personas)).
+
+A work type saved without `states_json` goes through the default lifecycle:
+`planned`, `in-progress`, `done`. Those are the ids `set_state` takes.
+`get_type` still shows `"states": []` for such a type.
 
 ## `kb_flow`
 

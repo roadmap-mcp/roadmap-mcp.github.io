@@ -70,6 +70,7 @@ nav:
   - Knowledge Base:
       - knowledge-base/index.md
       - Concepts: knowledge-base/concepts.md
+      - Setting up personas and node types: knowledge-base/setup.md
       - The document format: knowledge-base/documents.md
       - The explorer: knowledge-base/explorer.md
       - Flows: knowledge-base/flows.md
