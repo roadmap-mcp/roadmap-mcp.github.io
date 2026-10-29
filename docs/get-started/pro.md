@@ -12,8 +12,10 @@ speech to text.
 
 ## Requirements
 
-- **Python 3.13 or later on your PATH.** The launcher calls `python` on Windows
-  and `python3` on macOS and Linux, so that command must be 3.13 or later.
+- **Python 3.13 or later on your PATH.** On macOS and Linux the launcher looks for
+  `python3.14`, `python3.13` and `python3`, in that order; on Windows for
+  `py -3.14`, `py -3.13` and `python`. It uses the first that is 3.13 or later, and
+  stops with a message if there is none.
 - **Internet access on the first run**, to install the dependencies from PyPI.
 - **Git on your PATH**, for the [Git features](git.md).
 - **unzip**, or any other way to extract a zip file.
@@ -56,7 +58,7 @@ speech to text.
 === "Ubuntu 24.04"
 
     Ubuntu 24.04 ships Python 3.12, which is too old. Install 3.13 from the
-    deadsnakes PPA, along with git and unzip:
+    deadsnakes PPA, along with git and unzip. `python3.13-venv` is required:
 
     ```bash
     sudo apt-get update
@@ -65,25 +67,14 @@ speech to text.
     sudo apt-get install -y python3.13 python3.13-venv git unzip
     ```
 
-    In a container where you are root, leave out `sudo`.
-
-    This leaves the system `python3` at 3.12, which Ubuntu itself depends on, so
-    don't replace it. Instead, give the launcher its own `python3` that points at
-    3.13, ahead of the system one on your PATH:
+    In a container where you are root, leave out `sudo`. Check:
 
     ```bash
-    mkdir -p ~/.roadmap-bin
-    ln -sf "$(command -v python3.13)" ~/.roadmap-bin/python3
-    export PATH=~/.roadmap-bin:$PATH
-    python3 --version
+    python3.13 --version
     ```
 
-    The `export` lasts for this terminal only. Run it again in every new terminal
-    before you start Roadmap, or add it to your `~/.bashrc`.
-
-!!! tip "Started it with an older Python by mistake?"
-    The first start fixes the Python version into the `.venv` folder it creates.
-    Delete `.venv` and start again with 3.13 on your PATH.
+    Leave the system `python3` at 3.12: Ubuntu itself depends on it, and the
+    launcher finds `python3.13` by itself.
 
 ## Download
 
@@ -126,7 +117,8 @@ Ctrl+C in its terminal.
     outside a container or from another machine. Start it with
     `ROADMAP_HOST=0.0.0.0` (see [Environment variables](#environment-variables)), and
     publish the port when you run the container, for example
-    `docker run -p 8090:8090 ...`.
+    `docker run -p 127.0.0.1:8090:8090 ...`. Read the warning there first: Roadmap
+    has no login.
 
 To force a clean reinstall, for example after unzipping a newer snapshot over the
 old one, delete `.venv/.installed` and start again.
@@ -140,7 +132,9 @@ beside it.
 
 To keep your data outside the install folder, so a newer snapshot can replace the
 folder without touching it, point `ROADMAP_CONFIG_PATH` at a `config.yaml` of your
-choosing, in a folder that exists.
+choosing. Its folder is created if it doesn't exist. Use an absolute path: a
+relative one is taken relative to the `backend` folder, because the launcher starts
+Roadmap from there.
 
 ## Environment variables
 
@@ -168,9 +162,15 @@ Set them in the terminal before you start the launcher:
     bash start.sh
     ```
 
-!!! warning
-    With `ROADMAP_HOST=0.0.0.0`, anyone who can reach the machine on port 8090 can
-    use Roadmap. Only do this on a network you trust.
+!!! danger "There is no login"
+    Anyone who can reach port 8090 can use Roadmap and change its settings. Once
+    the configuration is unlocked, the settings page also shows every stored secret
+    in readable form: AI provider keys, Atlassian tokens, Git credentials.
+
+    Keep the default, `127.0.0.1`, unless you need otherwise. Only use
+    `ROADMAP_HOST=0.0.0.0` inside a container whose port you publish to your own
+    machine only (`-p 127.0.0.1:8090:8090`), or on a network where you trust
+    everyone who can reach it.
 
 ## Connect an AI client
 
@@ -189,9 +189,13 @@ The [MCP tools](../reference/mcp-tools.md) page lists what the client can then d
 
 ## Plugins
 
-Every Pro plugin is installed and enabled out of the box. A plugin you install later,
-from the registry under *Settings → Admin*, starts disabled. Enable it per workspace
-under *Settings → System → Workspace*.
+A fresh install has every Pro plugin installed and enabled. More plugins install
+from the registry under *Settings → Admin*; restart Roadmap afterwards.
+
+Which plugins a workspace uses is set under *Settings → System → Workspace*. Until
+you save that list, every installed plugin is on, including ones you install later.
+Once you have saved it, a newly installed plugin starts off in that workspace: turn
+it on there.
 
 ## Next
 

@@ -78,7 +78,7 @@ knowledgebase:
       name: Delphi tip analysis
       kind: analyse               # analyse | ingest | act
       enabled: true
-      source: {kind: repo, ref: legacy-delphi, scope: {rev: HEAD, paths: ["src/**"]}}
+      source: {kind: repo, ref: legacy-delphi, scope: {paths: ["src/**"]}}
                                   # kind: repo | kb_source | context | web
       targets:
         personas: [architects, programmers]
