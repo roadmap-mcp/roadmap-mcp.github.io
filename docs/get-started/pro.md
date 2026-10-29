@@ -195,7 +195,7 @@ The [MCP tools](../reference/mcp-tools.md) page lists what the client can then d
 ## Plugins
 
 A fresh install has every Pro plugin installed and enabled. More plugins install
-from the registry under *Settings → Admin*; restart Roadmap afterwards.
+from the registry under *Settings → System → Admin*; restart Roadmap afterwards.
 
 Which plugins a workspace uses is set under *Settings → System → Workspace*. Until
 you save that list, every installed plugin is on, including ones you install later.
