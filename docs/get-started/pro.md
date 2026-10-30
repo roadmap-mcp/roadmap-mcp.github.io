@@ -134,6 +134,9 @@ From then on, every visit starts at the sign-in screen.
 
 ![The Sign in to Roadmap screen](../images/setup/sign-in.png){ width="424" }
 
+Once signed in, the settings are in the header (see
+[Where the settings are](users.md#where-the-settings-are)).
+
 The first run creates a `.venv` folder next to the launcher and installs the bundled
 plugins into it, plus their dependencies from PyPI. That takes a few minutes and
 needs internet access. Later runs reuse it and start at once. Stop the app with
@@ -208,8 +211,8 @@ Roadmap serves its tools over MCP, using SSE, at
 `http://127.0.0.1:8090/mcp/sse`. A client needs an **API token** of a user with the
 editor role or higher:
 
-1. Under *Settings → System → Account*, give a new token a name and click **New
-   token** (see [API tokens](account.md#api-tokens)).
+1. Under *Personal settings → Account* (the user menu: your name in the header),
+   give a new token a name and click **New token** (see [API tokens](account.md#api-tokens)).
 2. Copy the token: it is shown once. Next to it is the Claude Code command below,
    with the token filled in.
 3. Add Roadmap to your client with the token in place of `<token>`.

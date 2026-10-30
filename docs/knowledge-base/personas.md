@@ -45,11 +45,11 @@ by everyone (see [Topics](topics.md#topic-types)).
 
 ## Set up personas
 
-Personas are set up per workspace, under *Settings → Knowledge Base → Layer 2*, and
+Personas are set up per workspace, under *Workspace settings → Knowledge Base → Layer 2*, and
 that needs the [admin role](../get-started/users.md#roles). To start from
 ready-made personas and topic types instead, [install a pack](packs.md).
 
-![Settings, Knowledge Base, Layer 2](../images/kb-setup/layer2.png)
+![Workspace settings, Knowledge Base, Layer 2](../images/kb-setup/layer2.png)
 
 On the left is a tree in three groups:
 

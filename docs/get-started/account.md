@@ -1,8 +1,9 @@
 # Your account and API tokens
 
-*Settings → System → Account* is where every user, whatever their
-[role](users.md#roles), changes their own password and makes API tokens. It starts
-with who you are signed in as, and your role.
+*Personal settings* is where every user, whatever their [role](users.md#roles),
+changes their own password and makes API tokens. Open it from the user menu: your
+name, at the right of the header. Its *Account* tab starts with who you are signed
+in as, and your role.
 
 ## Change your password
 

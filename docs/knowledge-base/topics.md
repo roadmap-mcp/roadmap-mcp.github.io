@@ -99,8 +99,8 @@ Each of these is a topic of a different type, as the explorer shows it:
 
 ## Add a topic type
 
-Topic types are set up per workspace, next to the personas, under *Settings →
-Knowledge Base → Layer 2*, and that needs the
+Topic types are set up per workspace, next to the personas, under *Workspace
+settings → Knowledge Base → Layer 2*, and that needs the
 [admin role](../get-started/users.md#roles). To start from ready-made topic types
 instead, [install a pack](packs.md). Click **+ Add node type**, or the **+**
 next to *Shared by everyone* or *Work breakdown*:

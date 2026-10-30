@@ -40,7 +40,7 @@ flowchart TB
 ### Pro
 
 Bundled: installed and enabled in every Pro install. The ids are the ones the
-registry and *Settings → System → Admin* show.
+registry and *Server administration → Plugins* show.
 
 | Plugin | What it adds |
 |---|---|
@@ -51,15 +51,15 @@ registry and *Settings → System → Admin* show.
 | `roadmap.atlassian` | The Jira and Confluence connection, under *Information Sources*, offered as a Layer 1 source. Jira issue and Confluence page nodes can be opened and refreshed through it, which pulls their title and an excerpt |
 | `roadmap.bitbucket` | The Bitbucket connection, under *Information Sources*, offered as a Layer 1 source. Its nodes are pointers, as an agent or a flow wrote them |
 | `roadmap.ai` | The AI providers |
-| `roadmap.jobs` | Background jobs with a status and a log, such as flow runs, shown under *Settings → System → Jobs* |
+| `roadmap.jobs` | Background jobs with a status and a log, such as flow runs, shown under *Workspace settings → System → Jobs* |
 | `roadmap.scheduler` | Scheduled tasks |
 | `roadmap.settings` | The settings screens. Core |
-| `roadmap.users` | [Users and roles](users.md): the root user, signing in, the *Users* and *Account* tabs, and API tokens. Core |
+| `roadmap.users` | [Users and roles](users.md): the root user, signing in, the *Users* tab, *Personal settings*, and API tokens. Core |
 
 Roadmap doesn't sync or crawl any source: Layer 1 nodes are written by agents and
 flows. Only Atlassian nodes can be opened and refreshed from Roadmap.
 
-Extra: in the registry, installed from *Settings → System → Admin*.
+Extra: in the registry, installed from *Server administration → Plugins*.
 
 | Plugin | What it adds |
 |---|---|
@@ -71,20 +71,27 @@ To be released soon.
 
 ## Managing plugins
 
-Managing plugins needs the admin role. A fresh install has every Pro plugin
-installed and enabled. Optional plugins, such as Trello, install from the registry:
+Managing plugins needs the admin role, and happens in two places, both under the
+**Settings** menu in the header:
 
-1. Go to *Settings → System → Admin* and select the plugin.
+- *Server administration → Plugins* installs plugins, for the whole server.
+- *Workspace settings → System → Plugins* turns them on or off in one workspace (see
+  [Plugins per workspace](#plugins-per-workspace)).
+
+A fresh install has every Pro plugin installed and enabled. Optional plugins, such as
+Trello, install from the registry:
+
+1. Go to *Server administration → Plugins* and select the plugin.
 2. Click **Install**. Its badge changes to *Restart*.
 3. Restart Roadmap: press Ctrl+C in its terminal, then start it again with
    `start.bat` or `bash start.sh`.
 
 After the restart the plugin shows as *Installed* and is on in the workspace. Trello,
-for example, then has its own tab under *Settings → Information Sources*, and the
+for example, then has its own tab under *Workspace settings → Information Sources*, and the
 Knowledge Base can use it as a source.
 
 Three plugins are **core**: *Settings*, *MCP server* and *Users*. They are always
-on, in every workspace, and can't be uninstalled; *Settings → System → Workspace* shows them as
+on, in every workspace, and can't be uninstalled; *Workspace settings → System → Plugins* shows them as
 *core · always on*.
 
 ### Plugins per workspace
@@ -95,17 +102,17 @@ doesn't, for example. A plugin that is off in a workspace has no pages, settings
 or MCP tools there.
 
 1. Switch to the workspace in the header.
-2. Go to *Settings → System → Workspace*, titled *Plugins in workspace* and the
-   workspace's name.
+2. Go to *Workspace settings → System → Plugins*, titled *Plugins in workspace*
+   and the workspace's name.
 3. Turn plugins on or off, and click **Save & reload**.
 
 Until you save that list for a workspace, every installed plugin is on in it,
 including ones you install later. Once you have saved it, a newly installed plugin
 starts off in that workspace: turn it on there. The core plugins are always on.
 
-### The Admin and Workspace screens
+### The two Plugins screens
 
-Both screens work the same way:
+The server's and the workspace's *Plugins* screens work the same way:
 
 - **Search** filters the plugins by name or id, and shows how many match.
 - **List** and **Graph** switch between a list and a dependency graph. The graph

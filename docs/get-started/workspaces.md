@@ -6,8 +6,8 @@ shared between workspaces. Every install starts with one, `default`.
 
 ## What each workspace has of its own
 
-- **Its settings**: everything under *Settings*, except the *System* tabs that hold
-  for the whole server. Each workspace has its own AI providers, information sources
+- **Its settings**: everything under *Workspace settings*. Each workspace has its
+  own AI providers, information sources
   (Jira and Confluence, Bitbucket, Trello), [Git Repos](git.md) and checkout folders,
   and Knowledge Base settings: personas, topic types, flows and orchestrations.
 - **Its plugins**: which of the installed plugins are on (see
@@ -23,6 +23,8 @@ and another workspace to another team's, each with personas of its own.
   [Users and roles](users.md)).
 - **Installed plugins.** A plugin is installed once, for the server; each workspace
   turns it on or off.
+- **Server administration**: the installed plugins and the users. *Workspace
+  settings* shows the current workspace's name next to it in the Settings menu.
 - **The encryption password.** One password unlocks the stored secrets of every
   workspace.
 

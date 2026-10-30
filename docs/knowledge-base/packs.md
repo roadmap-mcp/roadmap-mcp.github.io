@@ -25,7 +25,7 @@ configuration; it doesn't install any code. Installing a pack needs the
 
 ## Install a pack in the settings screen
 
-1. Go to *Settings → Knowledge Base → Layer 2* and click **Packs**. The registry's
+1. Go to *Workspace settings → Knowledge Base → Layer 2* and click **Packs**. The registry's
    packs are listed, each with its version, description and how many personas and
    types it holds.
 

@@ -1,7 +1,7 @@
 # Users and roles
 
 Everyone who uses Roadmap signs in, and what they may do depends on their **role**.
-The users are managed in Roadmap itself, under *Settings → System → Users*.
+The users are managed in Roadmap itself, under *Server administration → Users*.
 
 ## The root user
 
@@ -26,14 +26,29 @@ Until the root user exists, Roadmap answers every other request with
 From then on, every visit starts at **Sign in to Roadmap**: your user name and
 password.
 
-![The Sign in to Roadmap screen](../images/setup/sign-in.png){ width="424" } The header shows who is signed in and their role, with a **Sign out**
-button next to them.
+![The Sign in to Roadmap screen](../images/setup/sign-in.png){ width="424" }
 
 A session ends after 12 hours without use, when Roadmap restarts, and when an admin
 resets your password or removes you. Then you sign in again.
 
 After 5 wrong passwords in a row for one user name, signing in with that name pauses
 for 60 seconds: *Too many wrong passwords for alice: try again in 42 seconds.*
+
+## Where the settings are
+
+Once you are signed in, the right of the header holds two menus:
+
+- **Your name**: the user menu. It shows who is signed in and their role, and leads
+  to **Personal settings**, your password and [API tokens](account.md), and to
+  **Sign out**. Everyone has it.
+- **Settings**, for admins only:
+    - **Workspace settings**: the current workspace's configuration. AI providers,
+      information sources and [Git Repos](git.md), the Knowledge Base, and under
+      *System* the jobs, the scheduler and the workspace's
+      [plugins](plugins.md#plugins-per-workspace). The menu shows which workspace
+      that is.
+    - **Server administration**: what holds for the whole server, the installed
+      [plugins](plugins.md#managing-plugins) and the [users](#managing-users).
 
 ## Roles
 
@@ -46,7 +61,8 @@ one above it may:
 | **Editor** | Also write data: Knowledge Base nodes and links, flow runs, branches. Also use [MCP](#mcp-needs-an-editor). |
 | **Admin** | Also configure: the settings, plugins, workspaces (only admins see *+ New workspace…* in the header), users, and unlocking the configuration. In the Knowledge Base: personas and topic types, [packs](../knowledge-base/packs.md), orchestrations, and clearing a source. |
 
-A viewer or an editor sees only the **Account** tab under *Settings*.
+A viewer or an editor has no **Settings** menu, only *Personal settings* (see
+[Where the settings are](#where-the-settings-are)).
 
 The same rules hold over MCP. An editor's AI client can read and write the
 Knowledge Base, but the `kb_admin` actions that change personas, topic types and
@@ -61,12 +77,13 @@ their role. MCP needs the editor role or higher. See
 
 ## Managing users
 
-*Settings → System → Users* is for admins.
+*Server administration → Users* is for admins.
 
 **Add a user**: click **Add user**, fill in a **User name**, a **Display name**, a
 **Role** and a **Password**, and click **Add**. A user name is lower-case letters,
 digits, `.`, `_` or `-`, starting with a letter or a digit, at most 64 long. Give the
-user their password; they can change it under *Settings → System → Account*.
+user their password; they can change it under *Personal settings* (see
+[Your account](account.md#change-your-password)).
 
 In the list:
 
@@ -111,7 +128,7 @@ server, not to a workspace.
 ## A forgotten root password
 
 If another admin can still sign in, they can set a new password for the root user
-under *Settings → System → Users*, like for anyone else. That also means any admin
+under *Server administration → Users*, like for anyone else. That also means any admin
 can take over the root user: give the admin role only to people you would trust as
 root.
 

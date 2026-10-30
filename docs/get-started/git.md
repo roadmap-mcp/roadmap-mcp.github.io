@@ -3,8 +3,8 @@
 Roadmap reads Git through **Git Repos**: the repositories a workspace works with.
 Knowledge Base flows and the MCP tools use them.
 
-Git Repos are configured per workspace, under *Settings → Information Sources → Git
-Repos*.
+Git Repos are configured per workspace, under *Workspace settings → Information
+Sources → Git Repos*.
 
 ## Prerequisites
 

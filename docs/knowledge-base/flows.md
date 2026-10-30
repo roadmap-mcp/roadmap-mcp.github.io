@@ -10,10 +10,10 @@ writes in here, and when?"
 | `ingest` | an adapter, copying a source into the ground layer | a source |
 | `act` | an AI that *does* something outside the knowledge base: builds, runs tests, merges | instructions only; its outcome is what counts |
 
-Flows are configured under *Settings → Knowledge Base → Flows*, or written over
+Flows are configured under *Workspace settings → Knowledge Base → Flows*, or written over
 MCP.
 
-![Settings, Knowledge Base, Flows](../images/kb-flows/flows.png)
+![Workspace settings, Knowledge Base, Flows](../images/kb-flows/flows.png)
 
 The list groups the flows by kind, and a spinner marks one with a run in progress:
 
