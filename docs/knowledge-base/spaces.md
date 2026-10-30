@@ -21,7 +21,9 @@ team sees the same repositories, pages and tickets.
 ## Read across, write in your own
 
 You read and write in one space at a time. The other spaces' topics can be read and
-linked to, but not changed: a topic is written in the space it belongs to. So the
+linked to, but not changed: a topic is written in the space it belongs to. A
+topic's *Links* tab shows its links into other spaces, marked with the space, such as *in Webshop*,
+even without *All spaces*, and opens the topic at the other end beside your lane. So the
 payments team can link its design to the webshop team's use case, and only the
 webshop team changes that use case.
 
@@ -58,8 +60,10 @@ more:
 
     ![Searching payment in all spaces: a topic of Payments team and two of Webshop](../images/kb-spaces/kb-all-spaces.png)
 
-- A topic of another space opens **read-only**, with *From the space ...: read-only
-  here* and a link to **Open that space**.
+- In the graph, the other spaces' topics are drawn with a dashed border.
+- A topic of another space opens **read-only**: *From the space ...: read-only
+  here*, with a link to **Open that space**. Its title names the space, and it says
+  *Written in the space ...*.
 
     ![A Webshop topic opened in the Payments team space](../images/kb-spaces/foreign-topic-details.png){ width="1056" }
 

@@ -153,8 +153,17 @@ Ctrl+C in its terminal.
     holds them into the container, and set that path as the checkout folder on the
     server (see [Configuring Git](git.md#set-the-checkout-folders)).
 
-To force a clean reinstall, for example after unzipping a newer snapshot over the
-old one, delete `.venv/.installed` and start again.
+## Update to a newer build
+
+1. Stop Roadmap: Ctrl+C in its terminal.
+2. Unzip the new build over the same folder, replacing the files that are there.
+3. Start it again with `start.bat` or `bash start.sh`.
+
+The start script sees that the build is new, says *Updating Roadmap to ...*, and
+reinstalls the bundled plugins. Your `config.yaml`, workspaces and data are kept,
+and so are the plugins you added from the registry.
+
+To force a full reinstall instead, delete `.venv/.installed` and start again.
 
 ## Where your data lives
 
