@@ -21,11 +21,13 @@ team sees the same repositories, pages and tickets.
 ## Read across, write in your own
 
 You read and write in one space at a time. The other spaces' topics can be read and
-linked to, but not changed: a topic is written in the space it belongs to. A
-topic's *Links* tab shows its links into other spaces, marked with the space, such as *in Webshop*,
-even without *All spaces*, and opens the topic at the other end beside your lane. So the
+linked to, but not changed: a topic is written in the space it belongs to. So the
 payments team can link its design to the webshop team's use case, and only the
 webshop team changes that use case.
+
+A topic's *Links* tab shows its links into other spaces even without *All spaces*,
+marked with the space, such as *in Webshop*. A click opens the topic at the other
+end beside your lane.
 
 ## Spaces or workspaces?
 
