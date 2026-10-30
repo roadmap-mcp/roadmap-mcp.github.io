@@ -25,7 +25,8 @@ flowchart LR
   branch `added` or `changed` it. **Main** sees none of it.
 - **Writing in a branch** is copy on write: the first change to a node from main
   copies it into the branch. A delete in a branch hides the node there and leaves
-  main alone.
+  main alone. If main deletes that node too, the branch's delete no longer counts:
+  it isn't listed as removed, and merging leaves it out.
 - **Merging** applies the branch to main in one step. It's refused while the work
   item isn't in its last state, and while main changed a node the branch changed
   too. *Merge anyway* lets the branch's version win.
