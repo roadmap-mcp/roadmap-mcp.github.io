@@ -44,14 +44,24 @@ as two customers. Use spaces for teams that work on the same systems.
 With one space, the Knowledge Base page looks as before. Once there are two or
 more:
 
+![The Knowledge Base home page in the Payments team space](../images/kb-spaces/kb-home-spaces.png)
+
 - A **space picker** next to the search box switches the page to another space.
   The page reloads in it, the way switching workspace does, and the address carries
   the space as `?space=<id>`.
 - The home page names the space you are in, with its description, and links to the
   **other spaces**.
-- **All spaces**, next to the search box, searches the other spaces' topics too.
+- **All spaces**, next to the search box, adds the other spaces' topics to a
+  search. They show in the ground layer graph.
+
+    ![The space picker, the search box and All spaces](../images/kb-spaces/kb-toolbar-spaces.png){ width="558" }
+
+    ![Searching payment in all spaces: a topic of Payments team and two of Webshop](../images/kb-spaces/kb-all-spaces.png)
+
 - A topic of another space opens **read-only**, with *From the space ...: read-only
   here* and a link to **Open that space**.
+
+    ![A Webshop topic opened in the Payments team space](../images/kb-spaces/foreign-topic-details.png){ width="1056" }
 
 ## Set up spaces
 
@@ -60,6 +70,8 @@ needs the [admin role](../get-started/users.md#roles). On the left are the space
 with *current* next to the one you are in; on the right, the selected space: its id,
 its description, its personas and work breakdown, and how many flows and
 orchestrations it has.
+
+![Workspace settings, Knowledge Base, Spaces](../images/kb-spaces/spaces-tab.png)
 
 ### Add a space
 
@@ -70,6 +82,8 @@ away. A name already in use is refused: *There is already a space named "..."*.
 A new space gets an id made from its name, shown under the form: *Payments team*
 becomes `payments-team`. The id can't change later; renaming the space keeps it.
 
+![The New space form](../images/kb-spaces/space-form.png){ width="770" }
+
 A new space starts empty. Give it personas and topic types, or
 [install a pack](packs.md) in it.
 
@@ -79,12 +93,16 @@ A new space starts empty. Give it personas and topic types, or
 or more spaces, a space picker at their top switches space. On the *Spaces* tab,
 **Work in this space** does the same for the selected space.
 
+![The space picker at the top of Layer 2](../images/kb-spaces/layer2-space-picker.png){ width="1054" }
+
 ### Remove a space
 
 Select it, click the trash button next to **Edit**, and confirm. Its personas, topic
 types, flows and orchestrations go with it, and so do the topics written in it. The
 other spaces and the shared sources are not touched. The last space can't be
 removed.
+
+![The Remove space dialog](../images/kb-spaces/space-remove.png){ width="316" }
 
 ## From before spaces
 
