@@ -104,9 +104,9 @@ or more spaces, a space picker at their top switches space. On the *Spaces* tab,
 ### Remove a space
 
 Select it, click the trash button next to **Edit**, and confirm. Its personas, topic
-types, flows and orchestrations go with it, and so do the topics written in it. The
-other spaces and the shared sources are not touched. The last space can't be
-removed.
+types, flows and orchestrations go with it, and so do the topics written in it, its
+branches, its orchestration runs and its chats. The other spaces and the shared
+sources are not touched. The last space can't be removed.
 
 ![The Remove space dialog](../images/kb-spaces/space-remove.png){ width="316" }
 
