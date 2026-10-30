@@ -38,6 +38,8 @@ for 60 seconds: *Too many wrong passwords for alice: try again in 42 seconds.*
 
 Once you are signed in, the right of the header holds two menus:
 
+![The Settings menu](../images/setup/header-settings-menu.png){ width="255" } ![The user menu](../images/setup/header-user-menu.png){ width="207" }
+
 - **Your name**: the user menu. It shows who is signed in and their role, and leads
   to **Personal settings**, your password and [API tokens](account.md), and to
   **Sign out**. Everyone has it.
@@ -79,11 +81,15 @@ their role. MCP needs the editor role or higher. See
 
 *Server administration → Users* is for admins.
 
+![Server administration, Users](../images/setup/users-tab.png)
+
 **Add a user**: click **Add user**, fill in a **User name**, a **Display name**, a
 **Role** and a **Password**, and click **Add**. A user name is lower-case letters,
 digits, `.`, `_` or `-`, starting with a letter or a digit, at most 64 long. Give the
 user their password; they can change it under *Personal settings* (see
 [Your account](account.md#change-your-password)).
+
+![The Add user form](../images/setup/users-add.png){ width="1022" }
 
 In the list:
 
@@ -92,6 +98,9 @@ In the list:
 - **Set a new password** (the key button): type the new password and click **Set
   password**. If the user is signed in, they have to sign in again. Their API tokens
   keep working.
+
+    ![Setting a new password for bob](../images/setup/users-reset.png){ width="1022" }
+
 - **Remove** (the trash button): removes the user, signs them out, and their API
   tokens stop working. The root user has no Remove button.
 

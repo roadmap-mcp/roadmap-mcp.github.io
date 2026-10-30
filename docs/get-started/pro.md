@@ -137,6 +137,8 @@ From then on, every visit starts at the sign-in screen.
 Once signed in, the settings are in the header (see
 [Where the settings are](users.md#where-the-settings-are)).
 
+![The header: workspace, Knowledge Base, Settings and the user menu](../images/setup/header-user.png){ width="594" }
+
 The first run creates a `.venv` folder next to the launcher and installs the bundled
 plugins into it, plus their dependencies from PyPI. That takes a few minutes and
 needs internet access. Later runs reuse it and start at once. Stop the app with

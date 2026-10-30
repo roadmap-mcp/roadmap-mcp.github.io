@@ -5,6 +5,8 @@ changes their own password and makes API tokens. Open it from the user menu: you
 name, at the right of the header. Its *Account* tab starts with who you are signed
 in as, and your role.
 
+![Personal settings, Account](../images/setup/personal-account.png)
+
 ## Change your password
 
 Enter your **Current password** and a **New password** of at least 8 characters, and
@@ -28,6 +30,8 @@ HTTP API only, and the Account tab says so when a viewer makes one.
 3. Copy the token now: it is shown once, and never again. Below it is a ready-made
    command to add Roadmap to Claude Code with it:
 
+    ![A new token, with its Claude Code command](../images/setup/account-new-token.png){ width="1022" }
+
     ```bash
     claude mcp add-json -s user roadmap '{"type":"sse","url":"http://127.0.0.1:8090/mcp/sse","headers":{"Authorization":"Bearer <token>"}}'
     ```
@@ -42,6 +46,8 @@ Make one token per client or machine: then you can revoke one without the others
 The list shows each token's name, when it was made, and when it was last used. The
 token itself isn't shown. **Revoke** (the x button) stops a token at once: a client
 using it is refused with `401 login_required` until it has a new one.
+
+![The token list](../images/setup/account-tokens.png){ width="1022" }
 
 ### Using a token
 

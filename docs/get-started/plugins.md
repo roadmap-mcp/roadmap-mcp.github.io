@@ -81,8 +81,16 @@ Managing plugins needs the admin role, and happens in two places, both under the
 A fresh install has every Pro plugin installed and enabled. Optional plugins, such as
 Trello, install from the registry:
 
+![Server administration, Plugins](../images/setup/admin-plugins.png)
+
 1. Go to *Server administration → Plugins* and select the plugin.
+
+    ![Trello selected, with Install](../images/setup/admin-plugin-detail-1.png){ width="1022" }
+
 2. Click **Install**. Its badge changes to *Restart*.
+
+    ![Trello installed, waiting for a restart](../images/setup/admin-plugin-detail-2.png){ width="1022" }
+
 3. Restart Roadmap: press Ctrl+C in its terminal, then start it again with
    `start.bat` or `bash start.sh`.
 
@@ -106,6 +114,8 @@ or MCP tools there.
    and the workspace's name.
 3. Turn plugins on or off, and click **Save & reload**.
 
+![Workspace settings, System, Plugins](../images/setup/workspace-plugins.png)
+
 Until you save that list for a workspace, every installed plugin is on in it,
 including ones you install later. Once you have saved it, a newly installed plugin
 starts off in that workspace: turn it on there. The core plugins are always on.
@@ -121,6 +131,10 @@ The server's and the workspace's *Plugins* screens work the same way:
   it depends on nothing. Select one to see what it *depends on* and what it is
   *required by*.
 
+![The Graph view](../images/setup/admin-graph.png)
+
 Turning a plugin on in a workspace also turns on everything it depends on. Turning
 one off also turns off everything that depends on it. A note names each plugin that
 changed along with it.
+
+![The note after turning Jobs off](../images/setup/workspace-cascade.png){ width="1022" }

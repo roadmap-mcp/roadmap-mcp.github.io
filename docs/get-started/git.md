@@ -6,6 +6,8 @@ Knowledge Base flows and the MCP tools use them.
 Git Repos are configured per workspace, under *Workspace settings → Information
 Sources → Git Repos*.
 
+![Workspace settings, Information Sources, Git Repos](../images/setup/git-repos.png)
+
 ## Prerequisites
 
 - **Git on the PATH of the Roadmap server.** Without it, file reads still work, but
@@ -34,6 +36,8 @@ Both editions have both. Which one is used depends on who reads the repository.
 
 In the **Checkout folders** panel at the top, click **Edit**, fill in the two
 settings, and click **Save**:
+
+![The Checkout folders panel, being edited](../images/setup/git-checkout-edit.png){ width="1022" }
 
 | Setting | What it is |
 |---|---|
@@ -74,6 +78,12 @@ The folder each one is cloned into is its **Folder** in Git Repos.
     Fill in at least one of the two: with both empty, saving is refused with *Give
     the repository a name or a folder.* Usually you type only the name.
 
+    ![A repository being edited](../images/setup/git-repo-edit.png){ width="1022" }
+
+    A name that is already taken is refused:
+
+    ![Demo-App refused: there is already a repository named demo-app](../images/setup/git-repo-duplicate.png){ width="1022" }
+
 3. Click **Save** under the fields. That writes the repository to `config.yaml`
    straight away; there is nothing else to save. **Remove** is stored straight away
    too.
@@ -86,6 +96,8 @@ Select a repository to see where it is in both places, for example:
 
 - **On the server** `/srv/roadmap/repos/demo-app`
 - **On users' machines** *the parent directory of the current project/demo-app*
+
+![The repository list, with demo-app selected](../images/setup/git-repo-detail.png){ width="1022" }
 
 When a checkout folder isn't set, the detail says so, and asks you to set it:
 

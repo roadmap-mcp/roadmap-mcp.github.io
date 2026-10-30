@@ -34,12 +34,16 @@ The workspace list is in the header, next to the workspace icon. Pick a workspac
 switch to it: the page reloads with that workspace's settings and data. The address
 carries the workspace as `?ws=<name>`, so a link opens the same workspace.
 
+![The workspace list](../images/setup/workspace-select.png){ width="207" }
+
 To create one, an admin picks **+ New workspace…** at the bottom of the list, types a
 name, and clicks **Create**. A name is letters, digits, `.`, `_` or `-`, starting
 with a letter or a digit; upper case is turned into lower case, so `Team-A` becomes
 `team-a`. `default` is taken. The new workspace starts
 empty: configure its settings, Git Repos and Knowledge Base as for the first one, or
 install a [pack](../knowledge-base/packs.md) in it.
+
+![Creating the workspace team-b](../images/setup/workspace-new.png){ width="316" }
 
 A workspace can't be renamed or removed in the app.
 

@@ -91,6 +91,13 @@ Each of these is a topic of a different type, as the explorer shows it:
 
     ![The Error responses guideline](../images/kb-topics/unstructured-guideline-details.png){ width="1056" }
 
+=== "Folder"
+
+    *Billing*, a service area: a folder whose own content says what the group is
+    for, with headings, lists and bold as written.
+
+    ![The Billing service area](../images/kb-topics/folder-details.png){ width="1056" }
+
 === "Glossary term"
 
     *Invoice*, a type shared by everyone, so it appears in every persona's lane.
@@ -139,6 +146,11 @@ holds steps. Each has a state from its type's lifecycle and a progress bar, and 
 spinner marks one that a flow is working on.
 
 ![The work breakdown, with states, progress bars and a running flow](../images/kb-explorer/work-lane-tree.png){ width="352" }
+
+A unit of work has content of its own too, such as a feature's goal, what is in
+scope and when it is done:
+
+![The Details tab of the Checkout redesign feature](../images/kb-topics/work-item-details.png){ width="1056" }
 
 A feature's *Links* tab shows the topics written about it (*about*), and the topics
 someone doing it should read first (*context*), across all lanes:
