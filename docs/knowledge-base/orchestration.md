@@ -1,7 +1,7 @@
 # Orchestration
 
 A flow only says how its work went. **What happens next** is an orchestration's
-job: a state machine, configured per workspace, driven by the outcomes of the runs
+job: a state machine, configured per [space](spaces.md), driven by the outcomes of the runs
 it hands out. "Testing failed, back to development" is a transition in an
 orchestration, not a field on the testing flow.
 

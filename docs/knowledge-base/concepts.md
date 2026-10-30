@@ -92,7 +92,11 @@ on a feature are linked to it, so "what do we know about this feature?" has an
 answer, and [orchestrations](orchestration.md) move features through their states
 as the work goes on.
 
-## One Knowledge Base per workspace
+## Workspaces and spaces
 
-Each [workspace](../get-started/workspaces.md) has its own Knowledge Base, with its
-own personas, topic types, flows and topics. Nothing is shared between workspaces.
+Each [workspace](../get-started/workspaces.md) has its own Knowledge Base. Nothing
+is shared between workspaces.
+
+Inside a workspace, each team or project can have a [space](spaces.md) of its own:
+its own personas, topic types, work breakdown, flows and topics. The ground layer is
+shared by every space, and a space can read the others' topics.

@@ -8,10 +8,11 @@ gives you: a persona or topic type from a pack is changed and removed like any o
 [Add a topic type](topics.md#add-a-topic-type)).
 
 Packs are published in a **pack registry**, the way plugins are in the plugin
-registry. Installing one only adds personas and types to the workspace's
-configuration; it doesn't install any code. Installing a pack needs the
-[admin role](../get-started/users.md#roles). Packs are installed per
-[workspace](../get-started/workspaces.md): a new workspace starts empty.
+registry. Installing one only adds personas and types to the configuration; it
+doesn't install any code. Installing a pack needs the
+[admin role](../get-started/users.md#roles). A pack is installed into the
+[space](spaces.md) you are in: a new space, like a new
+[workspace](../get-started/workspaces.md), starts empty.
 
 ## The packs
 
@@ -66,7 +67,7 @@ example a type written for a persona the pack doesn't carry.
 
     ![The Export as a pack form](../images/kb-packs/pack-export.png){ width="730" }
 
-Install it in another workspace with **Install from file**, or share it.
+Install it in another space or workspace with **Install from file**, or share it.
 
 ## Another pack registry
 

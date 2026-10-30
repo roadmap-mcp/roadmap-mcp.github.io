@@ -10,8 +10,8 @@ writes in here, and when?"
 | `ingest` | an adapter, copying a source into the ground layer | a source |
 | `act` | an AI that *does* something outside the knowledge base: builds, runs tests, merges | instructions only; its outcome is what counts |
 
-Flows are configured under *Workspace settings → Knowledge Base → Flows*, or written over
-MCP.
+Flows are configured per [space](spaces.md), under *Workspace settings → Knowledge
+Base → Flows*, or written over MCP.
 
 ![Workspace settings, Knowledge Base, Flows](../images/kb-flows/flows.png)
 

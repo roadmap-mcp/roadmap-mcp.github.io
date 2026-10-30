@@ -45,8 +45,8 @@ by everyone (see [Topics](topics.md#topic-types)).
 
 ## Set up personas
 
-Personas are set up per workspace, under *Workspace settings → Knowledge Base → Layer 2*, and
-that needs the [admin role](../get-started/users.md#roles). To start from
+Personas are set up per [space](spaces.md), under *Workspace settings → Knowledge
+Base → Layer 2*, and that needs the [admin role](../get-started/users.md#roles). To start from
 ready-made personas and topic types instead, [install a pack](packs.md).
 
 ![Workspace settings, Knowledge Base, Layer 2](../images/kb-setup/layer2.png)
@@ -90,19 +90,22 @@ topics appear in every lane, and flows that wrote for it stop writing for it.
 ### Reorder personas
 
 The settings screen can't reorder personas. To change the order of the lanes, stop
-Roadmap, change the order of the `personas` list under `knowledgebase` in the
-workspace's `config.yaml`, and start it again. Stop it first: saving in the settings
+Roadmap, change the order of the `personas` list of the space, under
+`knowledgebase` → `spaces` in the workspace's `config.yaml`, and start it again. Stop it first: saving in the settings
 screen writes the whole file, and would undo an edit made while Roadmap runs.
 
 ```yaml
 knowledgebase:
-  personas:                # the order here is the order of the lanes
-    - id: testing
-      name: Testing
-      description: What to test and how.
-    - id: architecture
-      name: Architecture
-      description: Services, their interfaces and the decisions behind them.
+  spaces:
+    - id: general
+      name: General
+      personas:            # the order here is the order of the lanes
+        - id: testing
+          name: Testing
+          description: What to test and how.
+        - id: architecture
+          name: Architecture
+          description: Services, their interfaces and the decisions behind them.
 ```
 
 The `default` workspace uses `config.yaml` itself; another workspace uses

@@ -83,6 +83,7 @@ nav:
   - Pro edition:
       - knowledge-base/index.md
       - Concepts: knowledge-base/concepts.md
+      - Spaces: knowledge-base/spaces.md
       - Personas: knowledge-base/personas.md
       - Topics: knowledge-base/topics.md
       - The explorer: knowledge-base/explorer.md

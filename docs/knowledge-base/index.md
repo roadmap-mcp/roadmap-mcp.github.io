@@ -15,6 +15,7 @@ clients read and write it over [MCP](../get-started/pro.md#connect-an-ai-client)
 ## Where to go next
 
 - [Concepts](concepts.md): the idea behind it, Layer 1 and Layer 2.
+- [Spaces](spaces.md): a part of the knowledge base per team or project.
 - [Personas](personas.md): who the knowledge is written for, and setting them up.
 - [Topics](topics.md): the pages of knowledge, and the types that shape them. To
   start from ready-made personas and topic types, [install a pack](packs.md).

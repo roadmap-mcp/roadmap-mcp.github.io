@@ -17,6 +17,12 @@ shared between workspaces. Every install starts with one, `default`.
 So you can, for example, connect one workspace to one team's Jira and repositories,
 and another workspace to another team's, each with personas of its own.
 
+!!! tip "Teams that share their systems"
+    Teams that work on the same repositories, pages and tickets don't need separate
+    workspaces. Give each a [space](../knowledge-base/spaces.md) in one workspace
+    instead: the sources are shared, each team has its own personas and work
+    breakdown, and the teams can read each other's topics.
+
 ## What the whole server shares
 
 - **Users and roles.** A user's role holds in every workspace (see

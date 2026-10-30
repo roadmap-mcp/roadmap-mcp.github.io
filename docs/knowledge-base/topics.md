@@ -106,7 +106,7 @@ Each of these is a topic of a different type, as the explorer shows it:
 
 ## Add a topic type
 
-Topic types are set up per workspace, next to the personas, under *Workspace
+Topic types are set up per [space](spaces.md), next to the personas, under *Workspace
 settings → Knowledge Base → Layer 2*, and that needs the
 [admin role](../get-started/users.md#roles). To start from ready-made topic types
 instead, [install a pack](packs.md). Click **+ Add node type**, or the **+**
@@ -142,7 +142,7 @@ another type, first.
 ## Units of work
 
 Units of work make up the **work breakdown**: a project holds features, a feature
-holds steps. Each has a state from its type's lifecycle and a progress bar, and a
+holds steps. Each [space](spaces.md) has its own work breakdown, like a team's board. Each has a state from its type's lifecycle and a progress bar, and a
 spinner marks one that a flow is working on.
 
 ![The work breakdown, with states, progress bars and a running flow](../images/kb-explorer/work-lane-tree.png){ width="352" }
